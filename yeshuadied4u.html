@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yeshua Died for You</title>
+<style>
+:root{
+--bg:#fdfbf6;--fg:#1a1c2e;--mut:#5f6480;--card:#fff;--ln:#e8e4d9;
+--ac:#3b3a8f;--on:#fff;--chip:#eceaf8;--soft:#f4f2ec;
+color-scheme:light;box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0e1120;--fg:#eceefa;--mut:#a0a6c4;--card:#191d33;--ln:#2a2f50;
+--on:#0e1120;--chip:#232849;--soft:#161a2e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1120;--fg:#eceefa;--mut:#a0a6c4;--card:#191d33;--ln:#2a2f50;--on:#0e1120;--chip:#232849;--soft:#161a2e;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px}
+body{margin:0;color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI","PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+background:
+ radial-gradient(900px 400px at 85% -120px,color-mix(in srgb,var(--ac) 22%,transparent),transparent),
+ radial-gradient(700px 360px at 5% 5%,color-mix(in srgb,var(--ac) 12%,transparent),transparent),
+ var(--bg);
+background-attachment:fixed;transition:background .4s}
+.w{max-width:820px;margin:0 auto;padding:14px 16px 60px}
+button,select,input{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:9px 13px}
+button{cursor:pointer;transition:transform .14s,background .2s,color .2s}
+button:hover{transform:translateY(-1px)}
+.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:40;margin:0 -16px 10px;padding:8px 16px;
+background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;background:none;border:0;padding:4px 0;font-size:1.05rem;font-weight:700;font-family:Georgia,"Songti SC",serif;color:var(--fg)}
+.brand .cross{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--ac);color:var(--on);font-size:.95rem;flex:none}
+.mini{padding:6px 10px;font-size:.85rem;border-radius:999px}
+.steps{display:flex;gap:5px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.steps::-webkit-scrollbar{display:none}
+.steps button{flex:1 0 auto;min-width:36px;padding:7px 0;border-radius:999px;font-weight:700;font-size:.9rem;text-align:center;position:relative}
+.steps .done::after{content:"";position:absolute;top:3px;right:6px;width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.steps .on.done::after{background:var(--on)}
+
+/* home */
+.hero{padding:26px 0 10px}
+.eyebrow{display:inline-block;background:var(--chip);color:var(--ac);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+h1{font-family:Georgia,"Songti SC","Noto Serif SC",serif;font-size:2.5rem;line-height:1.12;margin:14px 0 10px;letter-spacing:-.02em}
+.lede{color:var(--mut);font-size:1.12rem;max-width:34em;margin:0 0 18px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.cta .go{background:var(--ac);color:var(--on);border:0;font-size:1.05rem;font-weight:700;padding:14px 24px;border-radius:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.tile{display:block;text-align:left;padding:0;border:1px solid var(--ln);border-radius:18px;overflow:hidden;background:var(--card)}
+.tile .band{height:6px;background:var(--tc)}
+.tile .in{padding:15px 16px}
+.tile .no{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--tc);color:#fff;font-weight:800;font-size:.85rem;margin-bottom:8px}
+.tile h3{margin:0 0 4px;font-size:1.08rem;font-family:Georgia,"Songti SC",serif}
+.tile p{margin:0;color:var(--mut);font-size:.92rem}
+.tile .tick{float:right;color:var(--tc);font-weight:800}
+
+/* stage */
+.sheet{background:var(--card);border:1px solid var(--ln);border-radius:22px;overflow:hidden;
+box-shadow:0 14px 40px color-mix(in srgb,var(--ac) 14%,transparent)}
+.head{padding:22px 24px 18px;background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 20%,var(--card)),color-mix(in srgb,var(--ac) 6%,var(--card)))}
+.head .k{display:flex;align-items:center;gap:8px;color:var(--ac);font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.head h2{font-family:Georgia,"Songti SC","Noto Serif SC",serif;font-size:2rem;margin:8px 0 6px;line-height:1.15}
+.head .q{font-size:1.12rem;color:var(--ac);font-style:italic;margin:0}
+.body{padding:20px 24px 26px}
+.rem{display:flex;gap:12px;background:var(--ac);color:var(--on);border-radius:16px;padding:15px 17px;margin:0 0 22px;font-size:1.02rem;font-weight:600}
+.rem span:first-child{font-size:1.3rem;line-height:1.2}
+ol.pts{list-style:none;padding:0;margin:0 0 6px;counter-reset:p}
+ol.pts li{counter-increment:p;display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--ln)}
+ol.pts li:first-child{border-top:0;padding-top:0}
+.num{flex:none}
+.num::before{content:counter(p);display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:color-mix(in srgb,var(--ac) 16%,var(--card));color:var(--ac);font-weight:800;font-size:.9rem}
+.v{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.v button{background:var(--chip);color:var(--ac);border:0;border-radius:999px;padding:4px 11px;font-size:.86rem;font-weight:600}
+.v button:hover{background:var(--ac);color:var(--on)}
+
+/* blocks */
+.ex{margin-top:26px}
+.ex h3{display:flex;align-items:center;gap:8px;font-size:.95rem;margin:0 0 10px;color:var(--ac);text-transform:uppercase;letter-spacing:.06em}
+.flow{display:flex;flex-wrap:wrap;gap:18px}
+.flow div{flex:1 1 120px;background:color-mix(in srgb,var(--ac) 10%,var(--card));border-radius:14px;padding:11px 13px;position:relative;font-size:.9rem}
+.flow div:not(:last-child)::after{content:"\2192";position:absolute;right:-15px;top:50%;transform:translateY(-50%);color:var(--ac);font-weight:800}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.cards>div{background:var(--soft);border:1px solid var(--ln);border-radius:16px;padding:14px 15px;font-size:.92rem}
+.cards b{display:block;color:var(--ac);margin-bottom:5px}
+.lb{display:block;color:var(--mut);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;margin-top:7px}
+.vsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vh{padding:10px 12px;border-radius:12px;font-weight:700;text-align:center;background:var(--chip);color:var(--ac)}
+.vh1{background:var(--ac);color:var(--on)}
+.vr{padding:10px 12px;border-radius:12px;border:1px solid var(--ln);background:var(--soft);font-size:.9rem}
+.vr1{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 11%,var(--card))}
+.stairs div{padding:11px 15px;border-radius:13px;margin-bottom:6px;font-size:.92rem;display:flex;gap:11px;align-items:center}
+.stairs b{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:var(--card);color:var(--ac);font-size:.8rem;flex:none}
+.tl{border-left:3px solid var(--ac);margin-left:9px}
+.tl div{position:relative;padding:7px 0 11px 20px;font-size:.92rem}
+.tl div::before{content:"";position:absolute;left:-10px;top:12px;width:14px;height:14px;border-radius:50%;background:var(--ac);border:3px solid var(--card)}
+.tl .now{font-weight:800;color:var(--ac)}
+.stories{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.story{background:var(--soft);border:1px solid var(--ln);border-left:4px solid var(--ac);border-radius:14px;padding:14px 15px;font-size:.92rem}
+.story b{display:block;color:var(--ac);margin-bottom:6px}
+.ask{background:var(--ac);color:var(--on);border-radius:18px;padding:4px 18px}
+.ask div{padding:12px 0;border-bottom:1px solid color-mix(in srgb,var(--on) 25%,transparent);font-size:.96rem}
+.ask div:last-child{border:0}
+svg.art{display:block;width:100%;max-width:430px;margin:4px auto}
+.rings text{text-anchor:middle;fill:var(--fg);font-family:inherit}
+.rg0{fill:color-mix(in srgb,var(--ac) 10%,var(--card));stroke:var(--ac);stroke-width:1.5}
+.rg1{fill:color-mix(in srgb,var(--ac) 24%,var(--card));stroke:var(--ac);stroke-width:1.5}
+.rg2{fill:color-mix(in srgb,var(--ac) 42%,var(--card));stroke:var(--ac);stroke-width:1.5}
+.t1{font-size:15px;font-weight:700}.t2{font-size:12px}
+.tabs .z{fill:var(--card);stroke:var(--ac);stroke-width:1.5}
+.tabs .h{fill:color-mix(in srgb,var(--ac) 18%,var(--card));stroke:var(--ac)}
+.tabs .m{fill:color-mix(in srgb,var(--ac) 40%,var(--card));stroke:var(--ac)}
+.tabs .vl{stroke:var(--ac);stroke-width:4;stroke-dasharray:4 3}
+.tabs text{fill:var(--fg);font-size:11px;text-anchor:middle;font-family:inherit}
+.tabs .s{font-size:10px;fill:var(--mut)}
+.hint{color:var(--mut);font-size:.85rem;margin:8px 0 0}
+
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.nav button{font-weight:600}
+.nav .next{background:var(--ac);color:var(--on);border-color:var(--ac)}
+
+/* verse panel */
+.back{position:fixed;inset:0;background:rgba(5,8,20,.5);z-index:50;display:none}
+.back.open{display:block}
+.panel{position:fixed;z-index:51;left:50%;transform:translateX(-50%);bottom:0;width:min(560px,100%);
+max-height:82vh;overflow:auto;background:var(--card);border:1px solid var(--ln);border-radius:22px 22px 0 0;
+padding:18px 20px calc(22px + env(safe-area-inset-bottom,0px));display:none}
+.panel.open{display:block}
+@media(min-width:640px){.panel{bottom:auto;top:50%;transform:translate(-50%,-50%);border-radius:22px}}
+.panel h4{margin:0;font-size:1.25rem;font-family:Georgia,"Songti SC",serif;color:var(--ac)}
+.panel .x{position:absolute;top:12px;right:14px;border:0;background:var(--soft);border-radius:50%;width:32px;height:32px;padding:0}
+.vtext{background:var(--soft);border-radius:14px;padding:14px 16px;margin:12px 0;font-size:1.02rem;white-space:pre-wrap}
+.vsrc{color:var(--mut);font-size:.8rem;margin:-6px 0 12px}
+.vlinks{display:flex;flex-wrap:wrap;gap:7px}
+.vlinks a{text-decoration:none;background:var(--chip);color:var(--ac);border-radius:999px;padding:7px 13px;font-size:.88rem;font-weight:600}
+.vlinks a:hover{background:var(--ac);color:var(--on)}
+.tgl{display:flex;gap:6px;margin-bottom:4px}
+.tgl button{padding:5px 11px;font-size:.82rem;border-radius:999px}
+small.ft{display:block;color:var(--mut);margin-top:26px;font-size:.8rem;text-align:center}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fade{animation:in .35s ease}
+
+.srch{display:flex;gap:8px;margin:0 0 10px}
+.srch input{flex:1;min-width:0;border-radius:12px}
+.res{margin-top:4px}
+.res button{display:block;width:100%;text-align:left;background:var(--soft);border:1px solid var(--ln);border-left:4px solid var(--ac);border-radius:14px;padding:12px 14px;margin-bottom:8px;font-size:.93rem}
+.res b{display:block;color:var(--ac);margin-bottom:3px;font-size:.86rem}
+.sug{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sug button{background:var(--chip);color:var(--ac);border:0;border-radius:999px;padding:6px 12px;font-size:.85rem}
+.set label{display:block;font-size:.85rem;color:var(--mut);margin:12px 0 4px}
+.set input,.set select{width:100%}
+.warn{background:color-mix(in srgb,#c2344d 12%,var(--card));border-left:4px solid #c2344d;border-radius:12px;padding:11px 13px;font-size:.86rem;margin-top:12px}
+.ok{color:#1a8a52;font-weight:600;font-size:.86rem}
+.bad{color:#c2344d;font-weight:600;font-size:.86rem}
+</style></head><body>
+<div class="w">
+ <div class="top">
+  <div class="row">
+   <button class="brand" data-g="-1"><span class="cross">&#10013;</span><span id="bt"></span></button>
+   <div class="row" style="gap:6px">
+    <button class="mini" id="sb">&#128269;</button>
+    <button class="mini" id="kb">&#9881;</button>
+    <span id="lang" style="display:flex;gap:5px"></span>
+   </div>
+  </div>
+  <div class="steps" id="steps"></div>
+ </div>
+ <div id="c"></div>
+ <div class="nav" id="nav"></div>
+ <small class="ft" id="ft"></small>
+</div>
+<div class="back" id="back"></div>
+<div class="panel" id="panel"></div>
+<script>
+var D=[
+["The Spiritual World","属灵世界","El mundo espiritual","Is there more than what we can see?","眼睛所见之外还有什么？","¿Hay algo más de lo que vemos?",[
+["Two worlds: the visible (physical) and the invisible (spiritual). The Bible explains how, when and why all things exist.","两个世界：可见的（物质）和不可见的（属灵）。圣经说明万物如何、何时、为何存在。","Dos mundos: el visible (material) y el invisible (espiritual). La Biblia explica cómo, cuándo y por qué existe todo.","Colossians 1:16;Romans 1:19-20;Hebrews 11:3"],
+["God: from everlasting to everlasting, self-existent, the only Ruler, greater than all.","神：从永远到永远、自有永有、独一的主宰、比万有都大。","Dios: eterno, existe por sí mismo, el único Soberano, mayor que todos.","Psalm 90:2;Exodus 3:14;1 Timothy 6:15;John 10:29"],
+["Three heavens: the sky; the realm under the devil; the spiritual heaven where the throne is.","三层天：天空；魔鬼掌权的空中；属灵的天，宝座所在。","Tres cielos: el firmamento; el dominio del diablo; el cielo espiritual donde está el trono.","Genesis 1:8;Ephesians 2:2;2 Corinthians 12:2"],
+["The universe will end, and hell is real.","宇宙将有终结，地狱是真实的。","El universo tendrá fin, y el infierno es real.","2 Peter 3:7-10;Matthew 25:41;Revelation 20:14-15"]]],
+["What Is Man?","人是什么？","¿Qué es el hombre?","Who am I, really?","真正的“我”是谁？","¿Quién soy realmente?",[
+["Two beings: the visible “me” (flesh, from dust, it expires) and the invisible “me” (spirit, eternal). The spirit is the true me.","两个存在：看得见的“我”（肉体，出于尘土，会朽坏）和看不见的“我”（灵，永存）。灵才是真正的我。","Dos seres: el “yo” visible (carne, del polvo, caduca) y el “yo” invisible (espíritu, eterno). El espíritu es el verdadero yo.","Genesis 2:7;Genesis 1:27"],
+["Life after death: Hades, Abraham’s side (OT) and Paradise (NT).","死后的生命：阴间、亚伯拉罕的怀里（旧约）与乐园（新约）。","La vida después de la muerte: el Hades, el seno de Abraham (AT) y el Paraíso (NT).","Luke 8:26-31"],
+["Resurrection: Christ is the firstfruit; the saints rise at His second coming; the rest after 1,000 years.","复活：基督是初熟的果子；圣徒在祂再来时复活；其余的人在一千年后。","Resurrección: Cristo es las primicias; los santos resucitan en su segunda venida; los demás después de mil años.","1 Corinthians 15:23;Revelation 20:4-5;Revelation 20:12-15"],
+["The man of spirit: “I am a soul! This is my flesh!” Live for eternal life, obey Christ’s word, put the kingdom first.","属灵的人：“我是灵魂！这是我的肉体！”为永生而活，听从基督的话，先求神的国。","El hombre espiritual: “¡Soy un alma! ¡Esta es mi carne!” Vive para la vida eterna, obedece la palabra de Cristo, pon primero el reino.","Matthew 6:25-33;Luke 9:59-62;Romans 8:12-13"]]],
+["Sin","罪","El pecado","What went wrong between us and God?","我们与神之间出了什么问题？","¿Qué salió mal entre Dios y nosotros?",[
+["The Bible’s definition: sin is separation from God. (Other views: greed, social disorder, a corrupt heart.)","圣经的定义：罪就是与神分离。（其他看法：贪欲、破坏社会秩序、内心败坏。）","Definición bíblica: el pecado es la separación de Dios. (Otras visiones: codicia, desorden social, corazón corrupto.)","1 John 3:8"],
+["Origin: the devil sinned first in heaven, then became the father of lies and the first murderer.","起源：魔鬼最先在天上犯罪，后来成为说谎者的父和最初的杀人者。","Origen: el diablo pecó primero en el cielo; luego fue padre de mentira y el primer homicida.","Isaiah 14:12-15;John 8:44;1 John 3:12"],
+["Adam’s sin brought death: separation from God, among people, and between flesh and soul.","亚当犯罪带来死亡：与神分离、人与人分离、肉体与灵魂分离。","El pecado de Adán trajo muerte: separación de Dios, entre las personas y entre carne y alma.","Genesis 3:17;Genesis 4:8"],
+["Original sin is passed on; sins we commit ourselves are not inherited.","原罪会遗传；自己所犯的罪不会遗传。","El pecado original se transmite; los pecados cometidos personalmente no se heredan.","Revelation 12:9"]]],
+["Redemption","救赎","La redención","How was the price of sin paid?","罪的代价是如何偿还的？","¿Cómo se pagó el precio del pecado?",[
+["Redemption means paying the price of sin, paying on someone’s behalf, and buying back. Its purpose: forgiveness, cleansing, life.","救赎是偿还罪的代价、代人偿还、并赎回。目的：赦罪、洁净、得生命。","Redención es pagar el precio del pecado, pagar en lugar de otro y rescatar. Su fin: perdón, limpieza, vida.","Leviticus 5:6;Exodus 12:3-13;Hebrews 9:18-22;Leviticus 17:11"],
+["In the Old Testament: sin offerings once a year, peace offerings at every occasion, through the priests and sanctuary.","旧约中：每年一次的赎罪祭、每逢场合的平安祭，由祭司和圣所执行。","En el Antiguo Testamento: ofrenda por el pecado una vez al año, ofrenda de paz en cada ocasión, por medio de sacerdotes y santuario.","Leviticus 16:30;Leviticus 16:33-34"],
+["Completed in Jesus: the eternal sanctuary, high priest and sacrifice. His blood purified the heavenly sanctuary.","在耶稣里成全：永远的圣所、大祭司和祭物。祂的血洁净了天上的圣所。","Cumplida en Jesús: santuario, sumo sacerdote y sacrificio eternos. Su sangre purificó el santuario celestial.","Hebrews 9:1-3;Hebrews 9:23"],
+["The first Adam became a living being; the last Adam is a life-giving spirit. Christianity is not a religion of retribution but faith by grace.","首先的亚当成为有生命的人；末后的亚当成为叫人活的灵。基督教不是报应的宗教，而是因恩典而有的信。","El primer Adán fue un ser viviente; el último Adán es espíritu que da vida. El cristianismo no es una religión de retribución sino fe por gracia.","1 Corinthians 15:45;Ephesians 1:7;1 Peter 1:18-19"]]],
+["Grace","恩典","La gracia","What did God freely give?","神白白赐给我们什么？","¿Qué nos dio Dios gratuitamente?",[
+["General grace (nature, for all) and special grace (the only begotten Son, for all who believe).","普遍恩典（大自然，给所有人）与特殊恩典（独生子，给所有相信的人）。","Gracia general (la naturaleza, para todos) y gracia especial (el Hijo unigénito, para todos los que creen).","John 3:16"],
+["Redemption was done by the Son at the cross for all; forgiveness comes from the Father today to those who believe.","救赎是子在十字架上为众人成就的；赦免是父今日赐给相信之人的。","La redención la hizo el Hijo en la cruz por todos; el perdón lo da el Padre hoy a los que creen.","Ephesians 1:7;Ephesians 2:8"],
+["The Law only condemns; the greatest gift is the forgiveness of sin.","律法只是定罪；最大的礼物是罪得赦免。","La Ley solo condena; el mayor regalo es el perdón del pecado.","Romans 3:19-20;Hebrews 10:17-18;1 Corinthians 15:56"],
+["Purpose: Jesus alone is my boast. Testify of grace: healing, answered prayer, a changed life, thanks.","目的：唯有耶稣是我的夸耀。见证恩典：医治、祷告蒙应允、生命改变、感恩。","Propósito: solo Jesús es mi orgullo. Testifica la gracia: sanidad, oraciones contestadas, vida transformada, gratitud.","Ephesians 2:9;Ephesians 1:6;2 Corinthians 5:17;John 14:13"]]],
+["Faith","信心","La fe","How do I receive it?","我如何领受？","¿Cómo lo recibo?",[
+["Self-confidence is subjective, with no guarantee. Faith is objective, based on God’s word: obey, and His promise is 100%.","自信是主观的，没有保证。信心是客观的，建立在神的话上：顺服，神的应许就是百分之百。","La confianza en uno mismo es subjetiva, sin garantía. La fe es objetiva, basada en la palabra de Dios: obedece y su promesa es 100 %.","Hebrews 11:3"],
+["Its objects: God, His word, Jesus Christ, His words, the name of Yeshua, and the gospel.","信心的对象：神、神的话、耶稣基督、祂的话、耶书亚的名、福音。","Sus objetos: Dios, su palabra, Jesucristo, sus palabras, el nombre de Yeshúa y el evangelio.","John 6:29;John 20:28;1 Timothy 2:5;John 12:48"],
+["The steps: repentance, receive, confession, baptism, the Holy Spirit, obedience, sanctification.","步骤：悔改、接受、认信、受洗、圣灵、顺服、成圣。","Los pasos: arrepentimiento, recibir, confesión, bautismo, Espíritu Santo, obediencia, santificación.","Acts 2:1-4"],
+["Born again happens once, through Christ’s works (salvation). Sanctification continues, through obedience (reward).","重生只有一次，借着基督的工作（得救）。成圣是持续的，借着顺服（得奖赏）。","El nuevo nacimiento ocurre una vez, por las obras de Cristo (salvación). La santificación continúa, por obediencia (recompensa).","1 Corinthians 12:4-7"]]],
+["The Church Life","教会生活","La vida de iglesia","What now?","接下来呢？","¿Y ahora qué?",[
+["The church: called out, gathered and chosen. The body of Christ, the temple of God.","教会：被召出、聚集、被拣选。基督的身体，神的殿。","La iglesia: llamada, reunida y escogida. El cuerpo de Cristo, el templo de Dios.","Ephesians 1:22-23;Colossians 1:24;1 Corinthians 3:16"],
+["My soul depends on it: the body and members, the vine and branches, the flock and sheep.","我的灵魂靠它得生命：身体与肢体、葡萄树与枝子、羊群与羊。","Mi alma depende de ella: cuerpo y miembros, vid y pámpanos, rebaño y ovejas.","Matthew 16:16-18;John 15:1-8;Acts 20:28-31"],
+["Mission: go and make disciples, baptize, teach them to obey, lead them to receive the Holy Spirit.","使命：去使人作门徒、施洗、教导遵守、带领他们领受圣灵。","Misión: ir y hacer discípulos, bautizar, enseñar a obedecer, guiarlos a recibir el Espíritu Santo.","Matthew 28:19-20;Acts 13:1-3"],
+["Functions: worship, fellowship, service, evangelism, education. Faith life = spiritual life = church life.","功能：敬拜、相交、服事、传福音、教育。信仰生活＝属灵生活＝教会生活。","Funciones: adoración, comunión, servicio, evangelismo, educación. Vida de fe = vida espiritual = vida de iglesia.","John 4:24;Romans 12:10-13;Ephesians 4:12;2 Timothy 4:2-5;Hebrews 10:25"]]]
+];
+var RB=['There is a visible world and an invisible one, and one God who made both.|有可见的世界，也有不可见的世界，一位神创造了两者。|Hay un mundo visible y uno invisible, y un solo Dios que creó ambos.','I am a soul. The flesh is only my clothing; the spirit is the true me.|我是灵魂。肉体只是衣服，灵才是真正的我。|Soy un alma. La carne es solo mi ropa; el espíritu es el verdadero yo.','Sin is separation from God. It began with Satan, entered through Adam, and every person is born under it.|罪就是与神分离。它始于撒旦，借亚当进入，每个人生来就在罪下。|El pecado es separación de Dios. Comenzó con Satanás, entró por Adán y todo hombre nace bajo él.','Someone had to pay the price of sin. Jesus paid it once for all with His own blood.|罪的代价必须有人偿还。耶稣用自己的血一次永远地偿还了。|Alguien debía pagar el precio del pecado. Jesús lo pagó una vez para siempre con su propia sangre.','Forgiveness is a free gift, already paid for. I only need to receive it.|赦免是白白的礼物，代价已付清，我只需领受。|El perdón es un regalo gratuito, ya pagado. Solo debo recibirlo.','Faith means receiving what Jesus did, then obeying His word to the end.|信心就是领受耶稣所成就的，并顺服祂的话直到底。|La fe es recibir lo que Jesús hizo y obedecer su palabra hasta el fin.','Faith life is church life: I belong to Christ’s body and live in it.|信仰生活就是教会生活：我属于基督的身体，并活在其中。|La vida de fe es la vida de iglesia: pertenezco al cuerpo de Cristo y vivo en él.'];
+var QA=[['In your own words, what is the truth?|用你自己的话，什么是真理？|En tus propias palabras, ¿qué es la verdad?','If life is an airplane, where is it heading?|如果人生是一架飞机，它要飞向哪里？|Si la vida es un avión, ¿hacia dónde va?'],['Who am I, really?|真正的我是谁？|¿Quién soy realmente?','Where do I go after I die?|死后我去哪里？|¿A dónde voy cuando muera?'],['In your own words, what is sin?|用你自己的话，什么是罪？|En tus propias palabras, ¿qué es el pecado?','Is a newborn baby spiritually alive or dead?|新生婴儿的灵是活的还是死的？|¿Está un recién nacido espiritualmente vivo o muerto?'],['What is the greatest love anyone can show?|一个人能表现的最大的爱是什么？|¿Cuál es el mayor amor que alguien puede mostrar?','Could a lamb pay for a human life? Who could?|一只羔羊能偿还人的生命吗？谁能？|¿Podría un cordero pagar por una vida humana? ¿Quién podría?'],['What is the biggest gift you have ever received?|你收到过最大的礼物是什么？|¿Cuál es el mayor regalo que has recibido?','Are you forgiven? When, and how do you know?|你被赦免了吗？什么时候？你怎么知道？|¿Estás perdonado? ¿Cuándo y cómo lo sabes?'],['Which is easier: keeping 613 commandments or believing?|哪个更容易：遵守613条诉命，还是相信？|¿Qué es más fácil: guardar 613 mandamientos o creer?','What do I put my trust in today?|我今天把信靠放在什么上？|¿En qué pongo mi confianza hoy?'],['“I believe in God, I don’t need church.” What do you think?|“我信神，不需要教会。”你怎么看？|«Creo en Dios, no necesito iglesia». ¿Qué piensas?','What kind of church is God leading me to?|神要带我去什么样的教会？|¿A qué tipo de iglesia me guía Dios?']];
+var M=[
+['A story: the airplane~You are born on a luxurious airplane with everything you need. You explore its pools and its views, but rarely ask: where is this airplane heading?|一个故事：飞机~你生在一架豪华的飞机上，一切所需俱全。你探索泳池和风景，却很少问：这架飞机要飞向哪里？|Una historia: el avión~Naces en un avión de lujo con todo lo necesario. Exploras sus piscinas y vistas, pero rara vez preguntas: ¿hacia dónde va este avión?','Creation or evolution?~Three views: progressive creation (many creation events over millions of years), theistic evolution (God guiding life over billions of years) and atheistic evolution (life appears by chance, then mutation and selection).|创造还是进化？~三种看法：渐进创造（数百万年间多次创造）、有神进化（神引导生命进化数十亿年）、无神进化（生命偶然出现，再靠突变和自然选择）。|¿Creación o evolución?~Tres visiones: creación progresiva (muchos actos creativos en millones de años), evolución teísta (Dios guía la vida por miles de millones de años) y evolución atea (la vida surge al azar y luego mutación y selección).'],
+['Do I have life?~A person can go many days without food or water, but not without breathing. Yet life (zoë) is more than breath: Jesus is the author of life (Acts 3:15; John 1:4).|我有生命吗？~人可以许多天不吃不喝，却不能不呼吸。但生命（zoë）不只是气息：耶稣是生命的创始者（徒3:15；约1:4）。|¿Tengo vida?~Se puede pasar muchos días sin comer ni beber, pero no sin respirar. Aun así la vida (zoë) es más que aliento: Jesús es el autor de la vida (Hch 3:15; Jn 1:4).','Eat the Word~The flesh lives on bread; the spirit lives on God’s word. Obeying it keeps us in His life (Matt 4:4; John 12:50).|吃神的话~肉体靠饼活着，灵靠神的话活着。顺服神的话，我们就留在祂的生命里（太4:4；约12:50）。|Come la Palabra~La carne vive de pan; el espíritu vive de la palabra de Dios. Obedecerla nos mantiene en su vida (Mt 4:4; Jn 12:50).'],
+['Meet “Mr. Nice Guy”~Being nice does not decide heaven or hell. God’s standard is not good behavior but separation from Him, like cut roses that look fresh but are already dying.|认识“好好先生”~好人不等于进天堂。神的标准不是行为好坏，而是是否与祂分离，就像剪下的玫瑰看似新鲜，其实已在枯萎。|Conoce al «buen tipo»~Ser amable no decide el cielo o el infierno. La norma de Dios no es la buena conducta sino la separación de Él, como rosas cortadas que parecen frescas pero ya mueren.','Living in the mud~In a sinful world the patterns of sin (Gal 5:19-21; 2 Tim 3:2-5) feel normal, like someone so used to the mud that they no longer feel dirty.|活在泥里~在罪恶的世界里，罪的样式显得很平常（加5:19-21；提后3:2-5），就像住惯了泥地的人不觉得自己脏。|Viviendo en el barro~En un mundo de pecado, sus patrones (Gá 5:19-21; 2 Ti 3:2-5) parecen normales, como quien se acostumbra al barro y ya no se siente sucio.'],
+['The Passover lamb~Redemption has always meant a substitute: the lamb’s blood on the doorposts spared Israel’s firstborn (Exod 12:3-13). It points to Jesus.|逾越节的羔羊~救赎一直是有替代者：羔羊的血涂在门框上，以色列的长子得以存活（出12:3-13）。这指向耶稣。|El cordero de la Pascua~La redención siempre implicó un sustituto: la sangre del cordero en los postes libró a los primogénitos de Israel (Éx 12:3-13). Apunta a Jesús.','Why every year?~Animal blood could never cleanse people perfectly or forever (Heb 10:1-8), so offerings were repeated yearly. Only blood entered the Most Holy Place, because the life is in the blood (Lev 17:11).|为什么每年一次？~牲畜的血不能使人永远完全洁净（来10:1-8），所以每年重复。只有血能进至圣所，因为生命在血中（利17:11）。|¿Por qué cada año?~La sangre de animales nunca limpió perfecta ni eternamente (He 10:1-8), por eso se repetía cada año. Solo la sangre entraba al Lugar Santísimo, porque la vida está en la sangre (Lv 17:11).','The Creator died for creation~Psalm 22 describes the cross a thousand years earlier. Jesus said “It is finished”: there is nothing left for us to pay.|创造者为受造者死~诗篇22篇在一千年前就描述了十字架。耶稣说“成了”：我们已没有什么可偿还。|El Creador murió por la creación~El Salmo 22 describe la cruz mil años antes. Jesús dijo «Consumado es»: ya no queda nada por pagar.'],
+['Priceless, not worthless~Grace is too costly to put a price on, so God gave it without a price. It cost the life of God. Faith is how I catch the gift; without grace, faith has nothing to receive.|无价，不是没价值~恩典太宝贵，无法定价，所以神白白赐下，代价是神的生命。信心是接住礼物的手；没有恩典，信心就无物可接。|Sin precio, no sin valor~La gracia es demasiado costosa para ponerle precio, por eso Dios la dio gratis. Costó la vida de Dios. La fe es la mano que recibe; sin gracia, la fe no tiene qué recibir.','Death-row clemency~Like a prisoner told on execution day that he is pardoned, the gospel tells sinners under the Law: your sins are forgiven (Matt 9:2).|死囚得赦免~就像死囚在行刑当天听到被赦免，福音向律法之下的罪人宣告：你的罪赦了（太9:2）。|Indulto en el corredor de la muerte~Como un preso al que el día de su ejecución le anuncian el indulto, el evangelio dice a los pecadores bajo la Ley: tus pecados son perdonados (Mt 9:2).'],
+['The delivery at the door~Someone rings the bell with a gift. You cannot see his face clearly, but you trust his word and open the door. Receiving is opening the door; confession is signing for the package.|门口的包裹~有人按门铃送来礼物。你看不清他的脸，却信他的话，开了门。接受就是开门，认信就是签收。|La entrega en la puerta~Alguien toca el timbre con un regalo. No ves bien su cara, pero confías en su palabra y abres. Recibir es abrir la puerta; confesar es firmar la entrega.','Where does faith come from?~Jesus is the author and finisher of faith (Heb 12:2). Faith comes from heaven and must be received as God reveals it, like soil receiving rain (Gal 3:23-24; Matt 13).|信心从哪里来？~耶稣是信心的创始者和完成者（来12:2）。信心从天而来，要照神所启示的领受，像土壤接受雨水（加3:23-24；太13）。|¿De dónde viene la fe?~Jesús es el autor y consumador de la fe (He 12:2). La fe viene del cielo y se recibe como Dios la revela, como la tierra recibe la lluvia (Gá 3:23-24; Mt 13).'],
+['Attending is not belonging~A branch must stay attached to the vine. A soul that decides to follow Christ should be joined to the church quickly (John 15:1-8).|参加不等于归属~枝子必须连在葡萄树上。决志跟随基督的人应尽快归入教会（约15:1-8）。|Asistir no es pertenecer~El pámpano debe permanecer unido a la vid. Quien decide seguir a Cristo debe unirse pronto a la iglesia (Jn 15:1-8).','Gathering is the secret~Faith is kept by gathering (Heb 10:25). Worship, prayer and the Holy Spirit’s gifts happen in the gathering, and a church that works to gather is a strong church.|聚会是秘诀~信心靠聚会得以持守（来10:25）。敬拜、祷告和圣灵的恩赐都发生在聚会中，努力聚会的教会就是有力的教会。|Reunirse es el secreto~La fe se conserva reuniéndose (He 10:25). La adoración, la oración y los dones del Espíritu ocurren en la reunión; una iglesia que se esfuerza por reunirse es fuerte.']
+];
+var W=['Unity~66 books, 40+ authors, 1,500 years, 3 languages, one story: God’s plan to redeem us through Jesus.|统一~66卷书，40多位作者，跨越1500年，3种语言，却是同一个故事：神借耶稣救赎人类的计划。|Unidad~66 libros, más de 40 autores, 1.500 años, 3 idiomas, una sola historia: el plan de Dios para redimirnos por Jesús.','Prophecy~Jesus’ birth, death and resurrection were foretold (Isa 53, Mic 5:2, Ps 22), as were fallen empires (Dan 2) and Israel’s return (Ezek 36–37).|预言~耶稣的降生、受死、复活早有预言（赛53、弥5:2、诗22），列国兴衰（但2）和以色列复国（结36–37）也已应验。|Profecía~El nacimiento, muerte y resurrección de Jesús fueron anunciados (Is 53, Miq 5:2, Sal 22), igual que la caída de imperios (Dn 2) y el regreso de Israel (Ez 36–37).','Evidence~The Dead Sea Scrolls show faithful copying; archaeology confirms places like Jericho and Nineveh.|证据~死海古卷显示抄本传承极准确；考古印证了耶利哥、尼尼微等地。|Evidencia~Los Rollos del Mar Muerto muestran una copia fiel; la arqueología confirma lugares como Jericó y Nínive.','Its own claim~The Bible says all Scripture is God-breathed (2 Tim 3:16).|自身的宣告~圣经说自己都是神所默示的（提后3:16）。|Su propia afirmación~La Biblia dice que toda la Escritura es inspirada por Dios (2 Ti 3:16).'];
+var GH=[['Greek approach|希腊式思维|Enfoque griego','Hebrew approach|希伯来式思维|Enfoque hebreo'],['“How?” Method-driven|“如何？”重方法|«¿Cómo?» Centrado en el método','“Why?” Purpose-driven|“为何？”重目的|«¿Por qué?» Centrado en el propósito'],['Man-centered|以人为中心|Centrado en el hombre','God-centered|以神为中心|Centrado en Dios']];
+var E=[
+[['tbl','Visible vs. invisible world|可见与不可见的世界|Mundo visible e invisible',[['Visible|可见世界|Visible','Invisible|不可见世界|Invisible'],['Physical, material|物质的|Físico, material','Spiritual|属灵的|Espiritual'],['Seen as the “real” one|被当作真实|Se cree “real”','Seen as false|被当作虚假|Se cree falso'],['Will disappear|终必消失|Desaparecerá','Exists forever: the true one|永远存在，才是真实|Existe para siempre: el verdadero']]],
+['stack','The three heavens|三层天|Los tres cielos',['3rd: the spiritual heaven, where the throne is and the High Priest serves|第三层：属灵的天，宝座和大祭司事奉之处|3.º: el cielo espiritual, donde está el trono y sirve el Sumo Sacerdote','2nd: the universe, under the ruler of the air; where fallen angels are held|第二层：宇宙，空中掠权者之下；堕落天使被拘留之处|2.º: el universo, bajo el príncipe del aire; donde están retenidos los ángeles caídos','1st: the sky, within the atmosphere|第一层：天空，大气层内|1.º: el firmamento, dentro de la atmósfera']],
+['rings','The three heavens|三层天|Los tres cielos',[['3rd heaven|第三层天|3.er cielo','Spiritual · the throne|属灵 · 宝座|Espiritual · el trono'],['2nd heaven|第二层天|2.º cielo','Universe · devil’s realm|宇宙 · 魔鬼的领域|Universo · reino del diablo'],['1st heaven|第一层天|1.er cielo','The sky|天空|El firmamento']]],
+['cards','Is evolution science?|进化论是科学吗？|¿Es ciencia la evolución?',['Same evidence~Both views read the same evidence through different starting assumptions.|同样的证据~两种观点看的是同一批证据，只是起始假设不同。|Misma evidencia~Ambas leen la misma evidencia desde supuestos distintos.','Unobservable past~Both make claims about a past nobody can observe or repeat.|无法观察的过去~两者都在谈论无法观察、无法重复的过去。|Pasado inobservable~Ambas hablan de un pasado que nadie puede observar ni repetir.','Open puzzles~Life from non-life, the information in DNA, irreducible complexity.|未解的难题~非生命如何产生生命、DNA中的信息、不可简化的复杂性。|Enigmas abiertos~Vida desde la no vida, la información del ADN, la complejidad irreducible.']]],
+[['rings','The constitution of man|人的构成|La constitución del hombre',[['Flesh|肉体|Carne','From dust · expires|出于尘土 · 会朽坏|Del polvo · caduca'],['Person (soul)|人格（魂）|Persona (alma)','Mind · emotion · will|理智 · 情感 · 意志|Mente · emoción · voluntad'],['Spirit|灵|Espíritu','The true me|真正的我|El verdadero yo']]],
+['tbl','Flesh and spirit|肉体与灵|Carne y espíritu',[['The visible me (flesh)|看得见的我（肉体）|El yo visible (carne)','The invisible me (spirit)|看不见的我（灵）|El yo invisible (espíritu)'],['From the dust|出于尘土|Del polvo','Made a living being by God’s breath|神吹气，成为有生命的人|Ser viviente por el aliento de Dios'],['Limited, it expires|有限，会朽坏|Limitado, caduca','Eternal|永存|Eterno'],['Food: bread|食物：饼|Alimento: pan','Food: the word of God (Matt 4:4)|食物：神的话（太4:4）|Alimento: la palabra de Dios (Mt 4:4)'],['Not the true me|不是真正的我|No es el verdadero yo','The true me|真正的我|El verdadero yo']]],
+['flow','From life to resurrection|从现在到复活|De la vida a la resurrección',['Alive: flesh + person + spirit|活着：肉体+人格+灵|Vivo: carne + persona + espíritu','Death: the flesh falls away|死亡：肉体脱落|Muerte: la carne cae','Resurrection: person + spirit in a spiritual body|复活：人格+灵，得属灵的身体|Resurrección: persona + espíritu en cuerpo espiritual','Life, or the second death|永生，或第二次的死|Vida, o la segunda muerte']]],
+[['tbl','Three types of sin|罪的三种类型|Tres tipos de pecado',[['Type|类型|Tipo','What it breaks|所违背的|Qué quebranta','Verses|经文|Versículos'],['Original sin|原罪|Pecado original','God’s word (Adam); the spirit is dead at birth|神的话（亚当）；生来灵就是死的|La palabra de Dios (Adán); el espíritu nace muerto','Ps 51:5; Rom 5:12-14'],['Self-committed sins|自犯的罪|Pecados cometidos','The Law of Moses|摩西的律法|La Ley de Moisés','Rom 3:23'],['Sins of desire|心中的罪|Pecados del deseo','The heart, as Jesus defined it|内心，由耶稣定义|El corazón, según Jesús','Gen 4:7; Matt 5:22, 28']]],
+['flow','How sin entered|罪如何进入|Cómo entró el pecado',['Lucifer rebels: “I will be like the Most High”|路西法悶逆：“我要像至高者”|Lucifer se rebela: «seré semejante al Altísimo»','He becomes Satan and the devil|成为撒旦和魔鬼|Se vuelve Satanás y diablo','Adam is deceived: sin and death enter|亚当被骗：罪与死进入|Adán es engañado: entran pecado y muerte','Separation: from God, among people, flesh and soul|分离：与神、人与人、肉体与灵魂|Separación: de Dios, entre personas, carne y alma']],
+['tbl','Titles of the devil|魔鬼的称号|Títulos del diablo',[['Title|称号|Título','Meaning|含义|Significado'],['Satan|撒旦|Satanás','Rebel, enemy: against God|悖逆者、仇敌：敌对神|Rebelde, enemigo: contra Dios'],['The devil|魔鬼|El diablo','Separator, destroyer: against men|离间者、毁灭者：敌对人|Separador, destructor: contra el hombre'],['Ruler of death|死亡的掌权者|Señor de la muerte|After deceiving Adam|欺骗亚当之后|Tras engañar a Adán'.split('|').slice(0,3).join('|'),'After deceiving Adam|欺骗亚当之后|Tras engañar a Adán'],['God of this world|世界的神|Dios de este mundo','He gained control of the world|他取得世界的掌权|Obtuvo el control del mundo']]]],
+[['tab','The tabernacle|会幕|El tabernáculo',['Altar of burnt offering and bronze basin|燔祭坛与铜盆|Altar del holocausto y fuente','Holy Place: lampstand, table, incense altar|圣所：灯台、陈设饼桌、香坛|Lugar Santo: candelabro, mesa, altar del incienso','The veil (second curtain)|幕帝（第二层幔子）|El velo (segunda cortina)','Most Holy Place: ark and mercy seat; the high priest enters once a year with blood|至圣所：约柜与施恩座；大祭司每年一次带血进入|Lugar Santísimo: arca y propiciatorio; el sumo sacerdote entra una vez al año con sangre','Christ’s body = the veil torn: the way is open (Heb 10:19-20)|基督的身体＝裂开的幕帝：路已开通（来10:19-20）|El cuerpo de Cristo = el velo rasgado: el camino está abierto (He 10:19-20)']],
+['tbl','The offerings, fulfilled in Christ|各样祭物在基督里应验|Las ofrendas, cumplidas en Cristo',[['Offering|祭|Ofrenda','Purpose|目的|Propósito','In Christ|在基督里|En Cristo'],['Burnt|燔祭|Holocausto','Total devotion|完全奉献|Entrega total','Eph 5:2'],['Grain|素祭|De cereal','Thanksgiving, worship|感恩、敬拜|Gratitud, adoración','John 6:35'],['Peace|平安祭|De paz','Fellowship with God|与神相交|Comunión con Dios','Rom 5:1'],['Sin|赎罪祭|Por el pecado','Cleansing from sin|洁净罪|Limpieza del pecado','Heb 13:11-12'],['Guilt|赎愁祭|Por la culpa','Atonement + restitution|赎罪并赔偿|Expiación y restitución','Isa 53:10'],['Day of Atonement|赎罪日|Día de la Expiación','Yearly; blood into the Most Holy Place|每年一次；血带入至圣所|Anual; sangre al Lugar Santísimo','Heb 9:12']]],
+['tbl','First Adam and last Adam|首先的亚当与末后的亚当|Primer y último Adán',[['First Adam|首先的亚当|Primer Adán','Last Adam (Jesus)|末后的亚当（耶稣）|Último Adán (Jesús)'],['A living being|有生命的人|Ser viviente','A life-giving spirit|叫人活的灵|Espíritu que da vida'],['Of the earth, natural|属地、属血气|De la tierra, natural','From heaven, spiritual|属天、属灵|Del cielo, espiritual'],['His sin: death for all|他的罪：众人皆死|Su pecado: muerte para todos','His obedience: life for all (Rom 5:17-19)|他的顺服：众人得生（罗 5:17-19）|Su obediencia: vida para todos (Ro 5:17-19)']]],
+['tbl','Religion and Christianity|宗教与基督教|Religión y cristianismo',[['Religion|宗教|Religión','Christianity|基督教|Cristianismo'],['“You earn it”: you sin, you pay|靠自己赚取：犯罪就自己偿还|«Te lo ganas»: pecas, pagas','God pays: the Creator died for the creation (2 Cor 5:21)|神自己偿还：创造者替受造者死（林后5:21）|Dios paga: el Creador murió por la creación (2 Co 5:21)'],['Man reaches up to God|人向上寻求神|El hombre busca a Dios','God comes down; redemption is a free gift|神降下来，救赎是白白的恩赐|Dios baja; la redención es un regalo']]]],
+[['time','The five eras|五个时代|Las cinco eras',['Deity-consciousness (Adam)|神明意识时代（亚当）|Conciencia de la deidad (Adán)','Sacrifice (Noah)|献祭时代（挪亚）|Sacrificio (Noé)','Law (Moses)|律法时代（摩西）|Ley (Moisés)','Grace (Jesus) · we are here|恩典时代（耶稣）· 我们在这里|Gracia (Jesús) · estamos aquí','Millennium (second coming)|千年国时代（再来）|Milenio (segunda venida)']],
+['flow','The path of grace|恩典的路径|El camino de la gracia',['The Law shows I am a sinner (Rom 5:20)|律法叫我知罪（罗5:20）|La Ley me muestra que soy pecador (Ro 5:20)','The Son redeems at the cross (Eph 1:7)|子在十字架上救赎（弗1:7）|El Hijo redime en la cruz (Ef 1:7)','The Father forgives when I believe (Eph 2:8)|我信，父就赦免（弗2:8）|El Padre perdona cuando creo (Ef 2:8)','Jesus alone is my boast (Eph 1:6)|唯有耶稣是我的夸耀（弗1:6）|Solo Jesús es mi orgullo (Ef 1:6)','I am transformed and I testify (Titus 2:11-12)|我被改变并作见证（多2:11-12）|Soy transformado y testifico (Tit 2:11-12)']],
+['cards','Why the Law is good|律法为何是好的|Por qué la Ley es buena',['Its purpose~Condemnation: it makes me know I am a sinner (Rom 7:12-13).|目的~定罪：叫我知道自己是罪人（罗7:12-13）。|Su propósito~Condenar: me hace saber que soy pecador (Ro 7:12-13).','For those who know grace~The Law is good. Without grace it brings fear and bondage (Rom 8:15).|认识恩典的人~律法是好的；没有恩典，它带来惧怕与捆绑（罗8:15）。|Para quien conoce la gracia~La Ley es buena; sin gracia trae miedo y esclavitud (Ro 8:15).','The more you know your sin~The more you love: the one forgiven more loves more (Luke 7:41-43).|越知道自己的罪~爱得越深：被赦免多的，爱得多（路7:41-43）。|Cuanto más conoces tu pecado~más amas: a quien más se perdona, más ama (Lc 7:41-43).']],
+['flow','Rich, poor, rich (2 Cor 8:9)|富足、贫穷、富足（林后8:9）|Rico, pobre, rico (2 Co 8:9)',['He was rich: unlimited power and glory|祂原是富足：无限的能力与荣耀|Era rico: poder y gloria ilimitados','He became poor: limited, in human form|祂成为贫穷：成为有限的人|Se hizo pobre: limitado, en forma humana','We become rich: children of God, inheritance, eternal life|我们成为富足：神的儿女、产业、永生|Nos hacemos ricos: hijos de Dios, herencia, vida eterna']],
+['tbl','Grace at a glance|恩典一览|La gracia de un vistazo',[['Grace|恩典|Gracia','Content|内容|Contenido','For whom|对象|Para quién'],['General (former)|普遍（先前）|General (anterior)','All things (“nature”)|万物（大自然）|Todo (“naturaleza”)','All|所有人|Todos'],['Special (latter)|特殊（后来）|Especial (posterior)','The only begotten Son|独生子|El Hijo unigénito','All who believe|所有相信的人|Todos los que creen']]],
+['tbl','Redemption and forgiveness|救赎与赦免|Redención y perdón',[['|·|·','When|时间|Cuándo','Who|谁|Quién','For whom|对象|Para quién'],['Redemption|救赎|Redención','At the cross, 2000 years ago|2000年前在十字架上|En la cruz, hace 2000 años','The Son|子|El Hijo','All men|众人|Todos'],['Forgiveness|赦免|Perdón','This day|今日|Hoy','The Father|父|El Padre','Those who believe|相信的人|Los que creen']]]],
+[['steps','The stages of faith|信心的步骤|Los pasos de la fe',['Repentance|悔改|Arrepentimiento','Receive|接受|Recibir','Confession|认信|Confesión','Baptism|受洗|Bautismo','Holy Spirit|圣灵|Espíritu Santo','Obedience|顺服|Obediencia','Sanctification|成圣|Santificación']],
+['tbl','The stages in short|各步骤简述|Los pasos en resumen',[['Step|步骤|Paso','In short|简述|En resumen','Verse|经文|Versículo'],['Repent|悔改|Arrepentirse','Give up my own righteousness, turn to Jesus, confess “I am a sinner”|放下自己的义，转向耶稣，承认“我是罪人”|Renunciar a mi justicia, volverme a Jesús, confesar «soy pecador»','Acts 2:38'],['Receive|接受|Recibir','Open the door and take the gift|开门，收下礼物|Abrir la puerta y recibir el regalo','John 1:12'],['Confess|认信|Confesar','Say it with my mouth, before others|当众用口承认|Decirlo con la boca, ante otros','Rom 10:10'],['Baptism|受洗|Bautismo','Confess with the body that Jesus is my Lord; for forgiveness of sins|用身体承认耶稣是主；为赦罪|Confesar con el cuerpo que Jesús es mi Señor; para perdón de pecados','Mark 16:16; Acts 2:38'],['Holy Spirit|圣灵|Espíritu Santo','Received with gifts; speaking in tongues is the most common sign|领受圣灵与恩赐；说方言是最常见的凭据|Se recibe con dones; hablar en lenguas es la señal más común','Acts 2:4; 1 Cor 12:8-11'],['Obedience|顺服|Obediencia','Do what I should, not what I like; keep believing to the end|做该做的，不做喜欢做的；信到底|Hacer lo que debo, no lo que quiero; creer hasta el fin','Matt 24:13'],['Sanctification|成圣|Santificación','Daily repentance and a growing, Spirit-led life|每天悔改，在圣灵里成长|Arrepentimiento diario y una vida que crece guiada por el Espíritu','1 John 1:9']]],
+['flow','The law of faith|信的律|La ley de la fe',['I believe Jesus is God’s righteousness|我信耶稣是神的义|Creo que Jesús es la justicia de Dios','His death and obedience were the righteous act|祂的死与顺服是义的行为|Su muerte y obediencia fueron el acto justo','He took my sin and died with it|祂担当我的罪并带着它死|Cargó mi pecado y murió con él','He proved it by rising again|祂借复活证明了这一切|Lo probó al resucitar','The Judge calls me righteous (justified)|审判者称我为义（称义）|El Juez me declara justo (justificado)']],
+['cards','The evidence of faith|信心的凭据|La evidencia de la fe',['1. God’s covenant~He keeps what He promises; Israel’s survival is living evidence (Num 23:19; 2 Chr 13:5).|1. 神的约~祂说到做到；以色列的存留就是活的见证（民23:19；代下13:5）。|1. El pacto de Dios~Cumple lo que promete; la supervivencia de Israel es evidencia viva (Nm 23:19; 2 Cr 13:5).','2. Death and resurrection~Prophecies fulfilled; “It is finished”; the disciples were willing to die for what they saw (John 19:30).|2. 死与复活~预言应验；“成了”；门徒为所见证的甘愿殉道（约19:30）。|2. Muerte y resurrección~Profecías cumplidas; «Consumado es»; los discípulos murieron por lo que vieron (Jn 19:30).','3. The Bible~One story about Yeshua across the Hebrew OT and Greek NT; prayers, healings and tongues continue as written (Mark 16:17-20).|3. 圣经~希伯来文旧约与希腊文新约讲的是同一个耶书亚的故事；祷告、医治、方言如经上所记继续发生（可16:17-20）。|3. La Biblia~Una sola historia sobre Yeshúa en el AT hebreo y el NT griego; oraciones, sanidades y lenguas continúan como está escrito (Mr 16:17-20).']],
+['tbl','Self-confidence and faith|自信与信心|Confianza propia y fe',[['|·|·','Self-confidence|自信|Confianza propia','Faith|信心|Fe'],['Nature|性质|Naturaleza','Subjective|主观|Subjetiva','Objective|客观|Objetiva'],['Basis|根据|Base','Self-assurance, experience|自我把握与经验|Seguridad propia, experiencia','God’s word, revelation|神的话与启示|La palabra de Dios, revelación'],['Success|成功|Éxito','Possible, no guarantee|可能，无保证|Posible, sin garantía','If you obey, 100% promised|顺服就是百分之百应许|Si obedeces, 100 % prometido']]],
+['tbl','Born again and sanctification|重生与成圣|Nuevo nacimiento y santificación',[['|·|·','Born again|重生|Nuevo nacimiento','Sanctification|成圣|Santificación'],['How often|次数|Frecuencia','One time|一次|Una vez','Continuing|持续|Continua'],['By|借着|Por','Christ’s works, through faith|基督的工作，借着信|Las obras de Cristo, por la fe','My works, through obedience|我的行动，借着顺服|Mis obras, por la obediencia'],['Result|结果|Resultado','Salvation|得救|Salvación','Reward|奖赏|Recompensa']]]],
+[['flow','What “church” means|“教会”的含义|Qué significa «iglesia»',['Called out of the world (ekklēsia)|从世界蒙召出来（ekklēsia）|Llamados fuera del mundo (ekklēsia)','Gathered in the name of Jesus|奉耶稣的名聚集|Reunidos en el nombre de Jesús','Chosen as His body and bride|被拣选作祂的身体与新妇|Escogidos como su cuerpo y esposa']],
+['cards','My soul depends on the church|我的灵魂靠教会得生命|Mi alma depende de la iglesia',['Body and members~A part cut off from the body is worthless (Eph 1:23; Col 1:24).|身体与肢体~离开身体的部分毫无价值（弗1:23；西1:24）。|Cuerpo y miembros~Una parte separada del cuerpo no vale nada (Ef 1:23; Col 1:24).','Vine and branches~Branches wither apart from the vine (John 15:1-8).|葡萄树与枝子~枝子离了树就枯干（约15:1-8）。|Vid y pámpanos~Los pámpanos se secan lejos de la vid (Jn 15:1-8).','Flock and sheep~Sheep cannot live alone and know the shepherd’s voice (Acts 20:28-31).|羊群与羊~羊不能独活，认得牧人的声音（徒20:28-31）。|Rebaño y ovejas~Las ovejas no viven solas y conocen la voz del pastor (Hch 20:28-31).']],
+['tbl','The church at a glance|教会概览|La iglesia de un vistazo',[['Topic|主题|Tema','In short|简述|En resumen','Verses|经文|Versículos'],['Origin|起源|Origen','Built on the confession “You are the Christ”; Hades will not overcome it|建立在“你是基督”的认信上；阴间的权柄不能胜过|Edificada sobre la confesión «Tú eres el Cristo»; el Hades no prevalecerá','Matt 16:16-18'],['Owner|主人|Dueño','Bought with God’s own blood; Church of Christ, of God, of Jesus|用神自己的血买来；基督的教会、神的教会、耶稣的教会|Comprada con la sangre de Dios; Iglesia de Cristo, de Dios, de Jesús','Acts 20:28; 1 Cor 1:2; 2 Cor 1:1'],['Authority|权柄|Autoridad','Binding and loosing belong to the assembly, not to one man|捆绑与释放的权柄在会众，不在个人|Atar y desatar pertenece a la asamblea, no a un hombre','Matt 18:15-19'],['Basis|根基|Base','Gathering: the secret of keeping faith|聚会：持守信心的秘诀|Reunirse: el secreto para mantener la fe','Heb 10:25'],['Mission|使命|Misión','Go, make disciples, baptize, teach, lead to the Holy Spirit|去、使人作门徒、施洗、教导、带领领受圣灵|Ir, hacer discípulos, bautizar, enseñar, guiar al Espíritu Santo','Matt 28:19-20']]],
+['flow','Five functions of the church|教会的五项功能|Cinco funciones de la iglesia',['Worship|敬拜|Adoración','Fellowship|相交|Comunión','Service|服事|Servicio','Evangelism|传福音|Evangelismo','Education|教育|Educación']]]
+];
+var THEME=[['#5b4bd6','#aba0ff'],['#0e8c8c','#5fd8d2'],['#bf2f52','#ff8fa6'],['#b06a12','#f0b35c'],['#1a8a52','#5fd99a'],['#2a5fd4','#8fb2ff'],['#7a3aa3','#d6a0f0']];
+var HOME=['#3b3a8f','#a9a6ff'];
+var IC=['🌌','🧍','💔','🩸','🎁','🙏','⛪'];
+var KV=['Romans 1:20','Genesis 2:7','Romans 3:23','Ephesians 1:7','Ephesians 2:8','John 1:12','Ephesians 1:22-23'];
+var UI={
+en:{t:'Yeshua Died for You',eye:'The gospel in 7 stages',h:'A clear path from the unseen world to a life in Christ.',
+lede:'New here? Start at the beginning and walk through one stage at a time. Already a believer? Jump to any stage, read the key verses, and use it to explain the gospel to someone else.',
+go:'Start the journey →',all:'See all 7 at a glance',jump:'Choose a stage',s:'Stage',of:'of',
+rem:'Remember',story:'Explain it with a story',ask:'Start a conversation',why:'Why trust the Bible?',
+two:'Two ways to read the Bible',res:'Resources',key:'Key verse',
+pv:'← Back',nx:'Next →',done:'You finished all 7 stages.',restart:'Start again',
+ph:'Type a verse, e.g. John 3:16',find:'Find a verse',close:'Close',
+ld:'Loading…',err:'Couldn’t load the text here. Open it in a Bible below.',
+open:'Read in',note:'English text shown is the World English Bible (public domain). NIV and NKJV are copyrighted, so they open at BibleGateway.',
+ovt:'All 7 stages at a glance',ovs:'One line to remember from each stage, with its key verse.',
+ft:'Based on The Gospel Seminar (Dr. Jo Kim, Church of Jesus, cojnj.com). Verse text: World English Bible, public domain.',find:'Search the Bible',ph2:'Ask in your own words, or type a reference',goB:'Search',topic:'Topics on this site:',none:'No match yet. Try fewer words, e.g. “mustard seed”.',found:'%n results for “%t”',sErr:'Search failed.',noKey:'Add an API.Bible key in ⚙ to search the full text of NIV, NKJV and more.',ex:['verse where Jesus talked about the mustard seed','what does the Bible say about being born again','John 3:16','the wages of sin'],setT:'Bible settings',setS:'Paste an API.Bible key to read and search NIV, NKJV and other licensed translations.',setK:'API.Bible key',setB:'Translation',setLoad:'Add a key first',save:'Save',clear:'Remove key',setOn:'Key saved in this browser',setOff:'No key yet',setOk:'Connected — %n translations available',setErr:'Key rejected',setP:'Proxy URL (recommended)',setPh:'Optional. A tiny server that holds your key so it is not visible in the page. Required before the site goes public.',setKh:'Fine for testing on your own machine. Anyone who views the page source of a public site can read it.',setPon:'Proxy connected',setNet:'Couldn’t reach API.Bible from this page. The preview sandbox blocks outside requests — it will work on your own site, or use a proxy URL above.',setTip:'That message came from API.Bible, so the key itself was read. Copy it again from the API.Bible dashboard: it is the long <b>API Key</b> on your application, not the application name or ID.',setW:'Testing only. This key is stored in your browser and never leaves it. Before the site goes live, move the key behind a proxy — a key inside a public page can be copied by anyone.'},
+zh:{t:'耶稣为你而死',eye:'福音的七个阶段',h:'从看不见的世界，到在基督里的生命。',
+lede:'初次来访？从头开始，一步一步走。已经信主？随时跳到任一阶段，读关键经文，并用它向别人传讲福音。',
+go:'开始旅程 →',all:'七个阶段一览',jump:'选择阶段',s:'第',of:'/',
+rem:'记住',story:'用故事来讲解',ask:'开启对话',why:'圣经为什么可信？',
+two:'读圣经的两种思维',res:'资源',key:'关键经文',
+pv:'← 上一步',nx:'下一步 →',done:'你已走完七个阶段。',restart:'重新开始',
+ph:'输入经文，例如 John 3:16',find:'查找经文',close:'关闭',
+ld:'加载中…',err:'此处无法显示经文，请在下方打开。',
+open:'打开',note:'页内显示的是公有领域的 World English Bible（英文）。和合本、NIV、NKJV 请在 BibleGateway 打开。',
+ovt:'七个阶段一览',ovs:'每个阶段一句要记住的话，附关键经文。',
+ft:'内容取自 The Gospel Seminar（Dr. Jo Kim，Church of Jesus，cojnj.com）。经文：World English Bible，公有领域。',find:'搜索圣经',ph2:'用你自己的话提问，或输入经文出处',goB:'搜索',topic:'本站主题：',none:'暂无结果。请少用几个词，例如“mustard seed”。',found:'“%t”的 %n 条结果',sErr:'搜索失败。',noKey:'在 ⚙ 中添加 API.Bible 密钥，即可全文搜索 NIV、NKJV 等译本。',ex:['verse where Jesus talked about the mustard seed','重生','John 3:16','罪的工价'],setT:'圣经设置',setS:'粘贴 API.Bible 密钥，以读取和搜索 NIV、NKJV 等授权译本。',setK:'API.Bible 密钥',setB:'译本',setLoad:'请先添加密钥',save:'保存',clear:'删除密钥',setOn:'密钥已保存在此浏览器',setOff:'尚未添加密钥',setOk:'已连接 — 共 %n 个译本',setErr:'密钥被拒绝',setP:'代理地址（推荐）',setPh:'一个保管密钥的小服务。API.Bible 禁止浏览器直接调用，所以需要它。',setKh:'仅在服务端或浏览器扩展中有效；普通网页会因 CORS 失败。',setPon:'代理已连接',setNet:'无法从本页访问 API.Bible。预览环境会阻挡外部请求 — 在你自己的网站上可用，或请填写代理地址。',setTip:'这条信息来自 API.Bible，说明密钥已被读取。请在 API.Bible 后台重新复制：要的是应用的长字符串 <b>API Key</b>，而不是应用名称或 ID。',setW:'仅供测试。密钥只存在你的浏览器里，不会外传。网站正式上线前，请将密钥移到代理服务后面 — 公开页面中的密钥任何人都能复制。'},
+es:{t:'Yeshúa murió por ti',eye:'El evangelio en 7 etapas',h:'Un camino claro del mundo invisible a la vida en Cristo.',
+lede:'¿Primera vez? Empieza desde el principio y avanza etapa por etapa. ¿Ya crees? Salta a cualquier etapa, lee los versículos clave y úsala para explicar el evangelio a otros.',
+go:'Comenzar el recorrido →',all:'Ver las 7 de un vistazo',jump:'Elige una etapa',s:'Etapa',of:'de',
+rem:'Recuerda',story:'Explícalo con una historia',ask:'Inicia una conversación',why:'¿Por qué confiar en la Biblia?',
+two:'Dos formas de leer la Biblia',res:'Recursos',key:'Versículo clave',
+pv:'← Atrás',nx:'Siguiente →',done:'Has completado las 7 etapas.',restart:'Empezar de nuevo',
+ph:'Escribe un versículo, p. ej. John 3:16',find:'Buscar un versículo',close:'Cerrar',
+ld:'Cargando…',err:'No se pudo cargar el texto aquí. Ábrelo en una Biblia abajo.',
+open:'Leer en',note:'El texto mostrado es la World English Bible (dominio público, en inglés). RVR 1960, NVI, NIV y NKJV se abren en BibleGateway.',
+ovt:'Las 7 etapas de un vistazo',ovs:'Una frase para recordar de cada etapa, con su versículo clave.',
+ft:'Basado en The Gospel Seminar (Dr. Jo Kim, Church of Jesus, cojnj.com). Texto bíblico: World English Bible, dominio público.',find:'Buscar en la Biblia',ph2:'Pregunta con tus palabras, o escribe una referencia',goB:'Buscar',topic:'Temas de este sitio:',none:'Sin resultados. Usa menos palabras, p. ej. “mustard seed”.',found:'%n resultados para “%t”',sErr:'La búsqueda falló.',noKey:'Añade una clave de API.Bible en ⚙ para buscar el texto completo de NIV, NKJV y más.',ex:['verse where Jesus talked about the mustard seed','nacer de nuevo','John 3:16','la paga del pecado'],setT:'Ajustes de la Biblia',setS:'Pega una clave de API.Bible para leer y buscar NIV, NKJV y otras traducciones con licencia.',setK:'Clave de API.Bible',setB:'Traducción',setLoad:'Añade primero una clave',save:'Guardar',clear:'Quitar clave',setOn:'Clave guardada en este navegador',setOff:'Aún sin clave',setOk:'Conectado — %n traducciones disponibles',setErr:'Clave rechazada',setP:'URL del proxy (recomendado)',setPh:'Un pequeño servidor que guarda tu clave. API.Bible bloquea las llamadas directas desde el navegador.',setKh:'Solo funciona desde un servidor o una extensión; en una página web normal fallará por CORS.',setPon:'Proxy conectado',setNet:'No se pudo contactar con API.Bible desde esta página. La vista previa bloquea las peticiones externas: funcionará en tu propio sitio, o usa una URL de proxy arriba.',setTip:'Ese mensaje viene de API.Bible, así que la clave sí se leyó. Cópiala de nuevo del panel de API.Bible: es la <b>API Key</b> larga de tu aplicación, no el nombre ni el ID.',setW:'Solo para pruebas. La clave se guarda en tu navegador y nunca sale de él. Antes de publicar el sitio, mueve la clave detrás de un proxy: una clave dentro de una página pública puede copiarla cualquiera.'}};
+var LINKS={en:[['NIV','NIV'],['NKJV','NKJV'],['KJV','KJV']],zh:[['CUVS','和合本'],['NIV','NIV'],['NKJV','NKJV']],es:[['RVR1960','RVR 1960'],['NVI','NVI'],['NIV','NIV']]};
+var li={en:0,zh:1,es:2};
+var L='en',S=-1,TR='web',SEEN={};
+var $=function(i){return document.getElementById(i)};
+try{L=localStorage.getItem('gl')||L;SEEN=JSON.parse(localStorage.getItem('gs')||'{}')}catch(e){}
+function save(){try{localStorage.setItem('gl',L);localStorage.setItem('gs',JSON.stringify(SEEN))}catch(e){}}
+function dark(){try{return matchMedia('(prefers-color-scheme: dark)').matches}catch(e){return false}}
+function paint(){var p=(S>=0&&S<7)?THEME[S]:HOME;var c=dark()?p[1]:p[0];
+document.documentElement.style.setProperty('--ac',c);
+document.documentElement.style.setProperty('--on',dark()?'#0e1120':'#ffffff')}
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paint)}catch(e){}
+function ce(c,i){var p=String(c).split('|');return p[i]||p[0]}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+/* ---------- blocks ---------- */
+function VT(d,i){var hd=d[0],bd=d.slice(1);
+if(hd.length==2)return'<div class=vsg>'+[hd].concat(bd).map(function(r,n){return r.map(function(c,k){return'<div class="'+(n?'vr':'vh')+(k?' '+(n?'vr1':'vh1'):'')+'">'+ce(c,i)+'</div>'}).join('')}).join('')+'</div>';
+return'<div class=cards>'+bd.map(function(r){return'<div><b>'+ce(r[0],i)+'</b>'+r.slice(1).map(function(c,k){return'<span class=lb>'+ce(hd[k+1],i)+'</span>'+ce(c,i)}).join('')+'</div>'}).join('')+'</div>'}
+function X(b,i){var t=b[0],d=b[2],h='<div class=ex><h3>'+ce(b[1],i)+'</h3>';
+if(t=='stack')return'';
+if(t=='tbl')h+=VT(d,i);
+else if(t=='cards')h+='<div class=cards>'+d.map(function(c){var q=ce(c,i).split('~');return'<div><b>'+q[0]+'</b>'+(q[1]||'')+'</div>'}).join('')+'</div>';
+else if(t=='more')h+='<div class=stories>'+d.map(function(c){var q=ce(c,i).split('~');return'<div class=story><b>💡 '+q[0]+'</b>'+(q[1]||'')+'</div>'}).join('')+'</div>';
+else if(t=='ask')h+='<div class=ask>'+d.map(function(c){return'<div>❓ '+ce(c,i)+'</div>'}).join('')+'</div>';
+else if(t=='steps')h+='<div class=stairs>'+d.map(function(c,n){return'<div style="margin-left:'+(n*5)+'%;background:color-mix(in srgb,var(--ac) '+(24+n*11)+'%,var(--card));color:'+(n<4?'var(--fg)':'var(--on)')+'"><b>'+(n+1)+'</b>'+ce(c,i)+'</div>'}).join('')+'</div>';
+else if(t=='time')h+='<div class=tl>'+d.map(function(c,n){return'<div'+(n==3?' class=now':'')+'>'+ce(c,i)+'</div>'}).join('')+'</div>';
+else if(t=='rings'){var Z=[[190,205,62,80],[130,265,178,196],[70,325,322,340]];
+h+='<svg class="art rings" viewBox="0 0 400 400" role=img>'+d.map(function(r,n){return'<circle class=rg'+n+' cx=200 cy='+Z[n][1]+' r='+Z[n][0]+'></circle>'}).join('')+d.map(function(r,n){return'<text x=200 y='+Z[n][2]+' class=t1>'+ce(r[0],i)+'</text><text x=200 y='+Z[n][3]+' class=t2>'+ce(r[1],i)+'</text>'}).join('')+'</svg>'}
+else if(t=='tab'){var T=['Altar|燔祭坛|Altar','Basin|铜盆|Fuente','Holy Place|圣所|Lugar Santo','Lamp · table · incense|灯台·饼桌·香坛|Luz · mesa · incienso','Veil|幕帝|Velo','Most Holy Place|至圣所|Lugar Santísimo','Ark · mercy seat|约柜·施恩座|Arca · propiciatorio','Courtyard|院子|Atrio'].map(function(s){return ce(s,i)});
+h+='<svg class="art tabs" viewBox="0 0 400 175" role=img><rect class=z x=8 y=24 width=384 height=140 rx=12></rect><text x=60 y=18>'+T[7]+'</text><rect class=z x=24 y=80 width=34 height=34></rect><text x=41 y=132>'+T[0]+'</text><circle class=z cx=92 cy=97 r=13></circle><text x=92 y=132>'+T[1]+'</text><rect class=h x=130 y=50 width=140 height=100></rect><text x=200 y=88>'+T[2]+'</text><text class=s x=200 y=105>'+T[3]+'</text><line class=vl x1=272 y1=50 x2=272 y2=150></line><text x=272 y=43>'+T[4]+'</text><rect class=m x=274 y=50 width=112 height=100></rect><text x=330 y=88>'+T[5]+'</text><text class=s x=330 y=105>'+T[6]+'</text></svg><p class=hint>'+ce(d[4],i)+'</p>'}
+else h+='<div class=flow>'+d.map(function(c){return'<div>'+ce(c,i)+'</div>'}).join('')+'</div>';
+return h+'</div>'}
+
+
+
+var TOPICS=[
+{k:['mustard seed','mustard','芥菜种','mostaza'],t:'Faith like a mustard seed|像芥菜种的信心|Fe como un grano de mostaza',r:['Matthew 17:20','Matthew 13:31-32','Luke 17:6','Mark 4:30-32']},
+{k:['born again','new birth','重生','nacer de nuevo','nuevo nacimiento'],t:'Born again|重生|Nacer de nuevo',r:['John 3:3-7','1 Peter 1:23','John 1:12-13']},
+{k:['wages of sin','what is sin','sin is','罪的工价','paga del pecado'],t:'Sin and its wages|罪与工价|El pecado y su paga',r:['Romans 6:23','Romans 3:23','Isaiah 59:2','1 John 3:4']},
+{k:['narrow gate','narrow road','窄门','puerta estrecha'],t:'The narrow gate|窄门|La puerta estrecha',r:['Matthew 7:13-14','Luke 13:24']},
+{k:['prodigal','lost son','浪子','hijo pródigo'],t:'The prodigal son|浪子|El hijo pródigo',r:['Luke 15:11-32']},
+{k:['good shepherd','shepherd','牧人','buen pastor'],t:'The good shepherd|好牧人|El buen pastor',r:['John 10:11-16','Psalm 23','Acts 20:28-31']},
+{k:['vine','branches','葡萄树','枝子','vid','pámpanos'],t:'The vine and the branches|葡萄树与枝子|La vid y los pámpanos',r:['John 15:1-8']},
+{k:['living water','thirst','活水','agua viva'],t:'Living water|活水|Agua viva',r:['John 4:13-14','John 7:37-38','Revelation 22:17']},
+{k:['bread of life','生命的粮','pan de vida'],t:'The bread of life|生命的粮|El pan de vida',r:['John 6:35','John 6:48-51','Matthew 4:4']},
+{k:['light of the world','世界的光','luz del mundo'],t:'Light of the world|世界的光|La luz del mundo',r:['John 8:12','Matthew 5:14-16']},
+{k:['way truth life','the way','道路','camino verdad'],t:'The way, the truth, the life|道路、真理、生命|El camino, la verdad, la vida',r:['John 14:6','Acts 4:12']},
+{k:['grace','恩典','gracia'],t:'Saved by grace|本乎恩典|Salvos por gracia',r:['Ephesians 2:8-9','Titus 2:11-12','Romans 5:20']},
+{k:['forgive','forgiveness','赦免','宽恕','perdón','perdonar'],t:'Forgiveness|赦免|Perdón',r:['Ephesians 1:7','1 John 1:9','Matthew 6:14-15','Hebrews 10:17-18']},
+{k:['repent','repentance','悔改','arrepent'],t:'Repentance|悔改|Arrepentimiento',r:['Acts 2:38','Acts 3:19','2 Corinthians 7:10']},
+{k:['baptis','baptize','受洗','bautis'],t:'Baptism|受洗|Bautismo',r:['Mark 16:16','Acts 2:38','Romans 6:3-4','Matthew 28:19']},
+{k:['holy spirit','tongues','圣灵','方言','espíritu santo','lenguas'],t:'The Holy Spirit|圣灵|El Espíritu Santo',r:['Acts 2:1-4','Acts 19:6','1 Corinthians 12:4-11','John 14:16-17']},
+{k:['cross','crucif','十字架','cruz'],t:'The cross|十字架|La cruz',r:['Isaiah 53:5','1 Peter 2:24','John 19:30','Psalm 22']},
+{k:['resurrect','risen','复活','resurrec'],t:'Resurrection|复活|Resurrección',r:['1 Corinthians 15:3-8','1 Corinthians 15:23','Revelation 20:4-6']},
+{k:['second coming','return of jesus','再来','segunda venida'],t:'The second coming|主再来|La segunda venida',r:['Matthew 24:30','1 Thessalonians 4:16-17','Revelation 22:12']},
+{k:['heaven','new jerusalem','天堂','新耶路撒冷','cielo'],t:'Heaven and the new Jerusalem|天与新耶路撒冷|El cielo y la nueva Jerusalén',r:['Revelation 21:1-4','2 Corinthians 12:2','Revelation 21:10']},
+{k:['hell','lake of fire','地狱','infierno'],t:'Hell|地狱|El infierno',r:['Matthew 25:41','Mark 9:47-48','Revelation 20:14-15']},
+{k:['devil','satan','lucifer','魔鬼','撒旦','diablo','satanás'],t:'The devil|魔鬼|El diablo',r:['Isaiah 14:12-15','John 8:44','Revelation 12:9','Ephesians 2:2']},
+{k:['soul','spirit and body','灵魂','身心灵','alma','espíritu y cuerpo'],t:'Spirit, soul and body|灵、魂、体|Espíritu, alma y cuerpo',r:['1 Thessalonians 5:23','Genesis 2:7','Hebrews 4:12']},
+{k:['death','die','死亡','muerte'],t:'Death and what follows|死亡与之后|La muerte y lo que sigue',r:['Hebrews 9:27','Luke 16:19-31','1 Corinthians 15:26']},
+{k:['creation','created','创造','creación'],t:'Creation|创造|La creación',r:['Genesis 1:1','John 1:1-3','Colossians 1:16','Romans 1:19-20']},
+{k:['church','ekklesia','教会','iglesia'],t:'The church|教会|La iglesia',r:['Matthew 16:16-18','Ephesians 1:22-23','Acts 20:28','Hebrews 10:25']},
+{k:['love','爱','amor'],t:'Love|爱|El amor',r:['John 3:16','1 Corinthians 13:4-7','1 John 4:9-10','John 15:13']},
+{k:['faith','believe','信心','相信','fe','creer'],t:'Faith|信心|La fe',r:['Hebrews 11:1','Hebrews 11:6','Romans 10:9-10','Ephesians 2:8']},
+{k:['prayer','pray','祷告','oración','orar'],t:'Prayer|祷告|La oración',r:['Matthew 6:9-13','John 14:13-14','Philippians 4:6-7']},
+{k:['law','commandment','律法','讫命','ley','mandamiento'],t:'The Law|律法|La Ley',r:['Romans 3:19-20','Romans 7:12-13','Galatians 3:24','Matthew 22:37-40']},
+{k:['great commission','make disciples','大使命','门徒','gran comisión'],t:'The great commission|大使命|La gran comisión',r:['Matthew 28:19-20','Mark 16:15-18','Acts 1:8']},
+{k:['worry','anxious','fear','忧虑','害怕','ansiedad','temor'],t:'Worry and fear|忧虑与害怕|Preocupación y temor',r:['Matthew 6:25-34','Philippians 4:6-7','Isaiah 41:10','2 Timothy 1:7']},
+{k:['sanctif','holy living','成圣','santific'],t:'Sanctification|成圣|Santificación',r:['1 Thessalonians 4:3','Hebrews 12:14','1 John 1:9','Ephesians 5:26']},
+{k:['redemption','redeem','ransom','救赎','redención'],t:'Redemption|救赎|La redención',r:['Ephesians 1:7','1 Peter 1:18-19','Mark 10:45','Leviticus 17:11']},
+{k:['passover','lamb','逾越节','羔羊','pascua','cordero'],t:'The Passover lamb|逾越节的羔羊|El cordero de la Pascua',r:['Exodus 12:3-13','John 1:29','1 Corinthians 5:7']},
+{k:['tabernacle','veil','temple','会幕','幕帝','tabernáculo','velo'],t:'The tabernacle and the veil|会幕与幕帝|El tabernáculo y el velo',r:['Hebrews 9:1-12','Hebrews 10:19-20','Matthew 27:51']},
+{k:['adam','亚当','adán'],t:'First and last Adam|首先的与末后的亚当|Primer y último Adán',r:['Genesis 2:7','1 Corinthians 15:45','Romans 5:17-19']},
+{k:['eternal life','everlasting','永生','vida eterna'],t:'Eternal life|永生|La vida eterna',r:['John 3:16','John 17:3','1 John 5:11-13','John 10:28']},
+{k:['judgment','judge','审判','juicio'],t:'Judgment|审判|El juicio',r:['Revelation 20:12-15','John 12:48','2 Corinthians 5:10','Hebrews 9:27']},
+{k:['peace','rest','平安','安息','paz','descanso'],t:'Peace and rest|平安与安息|Paz y descanso',r:['Matthew 11:28-30','John 14:27','Romans 5:1','Philippians 4:7']}
+];
+/* ============ API.Bible key (stored only in this browser) ============ */
+var KEY='',BIB='',PX='',BIBS=[];
+try{KEY=localStorage.getItem('gk')||'';BIB=localStorage.getItem('gb')||'';PX=localStorage.getItem('gp')||''}catch(e){}
+function saveKey(){try{localStorage.setItem('gk',KEY);localStorage.setItem('gb',BIB);localStorage.setItem('gp',PX)}catch(e){}}
+var AB='https://api.scripture.api.bible/v1';
+function haveApi(){return !!(PX||KEY)}
+function abGet(path){var url,opt;
+if(PX){url=PX.replace(/\/+$/,'')+path;opt={}}
+else{url=AB+path;opt={headers:{'api-key':KEY}}}
+return fetch(url,opt).then(function(r){
+if(r.ok)return r.json();
+return r.text().then(function(t){var m='';try{var j=JSON.parse(t);m=j.message||j.error||''}catch(x){m=(t||'').slice(0,90)}
+var e=new Error((m||('HTTP '+r.status)));e.code=r.status;e.api=1;throw e})})
+.catch(function(e){if(e&&e.api)throw e;var n=new Error('NET');n.code=0;throw n})}
+function strip(h){return String(h||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()}
+
+function openSettings(){var u=UI[L];
+$('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+u.setT+'</h4>'
++'<div class=set><p class=hint>'+u.setS+'</p>'
++'<label>'+u.setP+'</label><input id=pi autocomplete=off placeholder="https://your-worker.workers.dev" value="'+esc(PX).replace(/"/g,'&quot;')+'">'+'<p class=hint style="margin-top:6px">'+u.setPh+'</p>'+'<label>'+u.setK+'</label><input id=ki type=password autocomplete=off placeholder="xxxxxxxxxxxxxxxxxxxxxxxx">'+'<p class=hint style="margin-top:6px">'+u.setKh+'</p>'
++'<div id=kstat style="margin-top:10px">'+(haveApi()?'<span class=ok>✓ '+(PX?u.setPon:u.setOn)+'</span>':'<span class=hint>'+u.setOff+'</span>')+'</div>'
++'<label>'+u.setB+'</label><select id=bi><option value="">'+u.setLoad+'</option></select>'
++'<div style="display:flex;gap:8px;margin-top:14px"><button class=on id=ksave>'+u.save+'</button><button id=kclear>'+u.clear+'</button></div>'
++'<div class=warn>'+u.setW+'</div></div>';
+$('panel').dataset.ref='';$('panel').classList.add('open');$('back').classList.add('open');
+if(haveApi())loadBibles()}
+function loadBibles(){var u=UI[L],sel=$('bi');if(!sel)return;
+abGet('/bibles').then(function(j){BIBS=j.data||[];if(!$('bi'))return;
+$('bi').innerHTML=BIBS.map(function(b){return'<option value="'+b.id+'"'+(b.id==BIB?' selected':'')+'>'+(b.abbreviationLocal||b.abbreviation)+' — '+(b.nameLocal||b.name)+'</option>'}).join('');
+if(!BIB&&BIBS.length){BIB=BIBS[0].id;saveKey()}
+if($('kstat'))$('kstat').innerHTML='<span class=ok>✓ '+u.setOk.replace('%n',BIBS.length)+'</span>'})
+.catch(function(e){if(!$('kstat'))return;
+var m=(e.code===0)?u.setNet:((e.code==401||e.code==403)?u.setErr+' \u2014 \u201c'+esc(e.message)+'\u201d<br>'+u.setTip:u.setErr+' \u2014 '+esc(e.message));
+$('kstat').innerHTML='<span class=bad>✕ '+m+'</span>'})}
+
+/* ============ search ============ */
+var REF=/^\s*([1-3]?\s*[A-Za-zÀ-ɏ]{2,20}\.?)\s*(\d{1,3})\s*[:.]\s*(\d{1,3})(\s*[-–]\s*\d{1,3})?\s*$/;
+var STOP=/\b(give|show|tell|find|me|the|a|an|please|can|you|what|where|which|who|whom|does|do|did|is|are|was|were|verse|verses|scripture|passage|bible|say|says|said|about|that|this|on|in|of|for|to|talked|talk|speak|spoke|speaking|mention|mentions|mentioned|teach|teaches|teaching|i|want|need|looking|look|up|quote|regarding|concerning)\b/gi;
+function cleanQ(q){var c=q.replace(/[?!."']/g,' ').replace(STOP,' ').replace(/\s+/g,' ').trim();return c||q.trim()}
+function topicHits(q){var c=' '+q.toLowerCase()+' ',out=[];
+TOPICS.forEach(function(t){for(var i=0;i<t.k.length;i++){if(c.indexOf(t.k[i])>-1){out.push(t);break}}});
+return out}
+function openSearch(q){var u=UI[L];
+$('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+u.find+'</h4>'
++'<div class=srch><input id=qi placeholder="'+u.ph2+'" value="'+esc(q||'').replace(/"/g,'&quot;')+'"><button class=on id=qgo>'+u.goB+'</button></div>'
++'<div id=rr class=res></div>'
++'<div class=sug>'+u.ex.map(function(x){return'<button data-q="'+esc(x)+'">'+esc(x)+'</button>'}).join('')+'</div>'
++(haveApi()?'':'<p class=hint>'+u.noKey+'</p>');
+$('panel').dataset.ref='';$('panel').classList.add('open');$('back').classList.add('open');
+setTimeout(function(){if($('qi'))$('qi').focus()},60);
+if(q)runSearch(q)}
+function runSearch(q){var u=UI[L],box=$('rr');if(!box)return;q=String(q).trim();if(!q)return;
+box.innerHTML='<p class=hint>'+u.ld+'</p>';
+if(REF.test(q)){openVerse(q);return}
+var hits=topicHits(q),i=li[L];
+var local=hits.length?'<p class=hint>'+u.topic+'</p>'+hits.slice(0,4).map(function(t){
+return'<button data-v="'+t.r[0]+'"><b>'+ce(t.t,i)+'</b>'+t.r.join(' · ')+'</button>'}).join(''):'';
+if(!haveApi()||!BIB){box.innerHTML=local||('<p class=hint>'+u.none+'</p>');return}
+var term=cleanQ(q);
+abGet('/bibles/'+BIB+'/search?limit=12&sort=relevance&query='+encodeURIComponent(term))
+.then(function(j){var d=j.data||{},rows=[];
+(d.passages||[]).forEach(function(p){rows.push([p.reference,strip(p.content)])});
+(d.verses||[]).forEach(function(v){rows.push([v.reference,strip(v.text)])});
+if(!$('rr'))return;
+if(!rows.length){$('rr').innerHTML=local||('<p class=hint>'+u.none+'</p>');return}
+$('rr').innerHTML=local+'<p class=hint>'+u.found.replace('%n',rows.length).replace('%t',term)+'</p>'
++rows.map(function(r){return'<button data-v="'+esc(r[0])+'"><b>'+esc(r[0])+'</b>'+esc(r[1]).slice(0,240)+'</button>'}).join('')})
+.catch(function(e){if($('rr'))$('rr').innerHTML=local+'<div class=warn>'+u.sErr+' ('+e.message+')</div>'})}
+
+/* ---------- verse panel ---------- */
+function bg(r,v){return'https://www.biblegateway.com/passage/?search='+encodeURIComponent(r)+'&version='+v}
+function openVerse(ref){var u=UI[L];
+$('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+esc(ref)+'</h4>'
++'<div class=tgl><button data-tr=web class="'+(TR=='web'?'on':'')+'">WEB</button><button data-tr=kjv class="'+(TR=='kjv'?'on':'')+'">KJV</button></div>'
++'<div class=vtext id=vt>'+u.ld+'</div><p class=vsrc id=vs></p>'
++'<div class=vlinks>'+LINKS[L].map(function(p){return'<a href="'+bg(ref,p[0])+'" target=_blank rel=noopener>'+u.open+' '+p[1]+' ↗</a>'}).join('')+'</div>'
++'<p class=hint>'+u.note+'</p>';
+$('panel').dataset.ref=ref;$('panel').classList.add('open');$('back').classList.add('open');
+fetchVerse(ref)}
+function fetchVerse(ref){var u=UI[L],box=$('vt');if(!box)return;box.textContent=u.ld;
+var ctl=setTimeout(function(){},0);
+fetch('https://bible-api.com/'+encodeURIComponent(ref)+'?translation='+TR)
+.then(function(r){if(!r.ok)throw 0;return r.json()})
+.then(function(j){if(!$('vt')||$('panel').dataset.ref!=ref)return;
+var txt=(j.text||'').trim();if(!txt)throw 0;
+$('vt').textContent=txt;$('vs').textContent=(j.reference||ref)+' · '+(j.translation_name||TR.toUpperCase())})
+.catch(function(){if($('vt'))$('vt').textContent=u.err});
+clearTimeout(ctl)}
+function closeVerse(){$('panel').classList.remove('open');$('back').classList.remove('open')}
+
+/* ---------- views ---------- */
+function home(i){var u=UI[L];
+return'<div class="hero fade"><span class=eyebrow>'+u.eye+'</span><h1>'+u.h+'</h1><p class=lede>'+u.lede+'</p>'
++'<div class=cta><button class=go data-g=0>'+u.go+'</button><button data-g=99>'+u.all+'</button></div>'
++'<h3 class=ex style="margin:0 0 10px;color:var(--mut);text-transform:uppercase;letter-spacing:.07em;font-size:.82rem">'+u.jump+'</h3>'
++'<div class=tiles>'+D.map(function(s,n){var c=dark()?THEME[n][1]:THEME[n][0];
+return'<button class=tile data-g="'+n+'" style="--tc:'+c+'"><div class=band></div><div class=in>'+(SEEN[n]?'<span class=tick>✓</span>':'')+'<span class=no>'+(n+1)+'</span><h3>'+IC[n]+' '+s[i]+'</h3><p>'+s[3+i]+'</p></div></button>'}).join('')+'</div>'
++HM(i)+'</div>'}
+function HM(i){var u=UI[L];
+return X(['cards',u.why,W],i)+X(['tbl',u.two,GH],i)
++'<div class=ex><h3>'+u.res+'</h3><div class=vlinks><a href="https://cojnj.com/message/seminars" target=_blank rel=noopener>COJ Seminars ↗</a><a href="https://isgenesishistory.com/" target=_blank rel=noopener>Is Genesis History? ↗</a><a href="https://www.biblegateway.com/" target=_blank rel=noopener>BibleGateway ↗</a><a href="https://www.youversion.com/" target=_blank rel=noopener>YouVersion ↗</a></div></div>'}
+function overview(i){var u=UI[L];
+return'<div class="sheet fade"><div class=head><div class=k>'+u.all+'</div><h2>'+u.ovt+'</h2><p class=q>'+u.ovs+'</p></div><div class=body>'
++D.map(function(s,n){var c=dark()?THEME[n][1]:THEME[n][0];
+return'<button class=tile data-g="'+n+'" style="--tc:'+c+';width:100%;margin-bottom:10px"><div class=band></div><div class=in><span class=no>'+(n+1)+'</span><h3>'+IC[n]+' '+s[i]+'</h3><p>'+ce(RB[n],i)+'</p><p style="margin-top:8px;color:'+c+';font-weight:700;font-size:.85rem">'+u.key+': '+KV[n]+'</p></div></button>'}).join('')
++'</div></div>'}
+function stage(i){var u=UI[L],s=D[S];
+return'<div class="sheet fade"><div class=head><div class=k><span>'+IC[S]+'</span> '+u.s+' '+(S+1)+' '+u.of+' 7</div><h2>'+s[i]+'</h2><p class=q>'+s[3+i]+'</p></div><div class=body>'
++'<div class=rem><span>⭐</span><span><b>'+u.rem+':</b> '+ce(RB[S],i)+'</span></div>'
++'<div class=ex style="margin-top:0"><h3>'+u.key+'</h3><div class=v><button data-v="'+KV[S]+'">'+KV[S]+'</button></div></div>'
++'<ol class=pts>'+s[6].map(function(p){return'<li><span class=num></span><div>'+p[i]+'<div class=v>'+p[3].split(';').map(function(r){return'<button data-v="'+esc(r)+'">'+esc(r)+'</button>'}).join('')+'</div></div></li>'}).join('')+'</ol>'
++(E[S]||[]).map(function(b){return X(b,i)}).join('')
++(M[S]?X(['more',u.story,M[S]],i):'')
++(QA[S]?X(['ask',u.ask,QA[S]],i):'')
++'</div></div>'}
+
+function R(){var u=UI[L],i=li[L];paint();
+document.documentElement.lang=L=='zh'?'zh-CN':L;document.title=u.t;
+$('bt').textContent=u.t;$('ft').textContent=u.ft;
+$('lang').innerHTML=[['en','EN'],['zh','中文'],['es','ES']].map(function(y){return'<button class="mini'+(y[0]==L?' on':'')+'" data-l="'+y[0]+'">'+y[1]+'</button>'}).join('');
+$('steps').innerHTML=D.map(function(_,n){return'<button data-g="'+n+'" class="'+(n==S?'on ':'')+(SEEN[n]?'done':'')+'">'+(n+1)+'</button>'}).join('')+'<button data-g=99 class="'+(S==99?'on':'')+'" style="flex:0 0 auto;padding-left:12px;padding-right:12px">☰</button>';
+$('c').innerHTML=S<0?home(i):(S==99?overview(i):stage(i));
+if(S>=0&&S<7){SEEN[S]=1;save();
+$('nav').innerHTML='<button data-g="'+(S-1)+'">'+(S?u.pv:u.pv)+'</button>'+(S<6?'<button class=next data-g="'+(S+1)+'">'+u.nx+'</button>':'<button class=next data-g=99>'+u.all+'</button>')}
+else $('nav').innerHTML='';
+window.scrollTo(0,0)}
+function G(n){S=n<-1?-1:(n>6&&n!=99?99:n);try{history.replaceState(null,'',S<0?'#home':(S==99?'#all':'#s'+(S+1)))}catch(e){}R()}
+document.addEventListener('change',function(e){if(e.target.id=='bi'){BIB=e.target.value;saveKey()}});
+document.addEventListener('click',function(e){var t=e.target,b=t.closest&&t.closest('[data-g],[data-l],[data-v],[data-q],[data-tr]');
+if(t.id=='back'||t.id=='px'){closeVerse();return}
+if(t.id=='sb'){openSearch('');return}
+if(t.id=='kb'){openSettings();return}
+if(t.id=='qgo'){runSearch($('qi').value);return}
+if(t.id=='ksave'){var v=$('ki').value.replace(/[\s"'\u201c\u201d]/g,'');if(v)KEY=v;if($('pi'))PX=$('pi').value.trim();if($('bi')&&$('bi').value)BIB=$('bi').value;saveKey();$('ki').value='';if($('kstat'))$('kstat').innerHTML='<span class=hint>'+UI[L].ld+'</span>';loadBibles();return}
+if(t.id=='kclear'){KEY='';BIB='';PX='';saveKey();openSettings();return}
+if(!b)return;
+if(b.dataset.q){$('qi').value=b.dataset.q;runSearch(b.dataset.q);return}
+if(b.dataset.v){openVerse(b.dataset.v);return}
+if(b.dataset.tr){TR=b.dataset.tr;openVerse($('panel').dataset.ref);return}
+if(b.dataset.l){L=b.dataset.l;save();R();return}
+if(b.dataset.g!==undefined){e.preventDefault();G(+b.dataset.g)}});
+document.addEventListener('keydown',function(e){if(e.key=='Escape')closeVerse();
+if(e.key=='Enter'&&e.target&&e.target.id=='qi'){runSearch(e.target.value);return}
+
+if($('panel').classList.contains('open'))return;
+if(S>=0&&S<7){if(e.key=='ArrowRight'&&S<6)G(S+1);if(e.key=='ArrowLeft')G(S-1)}});
+var m=/^#s([1-7])$/.exec(location.hash);S=m?+m[1]-1:(location.hash=='#all'?99:-1);
+R();
+
+</script></body></html>
