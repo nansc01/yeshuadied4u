@@ -3,6 +3,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Yeshua Died for You</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#f3f3f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0c19" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Yeshua">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="The gospel in 7 stages: an interactive walk from the unseen world to a life in Christ. English, 中文, Español.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <style>
 /* Layout: "from darkness to light" — a night hero that the reader walks out of, a 7-colour journey track,
    reading column + sticky concordance on the right. Stage colour (--ac) is reassigned per stage by paint(). */
@@ -749,6 +759,39 @@ background:radial-gradient(500px 300px at 100% 0%,rgba(216,169,69,.28),transpare
 @media(max-width:520px){.cttabs button{font-size:.84rem;padding:10px 8px;flex-direction:column;gap:4px}.cttabs{padding:12px 16px}.ctbody{padding:16px 18px 0}.cthead{padding:22px 18px 18px}}
 .jmeta b{color:#fff}.jmeta span{color:#c6c9e6}.jmeta a{color:var(--gold2)}
 
+
+/* ===== mobile (iOS + Android) ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,a,[data-v],.flip,label,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.acts{display:flex;align-items:center;gap:6px}
+.tools{display:flex;align-items:center;gap:6px}
+.mm{display:none}
+.top{transition:transform .3s ease}
+@media(max-width:700px){
+ .top{padding-top:6px}
+ .top>.row{flex-wrap:nowrap}
+ .brand{font-size:1.12rem;min-width:0}.brand span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .brand .cross{width:32px;height:32px}
+ .mm{display:grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%}
+ .contactb{min-height:40px}
+ .tools{display:none;position:absolute;right:max(12px,env(safe-area-inset-right,0px));top:calc(100% - 6px);z-index:60;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:280px;
+  background:var(--card);border:1px solid var(--ln);border-radius:20px;padding:12px;box-shadow:0 20px 50px -14px rgba(0,0,0,.35)}
+ .tools.open{display:flex;animation:fd .2s}
+ .tools .mini{min-width:44px;min-height:44px}
+ .top.hid{transform:translateY(calc(-100% - 2px))}
+ .steps{margin-top:6px;padding-bottom:8px}
+ .steps button{min-height:40px}
+}
+@media(pointer:coarse){
+ input,select,textarea{font-size:16px!important}
+ .v button,.vchip,.rref,.tps button,.sug button,.res button,.mini{min-height:40px}
+ .v button,.vchip{display:inline-flex;align-items:center}
+ .vref{padding:3px 0}
+ .vtip{display:none!important}
+}
+.ctp{padding-top:env(safe-area-inset-top,0px)}
+.panel{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
+
 /* reader settings */
 .mini.ic{min-width:38px}
 
@@ -763,10 +806,8 @@ background:radial-gradient(500px 300px at 100% 0%,rgba(216,169,69,.28),transpare
  <div class="top">
   <div class="row">
    <button class="brand" data-g="-1"><span class="cross">&#10013;</span><span id="bt"></span></button>
-   <div class="row" style="gap:6px">
-    <button class="contactb" id="cu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8M8 13h5"/></svg><span>Contact us</span></button><button class="mini" id="sb" aria-label="Search">&#128269;</button>
-    <button class="mini ic" id="fz" aria-label="Text size">A&#177;</button><button class="mini ic" id="th" aria-label="Light / dark">&#9680;</button><button class="mini" id="kb" aria-label="Settings">&#9881;</button>
-    <span id="lang" style="display:flex;gap:5px"></span>
+   <div class="acts"><button class="contactb" id="cu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8M8 13h5"/></svg><span>Contact us</span></button><div class="tools" id="tools"><button class="mini" id="sb" aria-label="Search">&#128269;</button>
+    <button class="mini ic" id="fz" aria-label="Text size">A&#177;</button><button class="mini ic" id="th" aria-label="Light / dark">&#9680;</button><button class="mini" id="kb" aria-label="Settings">&#9881;</button><span id="lang" style="display:flex;gap:5px"></span></div><button class="mini mm" id="mm" aria-label="Menu" aria-expanded="false" aria-controls="tools"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
    </div>
   </div>
   <div class="steps" id="steps"></div>
@@ -1217,7 +1258,7 @@ if(y+200>window.innerHeight)y=rect.top-200;
 tipEl.style.left=Math.max(4,x)+'px';tipEl.style.top=y+'px';tipEl.classList.add('show');
 getVerse(ref).then(function(t){if(tipEl.classList.contains('show')&&tipEl.dataset.ref==ref)tipEl.innerHTML='<span class=vt-ref>'+esc(ref)+'</span><span class=vt-body>'+esc(t)+'</span>'}).catch(function(){if(tipEl.dataset.ref==ref)tipEl.innerHTML='<span class=vt-ref>'+esc(ref)+'</span><span class=vt-body>'+esc(UI[L].err)+'</span>'})}
 function hideTip(){tipEl.classList.remove('show')}
-document.addEventListener('pointerenter',function(e){var b=e.target.closest&&e.target.closest('[data-v]');if(b)showTip(b,b.dataset.v)},true);
+document.addEventListener('pointerenter',function(e){if(e.pointerType=='touch')return;var b=e.target.closest&&e.target.closest('[data-v]');if(b)showTip(b,b.dataset.v)},true);
 document.addEventListener('pointerleave',function(e){var b=e.target.closest&&e.target.closest('[data-v]');if(b)hideTip()},true);
 
 /* ---------- sidebar ---------- */
@@ -1880,8 +1921,8 @@ var btn=f.querySelector('.ctgo'),orig=btn.innerHTML;btn.disabled=true;btn.textCo
 fetch('https://formsubmit.co/ajax/'+CT_TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
 .then(function(r){return r.json().then(function(j){if(!r.ok||j.success===false||j.success==='false')throw new Error(j.message||r.status);return j})})
 .then(function(){ctDone(kind,CDAY)})
-.catch(function(){btn.disabled=false;btn.innerHTML=orig;CSENT=Object.keys(data).filter(function(k){return k[0]!='_'}).map(function(k){return k+': '+data[k]}).join('\n');
-err.innerHTML=esc(ct(CTX.err))+' <button type=button class=vchip data-ctcopy=1>'+ct(CTX.copyMsg)+'</button>';err.hidden=false})}
+.catch(function(e){btn.disabled=false;btn.innerHTML=orig;var why=e&&e.message&&!/^\d+$/.test(e.message)&&e.message!='Failed to fetch'?e.message:'';CSENT=Object.keys(data).filter(function(k){return k[0]!='_'}).map(function(k){return k+': '+data[k]}).join('\n');
+err.innerHTML=(/activat/i.test(why)?esc(why):esc(ct(CTX.err))+(why?' ('+esc(why)+')':''))+' <button type=button class=vchip data-ctcopy=1>'+ct(CTX.copyMsg)+'</button>';err.hidden=false})}
 
 /* contact panel + backdrop elements */
 (function(){var bk=document.createElement('div');bk.className='ctback';bk.id='ctback';document.body.appendChild(bk);
@@ -1900,6 +1941,21 @@ document.addEventListener('keydown',function(e){if(e.key=='Escape')closeContact(
 function joinCard(){var x=CTX;return'<section class=join><div class=jtxt><span class=eyebrow2>'+ct(x.visit)+'</span><h3>'+ct('Open your Bible with us|和我们一起打开圣经|Abre la Biblia con nosotros')+'</h3><p>'+ct(x.bIntro)+'</p>'
 +'<div class=jbtn><button class=pri data-contact=1>'+ct(x.tabs[1])+' →</button><button data-contact=0>'+ct(x.tabs[0])+'</button></div></div>'
 +'<div class=jmeta><div><small>'+ct(x.when)+'</small><b>'+x.days.map(function(d){return ct(d[0])}).join(' · ')+'</b><span>'+ct(x.at)+'</span></div><div><small>'+ct(x.where)+'</small><b>18 W 33rd St, 3rd Fl</b><span>New York, NY 10001</span><a href="'+CT_MAP+'" target=_blank rel=noopener>'+ct(x.map)+' ↗</a></div></div></section>'}
+
+
+/* ---- mobile helpers: menu, auto-hiding header, swipe between stages ---- */
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var m=$('mm'),tl=$('tools');if(!m||!tl)return;
+if(t.closest('#mm')){var o=tl.classList.toggle('open');m.setAttribute('aria-expanded',o);return}
+if(tl.classList.contains('open')&&(!t.closest('#tools')||t.closest('[data-l],#sb,#kb'))){tl.classList.remove('open');m.setAttribute('aria-expanded','false')}},true);
+(function(){var last=0;window.addEventListener('scroll',function(){var y=window.scrollY,top=document.querySelector('.top');if(!top)return;
+if(window.innerWidth>700||document.body.style.overflow=='hidden'){top.classList.remove('hid');last=y;return}
+if(y>last+8&&y>160){top.classList.add('hid');var tl=$('tools');if(tl)tl.classList.remove('open')}else if(y<last-8||y<80)top.classList.remove('hid');last=y},{passive:true})})();
+(function(){var x0=0,y0=0,t0=0,ok=false;
+document.addEventListener('touchstart',function(e){if(e.touches.length!=1){ok=false;return}var t=e.target;
+ok=S>=0&&S<7&&!(t.closest&&t.closest('svg,.vframe,input,textarea,select,.steps,.tps,.panel,.ctp,.tools,.lens,.days'));x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now()},{passive:true});
+document.addEventListener('touchend',function(e){if(!ok)return;ok=false;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;
+if(Date.now()-t0<600&&Math.abs(dx)>80&&Math.abs(dy)<Math.abs(dx)*.45){if(dx<0&&S<6)G(S+1);else if(dx>0)G(S-1)}},{passive:true})})();
+document.addEventListener('focusin',function(e){var t=e.target;if(t.closest&&t.closest('#ctp')&&/INPUT|TEXTAREA|SELECT/.test(t.tagName)&&window.innerWidth<700)setTimeout(function(){try{t.scrollIntoView({block:'center',behavior:'smooth'})}catch(x){}},300)});
 
 function R(){var u=UI[L],i=li[L];paint();renderSidebar();if($('cu'))$('cu').querySelector('span').textContent=ct(CTX.btn);
 document.documentElement.lang=L=='zh'?'zh-CN':L;document.title=u.t;
