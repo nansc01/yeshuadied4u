@@ -664,6 +664,91 @@ details.deep ol.pts{margin-top:6px}
 .lclear.warnb{border-color:#c2344d;color:#c2344d}
 .lclear{margin-top:12px;border-radius:999px;font-size:.82rem;color:var(--mut)}
 
+
+/* ===== contact ===== */
+.contactb{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:8px 16px 8px 13px;font-weight:700;font-size:.88rem;min-height:38px;
+background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1606;box-shadow:0 6px 18px -8px rgba(216,169,69,.9)}
+.contactb svg{width:17px;height:17px}
+.contactb:hover{transform:translateY(-1px);box-shadow:0 10px 22px -8px rgba(216,169,69,1)}
+@media(max-width:520px){.contactb span{display:none}.contactb{padding:8px 11px}}
+.ctback{position:fixed;inset:0;z-index:80;background:rgba(5,7,20,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .3s}
+.ctback.open{opacity:1;pointer-events:auto}
+.ctp{position:fixed;z-index:81;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--card);box-shadow:-30px 0 80px -20px rgba(0,0,0,.5);overflow-y:auto;
+transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.9,.3,1);padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overscroll-behavior:contain}
+.ctp.open{transform:none}
+.cthead{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:28px 26px 22px;color:#fff;isolation:isolate;overflow:hidden;
+background:radial-gradient(380px 200px at 90% 0%,rgba(243,213,138,.35),transparent 70%),linear-gradient(150deg,var(--night2),var(--night))}
+.cthead::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background:radial-gradient(1.5px 1.5px at 20% 40%,#fff,transparent 60%),radial-gradient(1px 1px at 60% 20%,#fff,transparent 60%),radial-gradient(1.5px 1.5px at 80% 70%,#fff,transparent 60%);background-size:180px 120px}
+.cthead h4{margin:0;font:600 clamp(1.6rem,4vw,2rem)/1.15 var(--f-display)}
+.ctx{flex:none;width:40px;height:40px;border-radius:50%;padding:0;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.ctx:hover{background:rgba(255,255,255,.22)}
+.cttabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 22px 0;position:sticky;top:0;background:var(--card);z-index:2;padding-bottom:12px;border-bottom:1px solid var(--ln)}
+.cttabs button{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:12px 10px;font-weight:700;font-size:.92rem;min-height:50px;background:var(--soft)}
+.cttabs .ico{width:22px;height:22px}
+.cttabs button.on{background:var(--ac);color:var(--on);border-color:var(--ac);box-shadow:0 10px 24px -14px var(--ac)}
+.ctbody{padding:18px 24px 0}
+.ctint{margin:0 0 16px;color:var(--mut);font-size:.95rem}
+.ctf label{display:block;font-size:.84rem;font-weight:700;color:var(--fg);margin-bottom:14px}
+.ctf label i{font-weight:400;font-style:normal;color:var(--mut)}
+.ctf input:not([type=checkbox]),.ctf textarea,.ctf select{display:block;width:100%;margin-top:6px;border-radius:14px;background:var(--soft);font:1rem/1.45 var(--f-body);padding:12px 14px;min-height:48px}
+.ctf textarea{resize:vertical}
+.ctf .bad{border-color:#c2344d!important;box-shadow:0 0 0 3px color-mix(in srgb,#c2344d 18%,transparent)}
+.ct2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+@media(max-width:520px){.ct2{grid-template-columns:1fr}}
+.ckb{display:flex!important;align-items:center;gap:10px;font-weight:500!important;color:var(--mut)!important;cursor:pointer}
+.ckb input{width:20px;height:20px;accent-color:var(--ac);padding:0;flex:none}
+.ckc{align-self:end;min-height:48px}
+.hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.ctl{display:block;font-size:.84rem;font-weight:700;margin-bottom:8px}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;border-radius:18px}
+.days.bad{box-shadow:0 0 0 3px color-mix(in srgb,#c2344d 25%,transparent)}
+.day{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border-radius:16px;padding:14px 14px 12px;border:2px solid var(--ln);background:var(--card);min-height:96px}
+.day b{font:600 1.2rem/1.1 var(--f-display)}
+.day span{font-weight:700;color:var(--ac);font-size:.9rem}
+.day small{color:var(--mut);font-size:.76rem;margin-top:auto}
+.day:hover{border-color:var(--ac);transform:translateY(-2px)}
+.day.on{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 12%,var(--card));box-shadow:0 12px 26px -16px var(--ac)}
+.day.on b::after{content:" ✓";color:var(--ac)}
+@media(max-width:400px){.days{grid-template-columns:1fr}.day{min-height:0;flex-direction:row;align-items:center;gap:10px}.day small{margin:0 0 0 auto}}
+.ctgo{width:100%;justify-content:center;display:flex;gap:8px;align-items:center;border-radius:16px!important;min-height:54px;font-size:1.02rem;background:var(--ac);color:var(--on);border:0;font-weight:700;margin-top:4px}
+.ctgo:disabled{opacity:.6}
+.ctgo span{transition:transform .25s}.ctgo:hover span{transform:translateX(4px)}
+.cterr{background:color-mix(in srgb,#c2344d 10%,var(--card));border-left:4px solid #c2344d;border-radius:10px;padding:10px 12px;font-size:.88rem;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cterr[hidden]{display:none}
+.ctpriv{color:var(--mut);font-size:.78rem;text-align:center;margin:10px 0 0}
+.ctinfo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 0;padding-top:18px;border-top:1px dashed var(--ln)}
+.ctinfo>div,.jmeta>div{display:flex;flex-direction:column;gap:2px;background:var(--soft);border-radius:16px;padding:14px}
+.ctinfo small,.jmeta small{font:600 .62rem/1 var(--f-label);letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:4px}
+.ctinfo b,.jmeta b{font:600 1.08rem/1.25 var(--f-display)}
+.ctinfo span,.jmeta span{font-size:.86rem;color:var(--mut)}
+.ctinfo a,.jmeta a{margin-top:6px;font-weight:700;font-size:.84rem;color:var(--ac);text-decoration:none}
+.ctok{text-align:center;padding:26px 6px 6px;animation:rise .5s both}
+.okc{display:inline-grid;place-items:center;width:76px;height:76px;border-radius:50%;background:color-mix(in srgb,var(--ac) 14%,var(--card));color:var(--ac);margin-bottom:12px}
+.okc .ico{width:42px;height:42px}
+.ctok h5{margin:0 0 10px;font:600 1.6rem/1.2 var(--f-display)}
+.okv{font:italic 500 1.15rem/1.45 var(--f-display);color:var(--mut);margin:0 0 16px}
+.okv b{font:700 .74rem/1 var(--f-label);letter-spacing:.14em;color:var(--ac);font-style:normal;display:block;margin-top:6px}
+.oka{color:var(--mut);margin:0 0 14px}
+.ctcal{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.ctcal span{width:100%;font-weight:700;font-size:.86rem}
+.ctcal a{background:var(--chip);color:var(--ac);text-decoration:none;border-radius:999px;padding:10px 14px;font-weight:700;font-size:.86rem}
+.ctcal a:hover{background:var(--ac);color:var(--on)}
+/* home "join us" card */
+.join{margin-top:44px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:center;padding:30px;border-radius:28px;color:#eef0ff;position:relative;overflow:hidden;isolation:isolate;
+background:radial-gradient(500px 300px at 100% 0%,rgba(216,169,69,.28),transparent 70%),linear-gradient(150deg,var(--night2),var(--night));box-shadow:0 30px 60px -34px rgba(10,12,40,.6)}
+@container (max-width:700px){.join{grid-template-columns:1fr;padding:24px 20px}}
+.eyebrow2{font:600 .7rem/1 var(--f-label);letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
+.join h3{margin:10px 0 8px;font:600 clamp(1.7rem,4cqi,2.3rem)/1.1 var(--f-display);color:#fff}
+.join p{margin:0 0 18px;color:#c6c9e6}
+.jbtn{display:flex;flex-wrap:wrap;gap:10px}
+.jbtn button{border-radius:999px;padding:12px 20px;font-weight:700;min-height:48px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.jbtn .pri{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1606;border:0}
+.jmeta{display:grid;gap:10px}
+.jmeta>div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.jmeta small{color:var(--gold2)}
+@media(max-width:520px){.cttabs button{font-size:.84rem;padding:10px 8px;flex-direction:column;gap:4px}.cttabs{padding:12px 16px}.ctbody{padding:16px 18px 0}.cthead{padding:22px 18px 18px}}
+.jmeta b{color:#fff}.jmeta span{color:#c6c9e6}.jmeta a{color:var(--gold2)}
+
 /* reader settings */
 .mini.ic{min-width:38px}
 
@@ -679,7 +764,7 @@ details.deep ol.pts{margin-top:6px}
   <div class="row">
    <button class="brand" data-g="-1"><span class="cross">&#10013;</span><span id="bt"></span></button>
    <div class="row" style="gap:6px">
-    <button class="mini" id="sb" aria-label="Search">&#128269;</button>
+    <button class="contactb" id="cu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8M8 13h5"/></svg><span>Contact us</span></button><button class="mini" id="sb" aria-label="Search">&#128269;</button>
     <button class="mini ic" id="fz" aria-label="Text size">A&#177;</button><button class="mini ic" id="th" aria-label="Light / dark">&#9680;</button><button class="mini" id="kb" aria-label="Settings">&#9881;</button>
     <span id="lang" style="display:flex;gap:5px"></span>
    </div>
@@ -1025,7 +1110,7 @@ return'<div class=fade><section class=hero data-hero><canvas id=sky aria-hidden=
 +'<div class=sec-h><h2>'+x.jt+'</h2><small>'+x.js+'</small></div>'
 +'<div class=journey style="'+jv+'">'+D.map(function(s,n){
 return'<button class="jn-node'+(SEEN[n]?' seen':'')+'" data-g="'+n+'" style="--tc:'+tc(n)+';--n:'+n+'">'+(SEEN[n]?'<span class=chk>✓</span>':'')+'<span class=dot>'+RN[n]+'</span><span><span class=ttl>'+s[i]+'</span><span class=q>'+s[3+i]+'</span></span></button>'}).join('')+'</div>'
-+HM(i)+'</div>'}
++joinCard()+HM(i)+'</div>'}
 function HM(i){var u=UI[L];
 return X(['cards',u.why,W],i)+X(['tbl',u.two,GH],i)
 +'<div class=ex><h3>'+u.res+'</h3><div class=vlinks><a href="https://cojnj.com/message/seminars" target=_blank rel=noopener>COJ Seminars ↗</a><a href="https://isgenesishistory.com/" target=_blank rel=noopener>Is Genesis History? ↗</a><a href="https://www.biblegateway.com/" target=_blank rel=noopener>BibleGateway ↗</a><a href="https://www.youversion.com/" target=_blank rel=noopener>YouVersion ↗</a></div></div>'}
@@ -1177,7 +1262,7 @@ document.addEventListener('keydown',function(e){if(e.key=='Enter'&&e.target&&e.t
 document.documentElement.classList.add('js');
 var IO=null;
 function reveal(){var root=$('c');if(!root)return;
-var blocks=root.querySelectorAll('.body>.live,.body>.ex,.body>.icon-row,.body>.verse-banner,.body>.check,.body>.guess,.body>.vis,.body>details,.dbody>.ex,.fade>.journey,.fade>.ex,.fade>.sec-h');
+var blocks=root.querySelectorAll('.fade>.join,.body>.live,.body>.ex,.body>.icon-row,.body>.verse-banner,.body>.check,.body>.guess,.body>.vis,.body>details,.dbody>.ex,.fade>.journey,.fade>.ex,.fade>.sec-h');
 Array.prototype.forEach.call(blocks,function(b){b.classList.add('rv');
 var kids=b.querySelectorAll('.cards>div,.stories>div,.flow>div,.vsg>div,.stairs>div,.tl>div,.ask>div,.rlist>button,.ov>button,.flips>.flip,.slots>.sh,.relig>.rgp');
 if(b.classList.contains('icon-row'))kids=b.children;
@@ -1714,7 +1799,109 @@ E[5].push(['cards','What faith brings|信心带来什么|Lo que trae la fe',['1~
 E[6].push(['cards','What the church is|教会是什么|Qué es la iglesia',['Called out, gathered, chosen~The meaning of the word|蒙召、聚集、拣选~这个词的意思|Llamados, reunidos, escogidos~El significado de la palabra','The body of Christ~Saints are its members (Col 1:24; Eph 5:30)|基督的身体~圣徒是祂的肢体（西1:24；弗5:30）|El cuerpo de Cristo~Los santos son sus miembros (Col 1:24; Ef 5:30)','The temple of God~1 Cor 3:16|神的殿~林前3:16|El templo de Dios~1 Co 3:16','The house of God~The pillar and foundation of the truth (1 Tim 3:15)|神的家~真理的柱石和根基（提前3:15）|La casa de Dios~Columna y baluarte de la verdad (1 Ti 3:15)','Its head~The name Yeshua|教会的头~耶书亚的名|Su cabeza~El nombre de Yeshúa']]);
 })();
 
-function R(){var u=UI[L],i=li[L];paint();renderSidebar();
+/* ================= Contact us: prayer request + Bible study sign-up ================= */
+var CT_TO='nsongchen0317'+'@'+'gmail.com';      /* delivered via FormSubmit; swap for the FormSubmit alias after activation */
+var CT_ADDR='18 W 33rd St, 3rd Fl, New York, NY 10001';
+var CT_MAP='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('18 W 33rd St, New York, NY 10001');
+var CTX={
+btn:'Contact us|联系我们|Contáctanos',
+title:'We’d love to hear from you|我们很想听到你的声音|Nos encantaría saber de ti',
+tabs:['Prayer request|代祷请求|Petición de oración','Join a Bible study|参加查经|Unirse a un estudio bíblico'],
+pIntro:'Share what’s on your heart. We will pray for you. Only our prayer team reads these.|说出你心里的事，我们会为你祷告。只有代祷同工会看到。|Comparte lo que hay en tu corazón. Oraremos por ti. Solo nuestro equipo de oración lo lee.',
+bIntro:'Small group, open Bible, real questions. Every Tuesday, Wednesday and Thursday at 7:30 PM.|小组、打开圣经、真实的问题。每周二、三、四晚上 7:30。|Grupo pequeño, Biblia abierta, preguntas reales. Cada martes, miércoles y jueves a las 7:30 p. m.',
+name:'Your name|你的名字|Tu nombre',opt:'optional|选填|opcional',
+contact:'Email or phone|邮箱或电话|Correo o teléfono',contactP:'So we can follow up|方便我们跟进|Para poder darte seguimiento',
+req:'Prayer request|代祷事项|Petición de oración',reqP:'What would you like us to pray for?|你希望我们为什么祷告？|¿Por qué quieres que oremos?',
+anon:'Pray for me anonymously (don’t contact me)|匿名代祷（不用联系我）|Oren por mí de forma anónima (no me contacten)',
+pick:'Pick a night|选择一个晚上|Elige una noche',
+days:[['Tuesday|周二|Martes',2],['Wednesday|周三|Miércoles',3],['Thursday|周四|Jueves',4]],
+at:'7:30 PM|晚上 7:30|7:30 p. m.',next:'Next|下一次|Próximo',
+lang:'Preferred language|偏好的语言|Idioma preferido',first:'This is my first time|这是我第一次参加|Es mi primera vez',
+note:'Anything we should know?|有什么需要我们知道的吗？|¿Algo que debamos saber?',
+send:'Send prayer request|送出代祷请求|Enviar petición',sign:'Save my seat|预留我的位置|Reservar mi lugar',sending:'Sending…|正在送出……|Enviando…',
+okP:'Thank you. We are praying for you.|谢谢你，我们正在为你祷告。|Gracias. Estamos orando por ti.',okPv:'“Cast all your worries on him, because he cares for you.”|“你们要将一切的忧虑卸给神，因为他顾念你们。”|«Echad toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros.»',okPr:'1 Peter 5:7',
+okB:'You’re in! See you on|报名成功！我们在这天见：|¡Listo! Te esperamos el',
+cal:'Add to calendar|加入日历|Añadir al calendario',gcal:'Google Calendar|Google 日历|Google Calendar',ics:'Apple / Outlook (.ics)|Apple / Outlook（.ics）|Apple / Outlook (.ics)',
+map:'Open in Maps|在地图中打开|Abrir en Mapas',where:'Where|地点|Dónde',when:'When|时间|Cuándo',
+another:'Send another|再写一则|Enviar otra',
+err:'Couldn’t send right now. Please try again in a moment, or copy your message and send it to us another way.|暂时无法送出。请稍后再试，或复制你的内容用其他方式发给我们。|No se pudo enviar ahora. Inténtalo de nuevo en un momento, o copia tu mensaje y envíalo de otra forma.',
+copyMsg:'Copy my message|复制我的内容|Copiar mi mensaje',
+need:'Please fill in the highlighted fields.|请填写标出的栏位。|Completa los campos marcados.',
+privacy:'We only use your details to pray for you and follow up. We never share them.|你的资料只用于为你祷告和跟进，绝不外传。|Solo usamos tus datos para orar por ti y darte seguimiento. Nunca los compartimos.',
+visit:'Visit us|欢迎来访|Visítanos',close:'Close|关闭|Cerrar'};
+function ct(s){return ce(s,li[L])}
+var CTAB=0,CDAY=-1,CSENT=null;
+function nextDate(dow){var d=new Date();d.setHours(0,0,0,0);var add=(dow-d.getDay()+7)%7;var now=new Date();if(add==0&&(now.getHours()*60+now.getMinutes())>=19*60+30)add=7;d.setDate(d.getDate()+add);return d}
+function fmtDate(d){try{return d.toLocaleDateString(L=='zh'?'zh-CN':(L=='es'?'es-ES':'en-US'),{weekday:'short',month:'short',day:'numeric'})}catch(e){return d.toDateString()}}
+function ctForm(){var x=CTX;
+var info='<div class=ctinfo><div><small>'+ct(x.when)+'</small><b>'+x.days.map(function(d){return ct(d[0])}).join(' · ')+'</b><span>'+ct(x.at)+'</span></div><div><small>'+ct(x.where)+'</small><b>18 W 33rd St, 3rd Fl</b><span>New York, NY 10001</span><a href="'+CT_MAP+'" target=_blank rel=noopener>'+ct(x.map)+' ↗</a></div></div>';
+var p='<form class=ctf id=ctP novalidate><p class=ctint>'+ct(x.pIntro)+'</p>'
++'<label>'+ct(x.req)+'<textarea name=request rows=5 required placeholder="'+esc(ct(x.reqP))+'"></textarea></label>'
++'<div class=ct2><label>'+ct(x.name)+' <i>('+ct(x.opt)+')</i><input name=name autocomplete=name></label>'
++'<label>'+ct(x.contact)+' <i>('+ct(x.opt)+')</i><input name=contact autocomplete=email placeholder="'+esc(ct(x.contactP))+'"></label></div>'
++'<label class=ckb><input type=checkbox name=anonymous> '+ct(x.anon)+'</label>'
++'<input type=text name=_honey class=hp tabindex=-1 autocomplete=off aria-hidden=true>'
++'<p class=cterr hidden></p><button class="pri ctgo" type=submit>'+ct(x.send)+' <span>→</span></button><p class=ctpriv>'+ct(x.privacy)+'</p></form>';
+var b='<form class=ctf id=ctB novalidate><p class=ctint>'+ct(x.bIntro)+'</p><span class=ctl>'+ct(x.pick)+'</span><div class=days>'
++x.days.map(function(d,k){var nd=nextDate(d[1]);return'<button type=button class="day'+(CDAY==k?' on':'')+'" data-day="'+k+'"><b>'+ct(d[0])+'</b><span>'+ct(x.at)+'</span><small>'+ct(x.next)+': '+fmtDate(nd)+'</small></button>'}).join('')+'</div>'
++'<div class=ct2><label>'+ct(x.name)+'<input name=name required autocomplete=name></label>'
++'<label>'+ct(x.contact)+'<input name=contact required autocomplete=email placeholder="'+esc(ct(x.contactP))+'"></label></div>'
++'<div class=ct2><label>'+ct(x.lang)+'<select name=language><option>English</option><option>中文</option><option>Español</option></select></label>'
++'<label class="ckb ckc"><input type=checkbox name=first_time> '+ct(x.first)+'</label></div>'
++'<label>'+ct(x.note)+' <i>('+ct(x.opt)+')</i><textarea name=notes rows=2></textarea></label>'
++'<input type=text name=_honey class=hp tabindex=-1 autocomplete=off aria-hidden=true>'
++'<p class=cterr hidden></p><button class="pri ctgo" type=submit>'+ct(x.sign)+' <span>→</span></button><p class=ctpriv>'+ct(x.privacy)+'</p></form>';
+return'<div class=cthead><div><h4>'+ct(x.title)+'</h4></div><button class=ctx id=ctclose aria-label="'+esc(ct(x.close))+'">✕</button></div>'
++'<div class=cttabs role=tablist>'+x.tabs.map(function(t,k){return'<button role=tab aria-selected="'+(CTAB==k)+'" class="'+(CTAB==k?'on':'')+'" data-ctab="'+k+'">'+(k?ICO('people'):ICO('olive'))+'<span>'+ct(t)+'</span></button>'}).join('')+'</div>'
++'<div class=ctbody>'+(CTAB==0?p:b)+info+'</div>'}
+function openContact(tab){if(tab!=null)CTAB=tab;CSENT=null;var c=$('ctp');c.innerHTML=ctForm();c.classList.add('open');$('ctback').classList.add('open');document.body.style.overflow='hidden';
+setTimeout(function(){var f=c.querySelector('textarea,input:not(.hp)');if(f&&window.innerWidth>700)f.focus()},60)}
+function closeContact(){var c=$('ctp');if(!c)return;c.classList.remove('open');$('ctback').classList.remove('open');document.body.style.overflow=''}
+function calLinks(k){var d=nextDate(CTX.days[k][1]),p=function(n){return(n<10?'0':'')+n},ds=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate());
+var title=ct('Bible study|查经|Estudio bíblico')+' · Yeshua Died for You';
+var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+ds+'T193000/'+ds+'T210000&ctz=America/New_York&location='+encodeURIComponent(CT_ADDR)+'&recur='+encodeURIComponent('RRULE:FREQ=WEEKLY');
+var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//yeshuadied4u//EN','BEGIN:VEVENT','UID:'+ds+'-bible-study@yeshuadied4u.org','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;TZID=America/New_York:'+ds+'T193000','DTEND;TZID=America/New_York:'+ds+'T210000','RRULE:FREQ=WEEKLY','SUMMARY:'+title,'LOCATION:'+CT_ADDR.replace(/,/g,'\\,'),'END:VEVENT','END:VCALENDAR'].join('\r\n');
+return'<div class=ctcal><span>'+ct(CTX.cal)+':</span><a href="'+g+'" target=_blank rel=noopener>'+ct(CTX.gcal)+' ↗</a><a href="data:text/calendar;charset=utf-8,'+encodeURIComponent(ics)+'" download="bible-study.ics">'+ct(CTX.ics)+'</a><a href="'+CT_MAP+'" target=_blank rel=noopener>'+ct(CTX.map)+' ↗</a></div>'}
+function ctDone(kind,k){var x=CTX,b=$('ctp').querySelector('.ctbody');
+if(kind=='p')b.innerHTML='<div class=ctok><span class=okc>'+ICO('olive')+'</span><h5>'+ct(x.okP)+'</h5><p class=okv>'+ct(x.okPv)+' <b>'+x.okPr+'</b></p><button class=lclear data-ctagain=1>'+ct(x.another)+'</button></div>';
+else{var d=nextDate(x.days[k][1]);b.innerHTML='<div class=ctok><span class=okc>'+ICO('people')+'</span><h5>'+ct(x.okB)+' '+fmtDate(d)+', '+ct(x.at)+'</h5><p class=oka>'+CT_ADDR+'</p>'+calLinks(k)+'</div>'}
+var r=$('ctp').getBoundingClientRect();confetti(r.left+r.width/2,r.top+120)}
+function ctSubmit(f){var kind=f.id=='ctP'?'p':'b',err=f.querySelector('.cterr'),ok=true;
+Array.prototype.forEach.call(f.querySelectorAll('.bad'),function(e){e.classList.remove('bad')});
+Array.prototype.forEach.call(f.querySelectorAll('[required]'),function(e){if(!e.value.trim()){e.classList.add('bad');ok=false}});
+if(kind=='b'&&CDAY<0){f.querySelector('.days').classList.add('bad');ok=false}
+var c=f.querySelector('[name=contact]');if(c&&c.value.trim()&&!/@.+\./.test(c.value)&&!/\d{7,}/.test(c.value.replace(/\D/g,''))){c.classList.add('bad');ok=false}
+if(!ok){err.textContent=ct(CTX.need);err.hidden=false;var fb=f.querySelector('.bad');if(fb&&fb.focus)fb.focus();return}
+if(f.querySelector('.hp').value)return;
+var data={};Array.prototype.forEach.call(f.elements,function(e){if(!e.name||e.name=='_honey')return;data[e.name]=e.type=='checkbox'?(e.checked?'yes':'no'):e.value.trim()});
+if(kind=='b'){var dd=CTX.days[CDAY];data.night=ce(dd[0],0)+' 7:30 PM (next: '+nextDate(dd[1]).toDateString()+')'}
+data.site_language=L;data._subject=kind=='p'?'🙏 New prayer request — Yeshua Died for You':'📖 Bible study sign-up — '+data.night;data._template='table';data._captcha='false';
+var btn=f.querySelector('.ctgo'),orig=btn.innerHTML;btn.disabled=true;btn.textContent=ct(CTX.sending);err.hidden=true;
+fetch('https://formsubmit.co/ajax/'+CT_TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+.then(function(r){return r.json().then(function(j){if(!r.ok||j.success===false||j.success==='false')throw new Error(j.message||r.status);return j})})
+.then(function(){ctDone(kind,CDAY)})
+.catch(function(){btn.disabled=false;btn.innerHTML=orig;CSENT=Object.keys(data).filter(function(k){return k[0]!='_'}).map(function(k){return k+': '+data[k]}).join('\n');
+err.innerHTML=esc(ct(CTX.err))+' <button type=button class=vchip data-ctcopy=1>'+ct(CTX.copyMsg)+'</button>';err.hidden=false})}
+
+/* contact panel + backdrop elements */
+(function(){var bk=document.createElement('div');bk.className='ctback';bk.id='ctback';document.body.appendChild(bk);
+var p=document.createElement('div');p.className='ctp';p.id='ctp';p.setAttribute('role','dialog');p.setAttribute('aria-modal','true');document.body.appendChild(p)})();
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
+if(t.closest('#cu')||t.closest('[data-contact]')){var el=t.closest('[data-contact]');openContact(el?+el.dataset.contact:null);return}
+if(t.id=='ctback'||t.closest('#ctclose')){closeContact();return}
+if(b=t.closest('[data-ctab]')){CTAB=+b.dataset.ctab;$('ctp').innerHTML=ctForm();return}
+if(b=t.closest('[data-day]')){CDAY=+b.dataset.day;Array.prototype.forEach.call(document.querySelectorAll('[data-day]'),function(x){x.classList.toggle('on',x==b)});var ds=b.closest('.days');ds.classList.remove('bad');return}
+if(t.closest('[data-ctagain]')){openContact(CTAB);return}
+if(b=t.closest('[data-ctcopy]')){if(CSENT)copyText(CSENT,b);return}});
+document.addEventListener('submit',function(e){if(e.target.classList&&e.target.classList.contains('ctf')){e.preventDefault();ctSubmit(e.target)}});
+document.addEventListener('keydown',function(e){if(e.key=='Escape')closeContact()});
+
+/* "Join us" card on the home page */
+function joinCard(){var x=CTX;return'<section class=join><div class=jtxt><span class=eyebrow2>'+ct(x.visit)+'</span><h3>'+ct('Open your Bible with us|和我们一起打开圣经|Abre la Biblia con nosotros')+'</h3><p>'+ct(x.bIntro)+'</p>'
++'<div class=jbtn><button class=pri data-contact=1>'+ct(x.tabs[1])+' →</button><button data-contact=0>'+ct(x.tabs[0])+'</button></div></div>'
++'<div class=jmeta><div><small>'+ct(x.when)+'</small><b>'+x.days.map(function(d){return ct(d[0])}).join(' · ')+'</b><span>'+ct(x.at)+'</span></div><div><small>'+ct(x.where)+'</small><b>18 W 33rd St, 3rd Fl</b><span>New York, NY 10001</span><a href="'+CT_MAP+'" target=_blank rel=noopener>'+ct(x.map)+' ↗</a></div></div></section>'}
+
+function R(){var u=UI[L],i=li[L];paint();renderSidebar();if($('cu'))$('cu').querySelector('span').textContent=ct(CTX.btn);
 document.documentElement.lang=L=='zh'?'zh-CN':L;document.title=u.t;
 $('bt').textContent=u.t;$('ft').textContent=u.ft;
 $('lang').innerHTML=[['en','EN'],['zh','中文'],['es','ES']].map(function(y){return'<button class="mini'+(y[0]==L?' on':'')+'" data-l="'+y[0]+'">'+y[1]+'</button>'}).join('');
@@ -1754,5 +1941,6 @@ if(S>=0&&S<7){if(e.key=='ArrowRight'&&S<6)G(S+1);if(e.key=='ArrowLeft')G(S-1)}})
 TR=vtrans();
 var m=/^#s([1-7])$/.exec(location.hash);S=m?+m[1]-1:(location.hash=='#all'?99:-1);
 R();
+if(location.hash=='#contact')openContact(0);
 
 </script></body></html>
