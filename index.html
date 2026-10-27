@@ -1815,7 +1815,7 @@ req:'Prayer request|代祷事项|Petición de oración',reqP:'What would you lik
 anon:'Pray for me anonymously (don’t contact me)|匿名代祷（不用联系我）|Oren por mí de forma anónima (no me contacten)',
 pick:'Pick a night|选择一个晚上|Elige una noche',
 days:[['Tuesday|周二|Martes',2],['Wednesday|周三|Miércoles',3],['Thursday|周四|Jueves',4]],
-at:'7:30 PM|晚上 7:30|7:30 p. m.',next:'Next|下一次|Próximo',
+at:'7:30–9:40 PM|晚上 7:30–9:40|7:30–9:40 p. m.',next:'Next|下一次|Próximo',
 lang:'Preferred language|偏好的语言|Idioma preferido',first:'This is my first time|这是我第一次参加|Es mi primera vez',
 note:'Anything we should know?|有什么需要我们知道的吗？|¿Algo que debamos saber?',
 send:'Send prayer request|送出代祷请求|Enviar petición',sign:'Save my seat|预留我的位置|Reservar mi lugar',sending:'Sending…|正在送出……|Enviando…',
@@ -1859,8 +1859,8 @@ setTimeout(function(){var f=c.querySelector('textarea,input:not(.hp)');if(f&&win
 function closeContact(){var c=$('ctp');if(!c)return;c.classList.remove('open');$('ctback').classList.remove('open');document.body.style.overflow=''}
 function calLinks(k){var d=nextDate(CTX.days[k][1]),p=function(n){return(n<10?'0':'')+n},ds=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate());
 var title=ct('Bible study|查经|Estudio bíblico')+' · Yeshua Died for You';
-var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+ds+'T193000/'+ds+'T210000&ctz=America/New_York&location='+encodeURIComponent(CT_ADDR)+'&recur='+encodeURIComponent('RRULE:FREQ=WEEKLY');
-var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//yeshuadied4u//EN','BEGIN:VEVENT','UID:'+ds+'-bible-study@yeshuadied4u.org','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;TZID=America/New_York:'+ds+'T193000','DTEND;TZID=America/New_York:'+ds+'T210000','RRULE:FREQ=WEEKLY','SUMMARY:'+title,'LOCATION:'+CT_ADDR.replace(/,/g,'\\,'),'END:VEVENT','END:VCALENDAR'].join('\r\n');
+var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+ds+'T193000/'+ds+'T214000&ctz=America/New_York&location='+encodeURIComponent(CT_ADDR)+'&recur='+encodeURIComponent('RRULE:FREQ=WEEKLY');
+var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//yeshuadied4u//EN','BEGIN:VEVENT','UID:'+ds+'-bible-study@yeshuadied4u.org','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;TZID=America/New_York:'+ds+'T193000','DTEND;TZID=America/New_York:'+ds+'T214000','RRULE:FREQ=WEEKLY','SUMMARY:'+title,'LOCATION:'+CT_ADDR.replace(/,/g,'\\,'),'END:VEVENT','END:VCALENDAR'].join('\r\n');
 return'<div class=ctcal><span>'+ct(CTX.cal)+':</span><a href="'+g+'" target=_blank rel=noopener>'+ct(CTX.gcal)+' ↗</a><a href="data:text/calendar;charset=utf-8,'+encodeURIComponent(ics)+'" download="bible-study.ics">'+ct(CTX.ics)+'</a><a href="'+CT_MAP+'" target=_blank rel=noopener>'+ct(CTX.map)+' ↗</a></div>'}
 function ctDone(kind,k){var x=CTX,b=$('ctp').querySelector('.ctbody');
 if(kind=='p')b.innerHTML='<div class=ctok><span class=okc>'+ICO('olive')+'</span><h5>'+ct(x.okP)+'</h5><p class=okv>'+ct(x.okPv)+' <b>'+x.okPr+'</b></p><button class=lclear data-ctagain=1>'+ct(x.another)+'</button></div>';
@@ -1874,7 +1874,7 @@ var c=f.querySelector('[name=contact]');if(c&&c.value.trim()&&!/@.+\./.test(c.va
 if(!ok){err.textContent=ct(CTX.need);err.hidden=false;var fb=f.querySelector('.bad');if(fb&&fb.focus)fb.focus();return}
 if(f.querySelector('.hp').value)return;
 var data={};Array.prototype.forEach.call(f.elements,function(e){if(!e.name||e.name=='_honey')return;data[e.name]=e.type=='checkbox'?(e.checked?'yes':'no'):e.value.trim()});
-if(kind=='b'){var dd=CTX.days[CDAY];data.night=ce(dd[0],0)+' 7:30 PM (next: '+nextDate(dd[1]).toDateString()+')'}
+if(kind=='b'){var dd=CTX.days[CDAY];data.night=ce(dd[0],0)+' 7:30-9:40 PM (next: '+nextDate(dd[1]).toDateString()+')'}
 data.site_language=L;data._subject=kind=='p'?'🙏 New prayer request — Yeshua Died for You':'📖 Bible study sign-up — '+data.night;data._template='table';data._captcha='false';
 var btn=f.querySelector('.ctgo'),orig=btn.innerHTML;btn.disabled=true;btn.textContent=ct(CTX.sending);err.hidden=true;
 fetch('https://formsubmit.co/ajax/'+CT_TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
