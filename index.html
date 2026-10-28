@@ -792,6 +792,20 @@ button,a,[data-v],.flip,label,summary{-webkit-tap-highlight-color:transparent;to
 .ctp{padding-top:env(safe-area-inset-top,0px)}
 .panel{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
 
+
+/* full-text search results */
+.ftc{margin:6px 0 8px;font-size:.88rem;color:var(--mut)}.ftc b{color:var(--fg)}
+.ftsc{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.ftsc button{border-radius:999px;padding:5px 11px;font-size:.78rem;font-weight:600;background:var(--soft)}
+.ftsc button i{font-style:normal;opacity:.7;margin-left:2px}
+.ftsc button.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.res .fth{line-height:1.45}
+.res mark{background:color-mix(in srgb,var(--gold2) 55%,transparent);color:inherit;border-radius:3px;padding:0 1px}
+.ftmore{display:block;width:100%;border-radius:14px;font-weight:700;color:var(--ac);background:var(--chip);border:0;min-height:44px}
+.sidebar.pulse{animation:spulse .9s ease}
+@keyframes spulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ac) 60%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+.sidebar .res{max-height:60vh;overflow-y:auto;scrollbar-width:thin;overscroll-behavior:contain}
+
 /* reader settings */
 .mini.ic{min-width:38px}
 
@@ -1074,7 +1088,7 @@ $('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+u.setT+'</h4>'
 +'<label>'+u.setB+'</label><select id=bi><option value="">'+u.setLoad+'</option></select>'
 +'<div style="display:flex;gap:8px;margin-top:14px"><button class=on id=ksave>'+u.save+'</button><button id=kclear>'+u.clear+'</button></div>'
 +'<div class=warn>'+u.setW+'</div></div>';
-$('panel').dataset.ref='';$('panel').classList.add('open');$('back').classList.add('open');
+$('panel').dataset.ref='';$('panel').classList.add('open');$('back').classList.add('open');lockScroll();
 if(haveApi())loadBibles()}
 function loadBibles(){var u=UI[L],sel=$('bi');if(!sel)return;
 abGet('/bibles').then(function(j){BIBS=j.data||[];if(!$('bi'))return;
@@ -1098,16 +1112,16 @@ $('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+u.find+'</h4>'
 +'<div id=rr class=res></div>'
 +'<div class=sug>'+u.ex.map(function(x){return'<button data-q="'+esc(x)+'">'+esc(x)+'</button>'}).join('')+'</div>'
 +(haveApi()?'':'<p class=hint>'+u.noKey+'</p>');
-$('panel').dataset.ref='';$('panel').classList.add('open');$('back').classList.add('open');
-setTimeout(function(){if($('qi'))$('qi').focus()},60);
+$('panel').dataset.ref='';$('panel').classList.add('open');$('back').classList.add('open');lockScroll();
+setTimeout(function(){var q=$('qi');if(!q)return;var touch=false;try{touch=matchMedia('(pointer:coarse)').matches}catch(x){}if(!touch){try{q.focus({preventScroll:true})}catch(x){q.focus()}}},60);
 if(q)runSearch(q)}
 function runSearch(q){var u=UI[L],box=$('rr');if(!box)return;q=String(q).trim();if(!q)return;
 box.innerHTML='<p class=hint>'+u.ld+'</p>';
-if(REF.test(q)){openVerse(q);return}
+var rq=anyRef(q);if(rq){openVerse(rq);return}
 var hits=topicHits(q),i=li[L];
 var local=hits.length?'<p class=hint>'+u.topic+'</p>'+hits.slice(0,4).map(function(t){
 return'<button data-v="'+t.r[0]+'"><b>'+ce(t.t,i)+'</b>'+t.r.join(' · ')+'</button>'}).join(''):'';
-if(!haveApi()||!BIB){box.innerHTML=local||('<p class=hint>'+u.none+'</p>');return}
+fullText(box,q,local);return;
 var term=cleanQ(q);
 abGet('/bibles/'+BIB+'/search?limit=12&sort=relevance&query='+encodeURIComponent(term))
 .then(function(j){var d=j.data||{},rows=[];
@@ -1127,13 +1141,16 @@ $('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+esc(ref)+'</h4
 +'<div class=vtext id=vt>'+u.ld+'</div><p class=vsrc id=vs></p>'
 +'<div class=vlinks>'+LINKS[L].map(function(p){return'<a href="'+bg(ref,p[0])+'" target=_blank rel=noopener>'+u.open+' '+p[1]+' ↗</a>'}).join('')+'</div>'
 +'<p class=hint>'+u.note+'</p>';
-$('panel').dataset.ref=ref;$('panel').classList.add('open');$('back').classList.add('open');
+$('panel').dataset.ref=ref;$('panel').classList.add('open');$('back').classList.add('open');lockScroll();
 fetchVerse(ref)}
 function fetchVerse(ref){var u=UI[L],box=$('vt');if(!box)return;box.textContent=u.ld;$('vs').textContent='';
 getVerse(ref,TR).then(function(t){if(!$('vt')||$('panel').dataset.ref!=ref)return;$('vt').textContent=t;
 $('vs').textContent=ref+' · '+({web:'World English Bible',kjv:'King James Version',cuv:'Chinese Union Version (和合本)',rv:'Reina-Valera 1909'}[TR]||TR)})
 .catch(function(){if($('vt'))$('vt').textContent=u.err})}
-function closeVerse(){$('panel').classList.remove('open');$('back').classList.remove('open')}
+var LOCKY=null;
+function lockScroll(){if(LOCKY!==null)return;LOCKY=window.scrollY;var b=document.body;b.style.position='fixed';b.style.top=(-LOCKY)+'px';b.style.left='0';b.style.right='0';b.style.width='100%';b.dataset.lock='1'}
+function unlockScroll(){if(LOCKY===null)return;var y=LOCKY,b=document.body;LOCKY=null;b.style.position='';b.style.top='';b.style.left='';b.style.right='';b.style.width='';delete b.dataset.lock;var h=document.documentElement,sb=h.style.scrollBehavior;h.style.scrollBehavior='auto';window.scrollTo(0,y);h.style.scrollBehavior=sb}
+function closeVerse(){var was=$('panel').classList.contains('open');$('panel').classList.remove('open');$('back').classList.remove('open');if(was)unlockScroll()}
 
 /* ---------- views ---------- */
 var RN=['I','II','III','IV','V','VI','VII'];
@@ -1213,6 +1230,7 @@ if(b&&GTR[tr]){var c=+m[2],a=m[3]?+m[3]:1,e=m[4]?+m[4]:(m[3]?+m[3]:999);
 p=gbChapter(GTR[tr],b,c).then(function(j){var vs=(j.verses||[]).filter(function(v){return v.verse>=a&&v.verse<=e});if(!vs.length)throw 0;
 return cleanV(vs.map(function(v){return(e>a?v.verse+' ':'')+String(v.text).trim()}).join(' '))})}
 else p=Promise.reject(0);
+if(b){var c2=+m[2],a2=m[3]?+m[3]:1,e2=m[4]?+m[4]:(m[3]?+m[3]:999),net=p;net.catch(function(){});p=loadBible(tr).then(function(d){var ch=d.b[b-1]&&d.b[b-1][c2-1];if(!ch)throw 0;var vs=[];for(var v=a2;v<=Math.min(e2,ch.length);v++)if(ch[v-1])vs.push((e2>a2?v+' ':'')+ch[v-1]);if(!vs.length)throw 0;return cleanV(vs.join(' '))}).catch(function(){return net})}
 vCache[k]=p.catch(function(){return tr=='rv'?getVerse(ref,'web'):bibleApi(ref,tr)}).catch(function(e){delete vCache[k];throw e});
 return vCache[k]}
 function typeIn(el,t){if(el._tt)clearInterval(el._tt);var still=false;try{still=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
@@ -1274,11 +1292,11 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-tp]'),function(b){
 box.innerHTML='<span class=lbl>'+ce(t.t,i)+'</span>'+t.r.map(function(r){return'<button data-v="'+esc(r)+'"><b>'+esc(r)+'</b><span data-fill="'+esc(r)+'" class=ld>'+UI[L].ld+'</span></button>'}).join('');fillVerses()}
 function sideSearch(q){var u=UI[L],box=$('srr');if(!box)return;q=String(q).trim();if(!q)return;
 box.innerHTML='<p class=hint>'+u.ld+'</p>';
-if(REF.test(q)){openVerse(q);return}
+var rq=anyRef(q);if(rq){box.innerHTML='';openVerse(rq);return}
 var hits=topicHits(q),i=li[L];
 var local=hits.length?'<p class=hint>'+u.topic+'</p>'+hits.slice(0,4).map(function(t){
 return'<button data-v="'+t.r[0]+'"><b>'+ce(t.t,i)+'</b>'+t.r.join(' · ')+'</button>'}).join(''):'';
-if(!haveApi()||!BIB){box.innerHTML=local||('<p class=hint>'+u.none+'</p>');return}
+fullText(box,q,local);return;
 var term=cleanQ(q);
 abGet('/bibles/'+BIB+'/search?limit=12&sort=relevance&query='+encodeURIComponent(term))
 .then(function(j){var d=j.data||{},rows=[];
@@ -1895,9 +1913,9 @@ var b='<form class=ctf id=ctB novalidate><p class=ctint>'+ct(x.bIntro)+'</p><spa
 return'<div class=cthead><div><h4>'+ct(x.title)+'</h4></div><button class=ctx id=ctclose aria-label="'+esc(ct(x.close))+'">✕</button></div>'
 +'<div class=cttabs role=tablist>'+x.tabs.map(function(t,k){return'<button role=tab aria-selected="'+(CTAB==k)+'" class="'+(CTAB==k?'on':'')+'" data-ctab="'+k+'">'+(k?ICO('people'):ICO('olive'))+'<span>'+ct(t)+'</span></button>'}).join('')+'</div>'
 +'<div class=ctbody>'+(CTAB==0?p:b)+info+'</div>'}
-function openContact(tab){if(tab!=null)CTAB=tab;CSENT=null;var c=$('ctp');c.innerHTML=ctForm();c.classList.add('open');$('ctback').classList.add('open');document.body.style.overflow='hidden';
+function openContact(tab){if(tab!=null)CTAB=tab;CSENT=null;var c=$('ctp');c.innerHTML=ctForm();c.classList.add('open');$('ctback').classList.add('open');lockScroll();
 setTimeout(function(){var f=c.querySelector('textarea,input:not(.hp)');if(f&&window.innerWidth>700)f.focus()},60)}
-function closeContact(){var c=$('ctp');if(!c)return;c.classList.remove('open');$('ctback').classList.remove('open');document.body.style.overflow=''}
+function closeContact(){var c=$('ctp');if(!c)return;var was=c.classList.contains('open');c.classList.remove('open');$('ctback').classList.remove('open');if(was)unlockScroll()}
 function calLinks(k){var d=nextDate(CTX.days[k][1]),p=function(n){return(n<10?'0':'')+n},ds=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate());
 var title=ct('Bible study|查经|Estudio bíblico')+' · Yeshua Died for You';
 var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+ds+'T193000/'+ds+'T214000&ctz=America/New_York&location='+encodeURIComponent(CT_ADDR)+'&recur='+encodeURIComponent('RRULE:FREQ=WEEKLY');
@@ -1948,7 +1966,7 @@ document.addEventListener('click',function(e){var t=e.target;if(!t.closest)retur
 if(t.closest('#mm')){var o=tl.classList.toggle('open');m.setAttribute('aria-expanded',o);return}
 if(tl.classList.contains('open')&&(!t.closest('#tools')||t.closest('[data-l],#sb,#kb'))){tl.classList.remove('open');m.setAttribute('aria-expanded','false')}},true);
 (function(){var last=0;window.addEventListener('scroll',function(){var y=window.scrollY,top=document.querySelector('.top');if(!top)return;
-if(window.innerWidth>700||document.body.style.overflow=='hidden'){top.classList.remove('hid');last=y;return}
+if(window.innerWidth>700||document.body.dataset.lock){top.classList.remove('hid');last=y;return}
 if(y>last+8&&y>160){top.classList.add('hid');var tl=$('tools');if(tl)tl.classList.remove('open')}else if(y<last-8||y<80)top.classList.remove('hid');last=y},{passive:true})})();
 (function(){var x0=0,y0=0,t0=0,ok=false;
 document.addEventListener('touchstart',function(e){if(e.touches.length!=1){ok=false;return}var t=e.target;
@@ -1956,6 +1974,54 @@ ok=S>=0&&S<7&&!(t.closest&&t.closest('svg,.vframe,input,textarea,select,.steps,.
 document.addEventListener('touchend',function(e){if(!ok)return;ok=false;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;
 if(Date.now()-t0<600&&Math.abs(dx)>80&&Math.abs(dy)<Math.abs(dx)*.45){if(dx<0&&S<6)G(S+1);else if(dx>0)G(S-1)}},{passive:true})})();
 document.addEventListener('focusin',function(e){var t=e.target;if(t.closest&&t.closest('#ctp')&&/INPUT|TEXTAREA|SELECT/.test(t.tagName)&&window.innerWidth<700)setTimeout(function(){try{t.scrollIntoView({block:'center',behavior:'smooth'})}catch(x){}},300)});
+
+
+/* ================= full-text Bible search (built-in WEB / 和合本 / RV1909) ================= */
+var FB={},FBP={};
+function loadBible(tr){if(FB[tr])return Promise.resolve(FB[tr]);
+if(!FBP[tr])FBP[tr]=fetch('bible-'+tr+'.json').then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){FB[tr]=d;return d}).catch(function(e){delete FBP[tr];throw e});return FBP[tr]}
+var ACC={a:'[aáàâä]',e:'[eéèêë]',i:'[iíìîï]',o:'[oóòôö]',u:'[uúùûü]',n:'[nñ]'};
+function termRx(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/[aeioun]/gi,function(c){return ACC[c.toLowerCase()]||c})}
+function makeMatcher(q,tr){q=String(q).trim();var phrase=/^".+"$/.test(q);q=q.replace(/^"|"$/g,'').trim();
+if(tr=='cuv'||/[\u4e00-\u9fff]/.test(q)){var terms=phrase?[q]:q.split(/\s+/).filter(Boolean);
+return{test:function(t){for(var k=0;k<terms.length;k++)if(t.indexOf(terms[k])<0)return false;return true},
+mark:function(t){var h=esc(t);terms.forEach(function(x){h=h.split(esc(x)).join('<mark>'+esc(x)+'</mark>')});return h}}}
+var parts=phrase?[q]:q.split(/\s+/).filter(Boolean);
+var rxs=parts.map(function(p){return new RegExp('(^|[^\\p{L}\\p{N}])('+termRx(p).replace(/\s+/g,'\\s+')+')','iu')});
+var all=new RegExp('(^|[^\\p{L}\\p{N}])('+parts.map(function(p){return termRx(p).replace(/\s+/g,'\\s+')}).join('|')+')','giu');
+return{test:function(t){for(var k=0;k<rxs.length;k++)if(!rxs[k].test(t))return false;return true},
+mark:function(t){return esc(t).replace(all,'$1<mark>$2</mark>')}}}
+function searchBible(d,q,tr){var m=makeMatcher(q,tr),hits=[];
+for(var b=0;b<d.b.length;b++){var bk=d.b[b];if(!bk)continue;for(var c=0;c<bk.length;c++){var ch=bk[c];if(!ch)continue;for(var v=0;v<ch.length;v++){var t=ch[v];if(t&&m.test(t))hits.push([b,c,v])}}}
+return{hits:hits,m:m}}
+var FTS={};
+var FTX={
+loading:'Searching the whole Bible…|正在搜索整本圣经……|Buscando en toda la Biblia…',
+found:'%n verses contain “%q”|%n 节经文包含“%q”|%n versículos contienen «%q»',
+none:'No verses contain “%q”. Try a shorter word, or check the spelling.|没有经文包含“%q”。试试更短的词，或检查拼写。|Ningún versículo contiene «%q». Prueba una palabra más corta o revisa la ortografía.',
+all:'All|全部|Todo',ot:'Old Testament|旧约|Antiguo Testamento',nt:'New Testament|新约|Nuevo Testamento',
+more:'Show more|显示更多|Ver más',tip:'Tip: use quotes for an exact phrase, e.g. "follow me".|提示：用引号搜索完整短语，例如 "跟从我"。|Consejo: usa comillas para una frase exacta, p. ej. "sígueme".',
+fail:'The full-Bible search isn’t available here. It works on the published site.|此处无法使用整本圣经搜索；在正式网站上可以使用。|La búsqueda en toda la Biblia no está disponible aquí. Funciona en el sitio publicado.',
+tr:{web:'World English Bible',cuv:'和合本',rv:'Reina-Valera 1909'}};
+function ftRender(box){var st=FTS[box.id];if(!st||!box.isConnected)return;var i=li[L],d=st.d,list=st.hits.filter(function(h){return st.scope=='all'||(st.scope=='ot'?h[0]<39:h[0]>=39)});
+var ot=st.hits.filter(function(h){return h[0]<39}).length,nt=st.hits.length-ot;
+var head='<p class=ftc>'+ce(FTX.found,i).replace('%n','<b>'+st.hits.length.toLocaleString()+'</b>').replace('%q',esc(st.q))+' · '+FTX.tr[st.tr]+'</p>'
++'<div class=ftsc>'+[['all',ce(FTX.all,i),st.hits.length],['ot',ce(FTX.ot,i),ot],['nt',ce(FTX.nt,i),nt]].map(function(x){return'<button data-fsc="'+x[0]+'" class="'+(st.scope==x[0]?'on':'')+'">'+x[1]+' <i>'+x[2]+'</i></button>'}).join('')+'</div>';
+var rows=list.slice(0,st.shown).map(function(h){var ref=GB[h[0]]+' '+(h[1]+1)+':'+(h[2]+1),lab=(d.n[h[0]]||GB[h[0]])+' '+(h[1]+1)+':'+(h[2]+1);
+return'<button class=fth data-v="'+esc(ref)+'"><b>'+esc(lab)+'</b>'+st.m.mark(d.b[h[0]][h[1]][h[2]])+'</button>'}).join('');
+box.innerHTML=st.pre+head+rows+(list.length>st.shown?'<button class=ftmore data-fmore="'+box.id+'">'+ce(FTX.more,i)+' ('+(list.length-st.shown)+')</button>':'')+'<p class=hint>'+ce(FTX.tip,i)+'</p>'}
+function fullText(box,q,pre){var i=li[L],tr=vtrans();box.innerHTML=(pre||'')+'<p class=hint>'+ce(FTX.loading,i)+'</p>';
+loadBible(tr).then(function(d){if(!box.isConnected)return;var r=searchBible(d,q,tr);
+if(!r.hits.length){box.innerHTML=(pre||'')+'<p class=hint>'+ce(FTX.none,i).replace('%q',esc(q))+'</p>';return}
+FTS[box.id]={d:d,q:q,tr:tr,hits:r.hits,m:r.m,scope:'all',shown:25,pre:pre||''};ftRender(box)})
+.catch(function(){if(box.isConnected)box.innerHTML=(pre||'')+'<p class=hint>'+ce(FTX.fail,i)+'</p>'})}
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
+if(b=t.closest('[data-fsc]')){var box=b.closest('.res');if(box&&FTS[box.id]){FTS[box.id].scope=b.dataset.fsc;FTS[box.id].shown=25;ftRender(box)}return}
+if(b=t.closest('[data-fmore]')){var bx=$(b.dataset.fmore);if(bx&&FTS[bx.id]){FTS[bx.id].shown+=25;ftRender(bx)}return}});
+/* a reference typed in Chinese (e.g. 约3:16) or any language */
+function anyRef(q){q=String(q).trim();var m=/^([\u4e00-\u9fff]{1,8})\s*(\d{1,3})\s*[:：]\s*(\d{1,3})(?:\s*[-–]\s*(\d{1,3}))?$/.exec(q);
+if(m){var bn=zhBook(m[1]);return bn?GB[bn-1]+' '+m[2]+':'+m[3]+(m[4]?'-'+m[4]:''):''}
+if(REF.test(q))return canonRef(q);return''}
 
 function R(){var u=UI[L],i=li[L];paint();renderSidebar();if($('cu'))$('cu').querySelector('span').textContent=ct(CTX.btn);
 document.documentElement.lang=L=='zh'?'zh-CN':L;document.title=u.t;
@@ -1974,7 +2040,7 @@ window.addEventListener('popstate',function(){var m=/^#s([1-7])$/.exec(location.
 document.addEventListener('change',function(e){if(e.target.id=='bi'){BIB=e.target.value;saveKey()}});
 document.addEventListener('click',function(e){var t=e.target,b=t.closest&&t.closest('[data-g],[data-l],[data-v],[data-q],[data-tr],[data-open]');
 if(t.id=='back'||t.id=='px'){closeVerse();return}
-if(t.id=='sb'){if(window.innerWidth>=900){var sd=$('side');if(sd){sd.scrollIntoView({behavior:'smooth'});var sq=$('sqi');if(sq)sq.focus()}}else{openSearch('')}return}
+if(t.id=='sb'||(t.closest&&t.closest('#sb'))){var sd=$('side'),sq=$('sqi');if(sd&&sq&&window.innerWidth>=960){var rr=sd.getBoundingClientRect();if(rr.top<window.innerHeight&&rr.bottom>0){try{sq.focus({preventScroll:true})}catch(x){sq.focus()}sd.classList.remove('pulse');void sd.offsetWidth;sd.classList.add('pulse');return}}openSearch('');return}
 if(t.id=='kb'){openSettings();return}
 if(t.id=='fz'){var Z=[.9,1,1.12,1.25];FZ=Z[(Z.indexOf(FZ)+1)%Z.length]||1;try{localStorage.setItem('gz',FZ)}catch(x){}applyPrefs();return}
 if(t.id=='th'){TH=TH==''?(dark()?'light':'dark'):(TH=='dark'?'light':'dark');try{localStorage.setItem('gt',TH)}catch(x){}applyPrefs();R();return}
