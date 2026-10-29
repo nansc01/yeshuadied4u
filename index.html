@@ -808,7 +808,7 @@ button,a,[data-v],.flip,label,summary{-webkit-tap-highlight-color:transparent;to
 
 
 /* ===== Stage II ===== */
-.lzw .vtag,.whw .vtag{top:10px;bottom:auto}
+.lzw .vtag{top:10px;bottom:auto}
 @container (max-width:560px){.lzt{font-size:20px}.lzm text{font-size:18px}.whz text{font-size:17px}.mct{font-size:19px}.fac text{font-size:14px}}
 .mcw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center}
 @container (max-width:680px){.mcw{grid-template-columns:1fr}}
@@ -889,12 +889,16 @@ button,a,[data-v],.flip,label,summary{-webkit-tap-highlight-color:transparent;to
 @container (max-width:640px){.whg{grid-template-columns:1fr}}
 .whg .whd{margin-top:0}
 .wh{display:block;width:100%;height:auto}
-.whz circle,.whz ellipse{fill:#c4a87a;stroke:#e8d5ad;stroke-width:2;transition:filter .4s,fill .4s;cursor:pointer}
+.whz path,.whz circle,.whz ellipse{fill:#c4a87a;stroke:#e8d5ad;stroke-width:2;transition:filter .4s,fill .4s;cursor:pointer}
 .whz.u circle{fill:#2a2f5e;stroke:#4a5290;cursor:default}
 .whz.d ellipse{fill:#5a1f2e;stroke:#a0404f}
 .whz text{text-anchor:middle;font:700 13px var(--f-body);fill:#1b1606;pointer-events:none}
 .whz.u text,.whz.d text{fill:#e7e9fb}
-.whz.act circle,.whz.act ellipse{filter:drop-shadow(0 0 14px #f3d58a)}
+.whz .wsub{font:600 10px var(--f-body);fill:#5a4520}
+.wdiv{stroke:#5a4520;stroke-width:2.5;stroke-dasharray:5 6;pointer-events:none}
+.wtop{text-anchor:middle;font:600 11px var(--f-body);fill:#e8d5ad;pointer-events:none}
+@container (max-width:560px){.whz .wsub{font-size:13px}.wtop{font-size:13px}}
+.whz.act path,.whz.act circle,.whz.act ellipse{filter:drop-shadow(0 0 14px #f3d58a)}
 /* resurrection */
 .rsdef{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:18px;background:linear-gradient(160deg,var(--night2),var(--night));color:#fff}
 .rsdef .icw{margin:0;background:rgba(243,213,138,.15);color:var(--gold2)}
@@ -2314,14 +2318,15 @@ var WH=[{w:'OT believers|旧约的信徒|Creyentes del AT',p:'ab',t:'Abraham’s
 {w:'Unclean spirits|污鬼|Espíritus inmundos',p:'ay',t:'The Abyss|无底坑|El abismo',d:'The demons begged Jesus not to send them into the Abyss.|污鬼央求耶稣，不要吩咐它们到无底坑里去。|Los demonios rogaron a Jesús que no los mandara al abismo.',r:'Luke 8:31'}];
 function renderWhere(){
 var svg='<svg class=wh viewBox="0 0 520 360" role=img aria-label="'+esc(T2('Where do people go after death?|人死后去哪里？|¿Adónde van las personas al morir?'))+'">'
-+'<g class=whz data-wp="ab"><circle cx=170 cy=96 r=66 /><text x=170 y=100>'+esc(T2('Abraham’s side|亚伯拉罕的怀里|Seno de Abraham'))+'</text></g>'
-+'<g class=whz data-wp="pa"><circle cx=360 cy=96 r=66 /><text x=360 y=100>'+esc(T2('Paradise|乐园|Paraíso'))+'</text></g>'
++'<g class=whz data-wp="ab"><path d="M265 30 H180 A85 66 0 0 0 180 162 H265 Z"/><text x=208 y=92>'+esc(T2('Abraham’s side|亚伯拉罕的怀里|Seno de Abraham'))+'</text><text class=wsub x=208 y=112>'+esc(T2('Old Testament|旧约|Antiguo Testamento'))+'</text></g>'
++'<g class=whz data-wp="pa"><path d="M265 30 H350 A85 66 0 0 1 350 162 H265 Z"/><text x=322 y=92>'+esc(T2('Paradise|乐园|Paraíso'))+'</text><text class=wsub x=322 y=112>'+esc(T2('New Testament|新约|Nuevo Testamento'))+'</text></g>'
++'<line class=wdiv x1=265 y1=34 x2=265 y2=158 /><text class=wtop x=265 y=22>'+esc(T2('The same place: the spirits of believers|同一个地方：信徒的灵所在|El mismo lugar: los espíritus de los creyentes'))+'</text>'
 +'<g class="whz u"><circle cx=265 cy=236 r=118 /><text x=265 y=176>'+esc(T2('Universe|宇宙|Universo'))+'</text></g>'
 +'<g class="whz d" data-wp="hd"><ellipse cx=265 cy=258 rx=78 ry=36 /><text x=265 y=262>'+esc(T2('Hades|阴间|Hades'))+'</text></g>'
 +'<g class="whz d" data-wp="ay"><ellipse cx=265 cy=320 rx=46 ry=20 /><text x=265 y=324>'+esc(T2('Abyss|无底坑|Abismo'))+'</text></g>'
 +'<g id=whdot class=orb style="transform:translate(265px,200px)"><circle r=14 fill="#f3d58a" opacity=".5"/><circle r=6 fill="#fffaf0"/></g></svg>';
 return'<div class=whw><div class=whbtn>'+WH.map(function(x,n){return'<button data-wh="'+n+'">'+T2(x.w)+'</button>'}).join('')+'</div><div class=whg><div class=vframe>'+svg+'<span class=vtag>'+VXT().ill+'</span></div><div class=whd id=whd><p class=hint>'+T2('Pick who, and see where their spirit goes after death.|选择一类人，看看他们的灵死后去哪里。|Elige quién y mira adónde va su espíritu al morir.')+'</p></div></div></div>'}
-var WHP={ab:[170,96],pa:[360,96],hd:[265,258],ay:[265,320]};
+var WHP={ab:[208,62],pa:[322,62],hd:[265,258],ay:[265,320]};
 function setWhere(n){var x=WH[n],p=WHP[x.p];$('whdot').style.transform='translate('+p[0]+'px,'+p[1]+'px)';
 Array.prototype.forEach.call(document.querySelectorAll('[data-wp]'),function(g){g.classList.toggle('act',g.dataset.wp==x.p)});
 Array.prototype.forEach.call(document.querySelectorAll('[data-wh]'),function(b){b.classList.toggle('on',+b.dataset.wh==n)});
