@@ -1315,6 +1315,38 @@ background:radial-gradient(400px 260px at 15% 85%,rgba(110,60,180,.9),transparen
 .yal blockquote{border:0;font:500 1.15rem/1.5 var(--f-body);font-style:normal;max-width:36em}
 .yal .vchip{background:rgba(255,255,255,.18);color:#fff}.yal .helc{justify-content:center}.yal .helc .pri{background:#fff;color:#a8243a;border:0}
 
+/* ===== notebook ===== */
+.nbb{position:fixed;z-index:55;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:12px 18px 12px 14px;border-radius:999px;border:0;
+background:linear-gradient(160deg,var(--night2),var(--night));color:#fff;font-weight:700;font-size:.92rem;box-shadow:0 14px 30px -10px rgba(10,12,40,.6)}
+.nbb svg{width:20px;height:20px;color:var(--gold2)}
+.nbb i{display:grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--gold2);color:#1b1606;font-style:normal;font-size:.75rem}
+.nbb i[hidden]{display:none}
+.nbb:hover{transform:translateY(-2px)}
+@media(max-width:520px){.nbb span{display:none}.nbb{padding:14px}}
+.nbp .nsub{margin:6px 0 0;font-size:.84rem;color:#c6c9e6}
+.nbody{padding:18px 22px}
+.ncomp{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:18px;background:var(--soft);border:1px solid var(--ln)}
+.ncomp textarea{width:100%;border-radius:12px;background:var(--card);font:1rem/1.5 var(--f-body);padding:12px;min-height:96px;resize:vertical}
+.ncr{display:flex;justify-content:space-between;align-items:center;gap:8px}.ncr small{color:var(--mut);font-weight:600}
+.ncr .pri{border-radius:999px;padding:10px 18px;font-weight:700;background:var(--ac);color:var(--on);border:0;min-height:44px}
+.ndq{position:relative;padding:10px 34px 10px 12px;border-radius:12px;background:var(--card);border-left:3px solid var(--gold)}
+.ndq small{font:600 .62rem/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.ndq blockquote,.nnt blockquote{margin:4px 0 0;font:italic 500 1rem/1.45 var(--f-display)}
+.ndq b,.nnt blockquote b{font:700 .74rem/1 var(--f-body);font-style:normal;color:var(--ac)}
+.ndx{position:absolute;right:6px;top:6px;width:28px;height:28px;padding:0;border-radius:50%;font-size:.8rem}
+.nfl{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 10px}.nfl button{border-radius:999px;padding:5px 12px;font-size:.8rem;font-weight:700}.nfl button.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.nls{display:grid;gap:10px}
+.nnt{padding:12px 14px;border-radius:14px;border:1px solid var(--ln);background:var(--card)}
+.nnt.new{animation:rise .4s both;border-color:var(--ac)}
+.nnh{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.nnh small{font:600 .66rem/1.2 var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
+.nnh button{border:0;background:none;padding:4px 6px;font-size:.78rem;color:var(--mut);font-weight:600}.nnh button.warnb{color:#c2344d}
+.nnt p{margin:6px 0 0;white-space:pre-wrap}.nnt textarea{width:100%;margin-top:6px;border-radius:10px;padding:8px;font:inherit}
+.nex{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.nex button{border-radius:999px;padding:9px 14px;font-weight:700;font-size:.86rem;min-height:42px}
+.nsel{position:fixed;z-index:70;border:0;border-radius:999px;padding:9px 14px;font-weight:700;font-size:.86rem;background:var(--night);color:var(--gold2);box-shadow:0 10px 26px -8px rgba(0,0,0,.5);animation:fd .15s}
+.nsel[hidden]{display:none}
+.vnote{margin-top:10px;border-radius:999px;padding:9px 14px;font-weight:700;background:var(--night);color:var(--gold2);border:0;min-height:42px}
+
 /* reader settings */
 .mini.ic{min-width:38px}
 
@@ -1681,7 +1713,7 @@ function openVerse(ref){var u=UI[L];
 $('panel').innerHTML='<button class="x" id="px">✕</button><h4>'+esc(ref)+'</h4>'
 +'<div class=tgl>'+[['web','WEB'],['cuv','和合本'],['rv','RV1909']].map(function(x){return'<button data-tr='+x[0]+' class="'+(TR==x[0]?'on':'')+'">'+x[1]+'</button>'}).join('')+'</div>'
 +'<div class=vtext id=vt>'+u.ld+'</div><p class=vsrc id=vs></p>'
-+'<div class=vlinks>'+LINKS[L].map(function(p){return'<a href="'+bg(ref,p[0])+'" target=_blank rel=noopener>'+u.open+' '+p[1]+' ↗</a>'}).join('')+'</div>'
++'<button class=vnote data-nsv=1>'+nx(NX.verse)+'</button>'+'<div class=vlinks>'+LINKS[L].map(function(p){return'<a href="'+bg(ref,p[0])+'" target=_blank rel=noopener>'+u.open+' '+p[1]+' ↗</a>'}).join('')+'</div>'
 +'<p class=hint>'+u.note+'</p>';
 $('panel').dataset.ref=ref;$('panel').classList.add('open');$('back').classList.add('open');lockScroll();
 fetchVerse(ref)}
@@ -2354,14 +2386,11 @@ function memHide(more){var ws=Array.prototype.slice.call(document.querySelectorA
 var vis=ws.filter(function(w){return!w.classList.contains('h')});for(var k=0;k<Math.max(1,Math.ceil(ws.length/4))&&vis.length;k++){var j=Math.floor(Math.random()*vis.length);vis[j].classList.add('h');vis.splice(j,1)}}
 function journal(){var v=(LJ.notes||{})[S]||'';return'<div class=lt><h4>'+lt(LV.ref)+'</h4><p class=jq>'+lt(PROMPT[S])+' '+vchip(PREF[S])+'</p><textarea id=jn rows=4 placeholder="'+esc(lt(LV.ph))+'">'+esc(v)+'</textarea><small class=jsv id=jsv></small></div>'}
 function live(i){var T=[tool0,tool1,tool2,tool3,tool4,tool5,tool6][S];
-return'<section class="live"><div class=lvh><span class=icw>'+ICO('sprout')+'</span><div><h3>'+lt(LV.head)+'</h3><p>'+lt(LV.sub)+'</p></div></div><div class=ltg>'+T()+memo()+journal()+'</div></section>'}
+return'<section class="live"><div class=lvh><span class=icw>'+ICO('sprout')+'</span><div><h3>'+lt(LV.head)+'</h3><p>'+lt(LV.sub)+'</p></div></div><div class=ltg>'+T()+memo()+'</div></section>'}
 function liveInit(){memFill();if(S==0)sortScore();if(S==2)setLens(3);if(S==5)showBel()}
 
 /* overview: my notes */
-function myNotes(){var n=LJ.notes||{},keys=Object.keys(n).filter(function(k){return n[k]&&n[k].trim()});
-return'<section class="live"><div class=lvh><span class=icw>'+ICO('scroll')+'</span><div><h3>'+lt(LV.notes)+'</h3><p>'+lt(LV.notesSub)+'</p></div></div>'
-+(keys.length?'<div class=nts>'+keys.sort().map(function(k){return'<div class=nt><small>'+RN[k]+' · '+D[k][li[L]]+'</small><p>'+esc(n[k])+'</p><button class=vchip data-g="'+k+'">'+RN[k]+' →</button></div>'}).join('')+'</div><button class="pri cpy" data-cpy="notes">'+lt(LV.copyAll)+'</button>':'<p class=hint>'+lt(LV.none)+'</p>')
-+' <button class=lclear data-lclear=1>'+lt(LV.clear)+'</button></section>'}
+function myNotes(){return'<section class="live"><div class=lvh><span class=icw>'+ICO('scroll')+'</span><div><h3>'+lt(LV.notes)+'</h3><p>'+nx(NX.sub)+'</p></div></div><div class=nls>'+nList()+'</div><div class=nex><button class=pri data-nopen=1>'+nx(NX.btn)+' →</button></div> <button class=lclear data-lclear=1>'+lt(LV.clear)+'</button></section>'}
 function notesText(){var n=LJ.notes||{};return Object.keys(n).sort().filter(function(k){return n[k]&&n[k].trim()}).map(function(k){return RN[k]+'. '+D[k][li[L]]+'\n'+lt(PROMPT[k])+'\n'+n[k]}).join('\n\n')}
 
 function copyText(t,btn){var done=function(){var o=btn.textContent;btn.textContent=lt(LV.copied);setTimeout(function(){btn.textContent=o},1600)};
@@ -3008,7 +3037,66 @@ if(t.closest('[data-mty]')){mtAdd();return}
 if(t.closest('[data-mtj]')){document.querySelector('.mtw').classList.add('end');fillVerses();return}
 if(b=t.closest('[data-alg]')){b.closest('[data-al]').classList.add('go');return}});
 
-function R(){var u=UI[L],i=li[L];paint();renderSidebar();if($('cu'))$('cu').querySelector('span').textContent=ct(CTX.btn);
+/* ================= My notes: a notebook across the whole site ================= */
+var NX={btn:'My notes|我的笔记|Mis notas',title:'My notebook|我的笔记本|Mi cuaderno',sub:'Saved on this device only. Download or email them to keep a copy.|只保存在这台设备上；可下载或发邮件给自己保存一份。|Se guardan solo en este dispositivo. Descárgalas o envíatelas por correo para tener una copia.',
+ph:'Write a note…|写下笔记……|Escribe una nota…',add:'Save note|保存笔记|Guardar nota',none:'No notes yet. Write one above, or select any text on the page and tap “Save to notes”.|还没有笔记。在上面写一则，或在页面上选取任何文字，点按“存入笔记”。|Aún no hay notas. Escribe una arriba, o selecciona cualquier texto de la página y toca «Guardar en notas».',
+sel:'✎ Save to notes|✎ 存入笔记|✎ Guardar en notas',verse:'✎ Save to my notes|✎ 存入我的笔记|✎ Guardar en mis notas',home:'Home|首页|Inicio',
+copy:'Copy all|全部复制|Copiar todo',dl:'Download .txt|下载 .txt|Descargar .txt',mail:'Email to myself|发邮件给自己|Enviar a mi correo',del:'Delete|删除|Borrar',sure:'Tap again to delete|再点一次删除|Toca otra vez para borrar',
+all:'All|全部|Todas',quote:'Quote|引用|Cita',edit:'Edit|编辑|Editar',done:'Done|完成|Listo',saved:'Saved ✓|已保存 ✓|Guardado ✓',close:'Close|关闭|Cerrar'};
+function nx(s){return ce(s,li[L])}
+var NOTES=[];try{NOTES=JSON.parse(localStorage.getItem('gn')||'[]')}catch(e){}
+(function(){try{if(!localStorage.getItem('gn')&&LJ.notes){Object.keys(LJ.notes).forEach(function(k){var v=LJ.notes[k];if(v&&v.trim())NOTES.push({id:Date.now()+'-'+k,t:Date.now(),s:+k,txt:v,q:''})});nSave()}}catch(e){}})();
+function nSave(){try{localStorage.setItem('gn',JSON.stringify(NOTES))}catch(e){}nBadge()}
+var NDRAFT={q:'',ref:''},NFIL='all';
+function stName(s){return s>=0&&s<7?RN[s]+' · '+D[s][li[L]]:nx(NX.home)}
+function nBadge(){var b=$('nbb');if(b){b.querySelector('i').textContent=NOTES.length;b.querySelector('i').hidden=!NOTES.length;b.querySelector('span').textContent=nx(NX.btn)}}
+function nList(){var arr=NOTES.slice().reverse().filter(function(n){return NFIL=='all'||String(n.s)==NFIL});
+if(!arr.length)return'<p class=hint>'+nx(NX.none)+'</p>';
+return arr.map(function(n){var d=new Date(n.t);return'<div class=nnt data-nid="'+n.id+'"><div class=nnh><small>'+esc(stName(n.s))+' · '+d.toLocaleDateString()+'</small><span><button data-ned="'+n.id+'">'+nx(NX.edit)+'</button><button data-ndel="'+n.id+'">'+nx(NX.del)+'</button></span></div>'
++(n.q?'<blockquote>'+esc(n.q)+(n.ref?' <b data-v="'+esc(n.ref)+'">'+esc(n.ref)+'</b>':'')+'</blockquote>':'')+(n.txt?'<p>'+esc(n.txt)+'</p>':'')+'</div>'}).join('')}
+function nRender(){var p=$('nbp');if(!p)return;var used={};NOTES.forEach(function(n){used[n.s]=1});
+p.innerHTML='<div class=cthead><div><h4>'+nx(NX.title)+'</h4><p class=nsub>'+nx(NX.sub)+'</p></div><button class=ctx id=nbclose aria-label="'+esc(nx(NX.close))+'">✕</button></div>'
++'<div class=nbody><div class=ncomp>'+(NDRAFT.q?'<div class=ndq><small>'+nx(NX.quote)+'</small><blockquote>'+esc(NDRAFT.q)+(NDRAFT.ref?' <b>'+esc(NDRAFT.ref)+'</b>':'')+'</blockquote><button class=ndx data-ndx=1>✕</button></div>':'')
++'<textarea id=nta rows=4 placeholder="'+esc(nx(NX.ph))+'"></textarea><div class=ncr><small>'+esc(stName(S))+'</small><button class=pri data-nadd=1>'+nx(NX.add)+'</button></div></div>'
++'<div class=nfl><button data-nf="all" class="'+(NFIL=='all'?'on':'')+'">'+nx(NX.all)+' · '+NOTES.length+'</button>'+[-1,0,1,2,3,4,5,6].filter(function(k){return used[k]}).map(function(k){return'<button data-nf="'+k+'" class="'+(NFIL==String(k)?'on':'')+'">'+(k<0?nx(NX.home):RN[k])+'</button>'}).join('')+'</div>'
++'<div class=nls id=nls>'+nList()+'</div>'
++(NOTES.length?'<div class=nex><button data-nexp=copy>'+nx(NX.copy)+'</button><button data-nexp=dl>'+nx(NX.dl)+'</button><button data-nexp=mail>'+nx(NX.mail)+'</button></div>':'')+'</div>'}
+function nOpen(q,ref){if(q!=null)NDRAFT={q:q,ref:ref||''};nRender();$('nbp').classList.add('open');$('nbback').classList.add('open');lockScroll();
+setTimeout(function(){var t=$('nta');if(t&&window.innerWidth>700)t.focus({preventScroll:true})},80)}
+function nClose(){var p=$('nbp');if(!p||!p.classList.contains('open'))return;p.classList.remove('open');$('nbback').classList.remove('open');unlockScroll()}
+function nText(){return NOTES.map(function(n){return'['+stName(n.s)+' · '+new Date(n.t).toLocaleDateString()+']\n'+(n.q?'“'+n.q+'”'+(n.ref?' ('+n.ref+')':'')+'\n':'')+(n.txt||'')}).join('\n\n')}
+/* floating button, drawer, selection popup */
+(function(){var b=document.createElement('button');b.id='nbb';b.className='nbb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><span></span><i hidden></i>';document.body.appendChild(b);
+var k=document.createElement('div');k.className='ctback';k.id='nbback';document.body.appendChild(k);
+var p=document.createElement('div');p.className='ctp nbp';p.id='nbp';p.setAttribute('role','dialog');document.body.appendChild(p);
+var s=document.createElement('button');s.className='nsel';s.id='nsel';s.hidden=true;document.body.appendChild(s);nBadge()})();
+function selCheck(){var s=window.getSelection?window.getSelection():null,b=$('nsel');if(!b)return;var t=s&&String(s).replace(/\s+/g,' ').trim();
+if(!t||t.length<4||!s.rangeCount){b.hidden=true;return}var r=s.getRangeAt(0),c=r.commonAncestorContainer;c=c.nodeType==1?c:c.parentNode;
+if(!c.closest||!c.closest('#c,#panel')||c.closest('input,textarea,#nbp')){b.hidden=true;return}
+var rc=r.getBoundingClientRect();b.textContent=nx(NX.sel);b.dataset.nq=t.slice(0,600);var vr=c.closest('[data-fill],.vtext');b.dataset.nref=vr?(vr.dataset.fill||($('panel')&&$('panel').dataset.ref)||''):'';
+b.hidden=false;var top=rc.top-46;if(top<70)top=rc.bottom+8;b.style.top=Math.max(8,top)+'px';b.style.left=Math.min(window.innerWidth-b.offsetWidth-8,Math.max(8,rc.left+rc.width/2-b.offsetWidth/2))+'px'}
+document.addEventListener('selectionchange',function(){clearTimeout(window._nst);window._nst=setTimeout(selCheck,250)});
+window.addEventListener('scroll',function(){var b=$('nsel');if(b&&!b.hidden)selCheck()},{passive:true});
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
+if(t.closest('#nbb')||t.closest('[data-nopen]')){nOpen();return}
+if(b=t.closest('#nsel')){var q=b.dataset.nq,r=b.dataset.nref;b.hidden=true;try{window.getSelection().removeAllRanges()}catch(x){}if($('panel').classList.contains('open'))closeVerse();nOpen(q,r);return}
+if(t.id=='nbback'||t.closest('#nbclose')){nClose();return}
+if(b=t.closest('[data-nsv]')){var vt=$('vt');var ref=$('panel').dataset.ref;closeVerse();nOpen(vt?vt.textContent:'',ref);return}
+if(t.closest('[data-ndx]')){NDRAFT={q:'',ref:''};nRender();return}
+if(t.closest('[data-nadd]')){var ta=$('nta'),v=ta?ta.value.trim():'';if(!v&&!NDRAFT.q)return;NOTES.push({id:String(Date.now()),t:Date.now(),s:S==99?-1:S,q:NDRAFT.q,ref:NDRAFT.ref,txt:v});NDRAFT={q:'',ref:''};nSave();nRender();
+var n=$('nls');if(n&&n.firstChild&&n.firstChild.classList)n.firstChild.classList.add('new');return}
+if(b=t.closest('[data-nf]')){NFIL=b.dataset.nf;nRender();return}
+if(b=t.closest('[data-ndel]')){if(!b.dataset.arm){b.dataset.arm=1;b.textContent=nx(NX.sure);b.classList.add('warnb');return}NOTES=NOTES.filter(function(n){return n.id!=b.dataset.ndel});nSave();nRender();return}
+if(b=t.closest('[data-ned]')){var n2=NOTES.filter(function(n){return n.id==b.dataset.ned})[0],box=b.closest('.nnt');if(!n2||!box)return;
+var ex=box.querySelector('textarea');if(ex){n2.txt=ex.value.trim();nSave();nRender();return}
+var p=box.querySelector('p');var ta2=document.createElement('textarea');ta2.value=n2.txt||'';ta2.rows=3;if(p)p.replaceWith(ta2);else box.appendChild(ta2);b.textContent=nx(NX.done);ta2.focus();return}
+if(b=t.closest('[data-nexp]')){var tx=nText(),k=b.dataset.nexp;
+if(k=='copy')copyText(tx,b);
+else if(k=='dl'){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([tx],{type:'text/plain;charset=utf-8'}));a.download='my-notes-yeshuadied4u.txt';document.body.appendChild(a);a.click();a.remove()}
+else location.href='mailto:?subject='+encodeURIComponent(nx(NX.title)+' · Yeshua Died for You')+'&body='+encodeURIComponent(tx.slice(0,1800));return}});
+document.addEventListener('keydown',function(e){if(e.key=='Escape')nClose()});
+
+function R(){var u=UI[L],i=li[L];paint();renderSidebar();nBadge();if($('cu'))$('cu').querySelector('span').textContent=ct(CTX.btn);
 document.documentElement.lang=L=='zh'?'zh-CN':L;document.title=u.t;
 $('bt').textContent=u.t;$('ft').textContent=u.ft;
 $('lang').innerHTML=[['en','EN'],['zh','中文'],['es','ES']].map(function(y){return'<button class="mini'+(y[0]==L?' on':'')+'" data-l="'+y[0]+'">'+y[1]+'</button>'}).join('');
