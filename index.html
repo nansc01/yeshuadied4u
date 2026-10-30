@@ -3139,6 +3139,11 @@ else if(k=='dl'){var a=document.createElement('a');a.href=URL.createObjectURL(ne
 else location.href='mailto:?subject='+encodeURIComponent(nx(NX.title)+' · Yeshua Died for You')+'&body='+encodeURIComponent(tx.slice(0,1800));return}});
 document.addEventListener('keydown',function(e){if(e.key=='Escape')nClose()});
 
+try{history.scrollRestoration='manual'}catch(e){}
+var TTU=0;['touchstart','wheel','keydown'].forEach(function(ev){window.addEventListener(ev,function(){TTU=Date.now()},{passive:true})});
+function toTop(){var t0=Date.now(),de=document.documentElement;try{document.activeElement&&document.activeElement.blur&&document.activeElement.blur()}catch(e){}
+function jump(){if(TTU>t0+50)return;var sb=de.style.scrollBehavior;de.style.scrollBehavior='auto';document.body.style.scrollBehavior='auto';try{window.scrollTo({top:0,left:0,behavior:'instant'})}catch(e){window.scrollTo(0,0)}de.scrollTop=0;document.body.scrollTop=0;de.style.scrollBehavior=sb;document.body.style.scrollBehavior=''}
+jump();requestAnimationFrame(function(){jump();requestAnimationFrame(jump)});[80,250,600].forEach(function(ms){setTimeout(jump,ms)})}
 function R(){var u=UI[L],i=li[L];paint();renderSidebar();nBadge();if($('cu'))$('cu').querySelector('span').textContent=ct(CTX.btn);
 document.documentElement.lang=L=='zh'?'zh-CN':L;document.title=u.t;
 $('bt').textContent=u.t;$('ft').textContent=u.ft;
@@ -3150,7 +3155,7 @@ var pv=S>0?'<button data-g="'+(S-1)+'" style="--tc:'+tc(S-1)+'"><small>'+u.pv+'<
 var nx=S<6?'<button class=next data-g="'+(S+1)+'" style="--tc:'+tc(S+1)+'"><small>'+u.nx+'</small><strong>'+D[S+1][i]+'</strong></button>':'<button class=next data-g=99 style="--tc:'+tc(6)+'"><small>'+u.done+'</small><strong>'+u.all+'</strong></button>';
 $('nav').innerHTML=pv+nx}
 else $('nav').innerHTML='';
-window.scrollTo(0,0);linkify($('c'));prog();fillVerses();reveal();if(S>=0&&S<7){visInit();liveInit();stage2Init();stage1Init();stage3Init();stage4Init()}if(S<0)startSky()}
+toTop();linkify($('c'));prog();fillVerses();reveal();if(S>=0&&S<7){visInit();liveInit();stage2Init();stage1Init();stage3Init();stage4Init()}if(S<0)startSky()}
 function G(n){S=n<-1?-1:(n>6&&n!=99?99:n);try{history.pushState({s:S},'',S<0?'#home':(S==99?'#all':'#s'+(S+1)))}catch(e){}R()}
 window.addEventListener('popstate',function(){var m=/^#s([1-7])$/.exec(location.hash);S=m?+m[1]-1:(location.hash=='#all'?99:-1);closeVerse();R()});
 document.addEventListener('change',function(e){if(e.target.id=='bi'){BIB=e.target.value;saveKey()}});
