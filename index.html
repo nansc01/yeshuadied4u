@@ -1284,12 +1284,28 @@ border-radius:46% 54% 42% 58% / 58% 46% 54% 42%;background:radial-gradient(circl
 .alp.dark i{background:#4a4a55}
 .alw.go .alp.lit i{background:#f3d58a;box-shadow:0 0 8px #f3d58a}
 .alw>.pri{border-radius:999px;padding:11px 20px;font-weight:700;background:var(--ac);color:var(--on);border:0;min-height:46px}
-.a4w{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:14px;align-items:center}
-@container (max-width:640px){.a4w{grid-template-columns:1fr}.tree{max-width:220px;margin:0 auto}}
-.tree{width:100%;border-radius:16px;display:block}
-.a4t{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.a4h{padding:10px 12px;border-radius:12px 12px 4px 4px;background:var(--soft);font:600 1.1rem/1.2 var(--f-display)}.a4h.j{background:var(--ac);color:var(--on)}
-.a4c{padding:10px 12px;border-radius:8px;border:1px solid var(--ln);font-size:.92rem}.a4c.j{background:color-mix(in srgb,var(--ac) 8%,var(--card));border-color:color-mix(in srgb,var(--ac) 25%,var(--ln))}
+.a4w{display:grid;grid-template-columns:1fr 44px 1fr;gap:10px 0;margin-bottom:14px}
+.a4h{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:22px;min-width:0}
+.a4h b{display:block;font:600 1.35rem/1.15 var(--f-display)}.a4h small{display:block;margin-top:4px;font:600 .68rem/1.2 var(--f-label);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.a4h.e{background:linear-gradient(160deg,#efe3d0,#dcc7a6);color:#4a3220}
+.a4h.j{background:radial-gradient(220px 140px at 20% 30%,rgba(243,213,138,.55),transparent 70%),linear-gradient(160deg,#b5782b,#8a5418);color:#fff}
+.a4i{flex:none;width:84px;height:56px}
+.a4m{display:grid;place-items:center;font:600 1.6rem/1 var(--f-display);color:var(--gold)}
+.a4dust circle{animation:a4dust 3s ease-in-out infinite;animation-delay:calc(var(--k)*.4s)}@keyframes a4dust{0%,100%{transform:none;opacity:.9}50%{transform:translateY(-6px);opacity:.3}}
+.a4ray{transform-origin:60px 38px;animation:a4ray 14s linear infinite}@keyframes a4ray{to{transform:rotate(360deg)}}
+.a4r{grid-column:1/-1;display:grid;grid-template-columns:1fr 44px 1fr;align-items:stretch;position:relative;padding-top:18px}
+.a4l{position:absolute;top:0;left:50%;transform:translateX(-50%);font:600 .64rem/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.a4c{display:flex;align-items:center;padding:12px 16px;border-radius:16px;font:500 1rem/1.4 var(--f-body);transition:transform .25s}
+.a4c.e{justify-content:flex-end;text-align:right;background:color-mix(in srgb,#b08a5e 14%,var(--card));border-right:3px solid #b08a5e}
+.a4c.j{background:color-mix(in srgb,var(--gold) 16%,var(--card));border-left:3px solid var(--gold);font-weight:600}
+.a4c .vref{display:inline;white-space:nowrap}
+.a4r:hover .a4c.e{transform:translateX(-3px)}.a4r:hover .a4c.j{transform:translateX(3px)}
+.a4x{position:relative;align-self:center;height:2px;margin:0 6px;background:linear-gradient(90deg,#b08a5e,var(--gold))}
+.a4x::after{content:'';position:absolute;right:-2px;top:-4px;border:5px solid transparent;border-left:7px solid var(--gold);border-right:0}
+.a4x::before{content:'';position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:a4go 2.4s ease-in-out infinite;animation-delay:calc(var(--k)*.3s)}
+@keyframes a4go{0%{left:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{left:calc(100% - 8px);opacity:0}}
+@container (max-width:600px){.a4w,.a4r{grid-template-columns:1fr 22px 1fr}.a4x{margin:0 3px}.a4c{padding:10px 11px;font-size:.88rem}.a4h{flex-direction:column;align-items:flex-start;padding:12px;gap:6px}.a4h b{font-size:1.05rem}.a4i{width:64px;height:42px}.a4m{font-size:1.1rem}}
+@media (prefers-reduced-motion:reduce){.a4dust circle,.a4ray,.a4x::before{animation:none}}
 .gm{padding:18px;border-radius:20px;background:linear-gradient(160deg,var(--night2),var(--night));color:#eef0ff;display:flex;flex-direction:column;gap:10px}
 .gmb{display:grid;grid-template-columns:70px 1fr 56px;gap:10px;align-items:center}.gmb span{font:600 1.1rem/1 var(--f-display)}.gmb b{font:700 1.2rem/1 var(--f-display);color:var(--gold2);text-align:right}
 .gmb i{height:16px;border-radius:999px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}.gmb i::after{content:"";position:absolute;inset:0;width:var(--w);background:linear-gradient(90deg,var(--gold),var(--gold2));animation:grow 1.4s ease-out both}
@@ -3017,9 +3033,14 @@ return'<div class=alw data-al><div class=alr><div class=alh><small>'+T4('One man
 +'<button class=pri data-alg=1>'+T4('Show the cross’s reach ✝|显明十字架的果效 ✝|Mostrar el alcance de la cruz ✝')+'</button><blockquote data-fill="Romans 5:18">…</blockquote>'+vchip('Romans 5:17-19')+'</div>'}
 
 /* 6. first Adam / last Adam + 100% God, 100% man */
-function renderAdam4(){var R=[['The “first man Adam”|“首先的人亚当”|El «primer hombre Adán»','The “last Adam”, “the second man” = Jesus|“末后的亚当”、“第二个人”＝耶稣|El «último Adán», «el segundo hombre» = Jesús'],['A “living being” (Gen 2:7)|“有灵的活人”（创2:7）|«Alma viviente» (Gn 2:7)','A “life-giving spirit”|“叫人活的灵”|«Espíritu vivificante»'],['Emerges from the flesh: a spirit that has flesh|从肉体而出：有肉体的灵|Surge de la carne: un espíritu que tiene carne','His flesh and blood = spirit and life|祂的肉和血＝灵与生命|Su carne y su sangre = espíritu y vida'],['“Of the earth”, “the natural”|“属土的”、“属血气的”|«De la tierra», «lo natural»','“The spiritual”, “from heaven”|“属灵的”、“从天上来的”|«Lo espiritual», «del cielo»']];
-var tree='<svg class=tree viewBox="0 0 200 200" aria-hidden=true><rect y=110 width=200 height=90 fill="#5a3d22"/><rect width=200 height=110 fill="#bfe0f0"/><path d="M100 110 V60" stroke="#5a3d22" stroke-width="10"/><circle cx=100 cy=52 r=40 fill="#3f8a4a"/><g fill="#c2344d">'+[[80,40],[110,30],[120,60],[90,66],[72,58],[104,48],[128,44]].map(function(p){return'<circle cx='+p[0]+' cy='+p[1]+' r=4 />'}).join('')+'</g><g stroke="#d9c4a2" stroke-width="2" fill=none>'+[[-50,40],[-30,70],[0,80],[30,72],[55,40],[-15,60],[15,58]].map(function(p){return'<path d="M100 112 q'+(p[0]/2)+' '+(p[1]/3)+' '+p[0]+' '+p[1]+'"/>'}).join('')+'</g></svg>';
-return'<div class=a4w><div class=a4t><div class="a4h">'+T4('First Adam|首先的亚当|Primer Adán')+'</div><div class="a4h j">'+T4('Last Adam: Jesus|末后的亚当：耶稣|Último Adán: Jesús')+'</div>'+R.map(function(r){return'<div class=a4c>'+T4(r[0])+'</div><div class="a4c j">'+T4(r[1])+'</div>'}).join('')+'</div>'+tree+'</div>'
+function renderAdam4(){var R=[['Who|是谁|Quién','The “first man Adam”|“首先的人亚当”|El «primer hombre Adán»','The “last Adam”, “the second man” = Jesus|“末后的亚当”、“第二个人”＝耶稣|El «último Adán», «el segundo hombre» = Jesús'],['Became|成了|Llegó a ser','A “living being” (Gen 2:7)|“有灵的活人”（创2:7）|«Alma viviente» (Gn 2:7)','A “life-giving spirit”|“叫人活的灵”|«Espíritu vivificante»'],['Flesh|肉体|Carne','Emerges from the flesh: a spirit that has flesh|从肉体而出：有肉体的灵|Surge de la carne: un espíritu que tiene carne','His flesh and blood = spirit and life|祂的肉和血＝灵与生命|Su carne y su sangre = espíritu y vida'],['Origin|来源|Origen','“Of the earth”, “the natural”|“属土的”、“属血气的”|«De la tierra», «lo natural»','“The spiritual”, “from heaven”|“属灵的”、“从天上来的”|«Lo espiritual», «del cielo»']];
+var fig='<circle cx=0 cy=-20 r=8 /><path d="M0 -11 V12 M-11 -2 H11 M0 12 L-8 28 M0 12 L8 28"/>';
+var e='<svg class=a4i viewBox="0 0 120 80" aria-hidden=true><path d="M0 70 Q30 52 60 62 T120 64 V80 H0Z" fill="#8a6440"/><g class=a4dust fill="#b08a5e">'+[[34,58],[46,52],[74,54],[86,60],[58,48]].map(function(p,k){return'<circle cx='+p[0]+' cy='+p[1]+' r=1.8 style="--k:'+k+'"/>'}).join('')+'</g><g transform="translate(60 34)" fill=none stroke="#6b4a2c" stroke-width=3 stroke-linecap=round>'+fig+'</g></svg>';
+var h='<svg class=a4i viewBox="0 0 120 80" aria-hidden=true><g class=a4ray stroke="#f3d58a" stroke-width=2 stroke-linecap=round>'+[0,30,60,90,120,150,180,210,240,270,300,330].map(function(a){var r=a*Math.PI/180;return'<line x1='+(60+Math.cos(r)*30).toFixed(1)+' y1='+(38+Math.sin(r)*30).toFixed(1)+' x2='+(60+Math.cos(r)*40).toFixed(1)+' y2='+(38+Math.sin(r)*40).toFixed(1)+' />'}).join('')+'</g><circle cx=60 cy=38 r=26 fill="#f3d58a" opacity=".25"/><g transform="translate(60 36)" fill=none stroke="#fff" stroke-width=3 stroke-linecap=round>'+fig+'</g></svg>';
+return'<div class=a4w><div class="a4h e">'+e+'<div><b>'+T4('First Adam|首先的亚当|Primer Adán')+'</b><small>'+T4('Made from dust|用尘土造的|Hecho del polvo')+'</small></div></div>'
++'<div class=a4m aria-hidden=true>→</div>'
++'<div class="a4h j">'+h+'<div><b>'+T4('Last Adam: Jesus|末后的亚当：耶稣|Último Adán: Jesús')+'</b><small>'+T4('The Lord from heaven|从天上来的主|El Señor del cielo')+'</small></div></div>'
++R.map(function(r,k){return'<div class=a4r style="--k:'+k+'"><span class=a4l>'+T4(r[0])+'</span><div class="a4c e"><span>'+T4(r[1])+'</span></div><i class=a4x aria-hidden=true></i><div class="a4c j"><span>'+T4(r[2])+'</span></div></div>'}).join('')+'</div>'
 +'<blockquote class=vq data-fill="1 Corinthians 15:45-47">…</blockquote>'+vchip('1 Corinthians 15:45-47')}
 function renderGM4(){var F=[['Spirit|灵|Espíritu','Material: dust of the ground|物质：地上的尘土|Material: polvo de la tierra'],['The life-giving spirit|叫人活的灵|El espíritu que da vida','Inside the flesh is a spirit that must be given life|肉体里面的灵需要被赐予生命|Dentro de la carne hay un espíritu que necesita recibir vida'],['No “shell” to leave behind|没有要脱下的“外壳”|No hay «cáscara» que dejar','A shell that perishes|会朽坏的外壳|Una cáscara que perece'],['The last Adam|末后的亚当|El último Adán','The spirit inside the flesh is Adam|肉体里面的灵是亚当|El espíritu dentro de la carne es Adán']];
 return'<div class=gm><div class=gmb><span>'+T4('God|神|Dios')+'</span><i style="--w:100%"></i><b>100%</b></div><div class=gmb><span>'+T4('Man|人|Hombre')+'</span><i style="--w:100%"></i><b>100%</b></div><p>'+T4('Only One who is fully God could pay for all; only One who is fully man could die in our place.|唯有完全是神的，才能为众人付上代价；唯有完全是人的，才能替我们死。|Solo Uno que es plenamente Dios podía pagar por todos; solo Uno plenamente hombre podía morir en nuestro lugar.')+' '+vchip('John 1:14')+vchip('Philippians 2:6-8')+'</p></div>'
