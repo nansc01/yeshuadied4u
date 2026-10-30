@@ -1299,16 +1299,27 @@ border-radius:46% 54% 42% 58% / 58% 46% 54% 42%;background:radial-gradient(circl
 .fjh{font:600 .78rem/1 var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:#7fb8e0;padding:8px 6px;border-bottom:1px dotted rgba(255,255,255,.3)}.fjh.j{color:#f3d58a}
 .fjc{padding:10px 6px;color:#e7e9fb;font-size:.92rem;border-bottom:1px dotted rgba(255,255,255,.15)}.fjc.j{color:#fff;font-weight:600}
 .rlw{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@container (max-width:640px){.rlw{grid-template-columns:1fr}}
-.rlc{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:20px;border-radius:22px}
-.rlc small{font:600 .7rem/1 var(--f-label);letter-spacing:.16em;text-transform:uppercase}
-.rl1{background:#e9e4d6;color:#3a332e}.rl1 b{font:600 1.15rem/1.35 var(--f-display)}
+@container (max-width:560px){.rlw{grid-template-columns:1fr}}
+.rlc{display:flex;flex-direction:column;gap:12px;padding:18px 20px 20px;border-radius:22px}
+.rlh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}.rlh b{font:600 1.5rem/1.1 var(--f-display)}
+.rlh small{font:600 .68rem/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.rl1{background:#e9e4d6;color:#3a332e}
 :root[data-theme=dark] .rl1{background:#2b2622;color:#e9e4d6}
-.dom{display:flex;align-items:flex-end;gap:5px;height:56px}.dom i{width:10px;height:48px;background:#fbfbf8;border:1.5px solid #3a332e;border-radius:2px;transform-origin:bottom right;animation:topple 4s ease-in infinite;animation-delay:calc(var(--k) * .12s)}
-@keyframes topple{0%,40%{transform:none}55%,85%{transform:rotate(58deg)}100%{transform:none}}
-.arr{display:flex;flex-direction:column-reverse;align-items:center;font:600 .95rem/1.2 var(--f-display);gap:2px}.arr[d]{flex-direction:column}.arr em{font-style:normal;font-size:1.4rem}
-.rl2{background:radial-gradient(300px 200px at 50% -10%,rgba(243,213,138,.5),transparent 70%),linear-gradient(160deg,var(--night2),var(--night));color:#e5e7fb}.rl2 small{color:var(--gold2)}
-.rl2 ul{margin:0;padding-left:18px;display:grid;gap:8px}.rl2 .vchip{background:rgba(255,255,255,.1);color:var(--gold2)}.rl2 .arr{color:#fff}
+.rlv{width:100%;height:auto;max-height:130px;display:block}.rlg{font:600 15px var(--f-display);fill:currentColor}.rl2 .rlg{fill:#fff}
+.rlq{font:700 18px var(--f-display);fill:#b5303f;animation:rlq 3.2s ease-in-out infinite}
+.rlclimb{animation:rlclimb 3.2s ease-in-out infinite}
+@keyframes rlclimb{0%{transform:translate(34px,112px)}18%{transform:translate(74px,92px)}36%{transform:translate(114px,72px)}54%,62%{transform:translate(154px,52px)}80%,100%{transform:translate(34px,112px)}}
+@keyframes rlq{0%,50%{opacity:0}58%,64%{opacity:1}80%,100%{opacity:0}}
+.rlbeam{animation:rlbeam 3s ease-in-out infinite}@keyframes rlbeam{50%{opacity:.6}}
+.rlr{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rlr li{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;font:600 1rem/1.25 var(--f-display);background:rgba(0,0,0,.05)}
+.rlr i{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;font:700 .75rem/1 var(--f-body);font-style:normal;background:#b5303f;color:#fff}
+.rl2{background:radial-gradient(300px 200px at 50% -10%,rgba(243,213,138,.45),transparent 70%),linear-gradient(160deg,var(--night2),var(--night));color:#e5e7fb}.rl2 .rlh small{color:var(--gold2);opacity:1}
+.rl2 .rlr li{background:rgba(255,255,255,.08);color:#fff}.rl2 .rlr i{background:var(--gold);color:#1a1a2e}
+.rlf{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px 18px;padding:16px 20px;border-radius:18px;background:var(--card);border:1px solid color-mix(in srgb,var(--gold) 40%,transparent)}
+.rlf p{margin:0;font:600 1.05rem/1.3 var(--f-display);max-width:16em}.rlf blockquote{margin:0;padding:4px 14px;border-left:3px solid var(--gold);font:italic 500 1rem/1.45 var(--f-display)}
+@container (max-width:720px){.rlf{grid-template-columns:1fr;justify-items:start}.rlf p{max-width:none}}
+@media (prefers-reduced-motion:reduce){.rlclimb,.rlq,.rlbeam{animation:none}.rlclimb{transform:translate(154px,52px)}.rlq{opacity:1}}
 .yal{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:34px 22px;border-radius:26px;color:#fff;overflow:hidden;
 background:radial-gradient(400px 260px at 15% 85%,rgba(110,60,180,.9),transparent 70%),radial-gradient(420px 260px at 85% 20%,rgba(240,110,60,.95),transparent 70%),linear-gradient(135deg,#9a3b8a,#e0485a 55%,#f08a4a)}
 .yat{font:italic 600 clamp(2.6rem,9cqi,4.6rem)/1 "Brush Script MT","Segoe Script","Snell Roundhand",var(--f-display);text-shadow:0 4px 18px rgba(0,0,0,.25)}
@@ -3015,10 +3026,21 @@ return'<div class=gm><div class=gmb><span>'+T4('God|神|Dios')+'</span><i style=
 +'<div class=fjm><div class="fjh j">'+T4('The flesh of Jesus|耶稣的肉体|La carne de Jesús')+'</div><div class=fjh>'+T4('The flesh of man|人的肉体|La carne del hombre')+'</div>'+F.map(function(r){return'<div class="fjc j">'+T4(r[0])+'</div><div class=fjc>'+T4(r[1])+'</div>'}).join('')+'</div>'}
 
 /* 7. religion vs Christianity */
-function renderRel4(){var dom='';for(var k=0;k<14;k++)dom+='<i style="--k:'+k+'"></i>';
-return'<div class=rlw><div class="rlc rl1"><small>'+T4('What is religion?|什么是宗教？|¿Qué es la religión?')+'</small><div class=dom data-dom>'+dom+'</div><b>'+T4('Self-retribution: “you earn your way to heaven”, “you sin, you pay!”|自我报应：“自己赚取上天堂”、“犯罪就自己偿还！”|Autorretribución: «te ganas el cielo», «¡pecas, pagas!»')+'</b><div class=arr><span>'+T4('Human|人|Humano')+'</span><em>↑</em><span>'+T4('God|神|Dios')+'</span></div></div>'
-+'<div class="rlc rl2"><small>'+T4('How is Christianity different?|基督教有何不同？|¿En qué es diferente el cristianismo?')+'</small><ul><li>'+T4('Only Christianity has God’s redemption: God Himself dies in place of sinners and pays for their sins.|唯有基督教有神的救赎：神亲自替罪人死，为他们的罪偿还。|Solo el cristianismo tiene la redención de Dios: Dios mismo muere en lugar de los pecadores y paga por sus pecados.')+'</li><li>'+T4('It STARTS with God’s redemption. We don’t trigger or earn it; it is freely given.|它从神的救赎开始；不是我们引发或赚取的，是白白赐下的。|EMPIEZA con la redención de Dios. No la provocamos ni la ganamos: se da gratuitamente.')+'</li><li>'+T4('So it is not a religion. It is faith by grace, through what God has revealed.|所以它不是宗教，而是因神的启示、本乎恩典的信。|Por eso no es una religión: es fe por gracia, por lo que Dios ha revelado.')+'</li></ul>'
-+'<div class=arr d><span>'+T4('God|神|Dios')+'</span><em>↓</em><span>'+T4('Human|人|Humano')+'</span></div><blockquote data-fill="2 Corinthians 5:21">…</blockquote>'+vchip('2 Corinthians 5:21')+'</div></div>'}
+function renderRel4(){
+var fig='<circle cx=0 cy=-14 r=5.5 /><path d="M0 -8 V6 M-7 -2 H7 M0 6 L-5 16 M0 6 L5 16"/>';
+var s1='<svg class=rlv viewBox="0 0 240 120" aria-hidden=true><text x=206 y=24 class=rlg>'+esc(T4('God|神|Dios'))+'</text><text x=206 y=52 class=rlq>?</text>'
++'<path d="M14 116 H54 V96 H94 V76 H134 V56 H174" fill=none stroke=currentColor stroke-width=2.5 stroke-linejoin=round opacity=.55 />'
++'<g class=rlclimb fill=none stroke=currentColor stroke-width=2.4 stroke-linecap=round>'+fig+'</g></svg>';
+var s2='<svg class=rlv viewBox="0 0 240 120" aria-hidden=true><defs><linearGradient id=rlB x1=0 y1=0 x2=0 y2=1><stop offset=0 stop-color="#f3d58a" stop-opacity=".9"/><stop offset=1 stop-color="#f3d58a" stop-opacity="0"/></linearGradient></defs>'
++'<text x=120 y=18 class=rlg text-anchor=middle>'+esc(T4('God|神|Dios'))+'</text><path class=rlbeam d="M110 26 H130 L190 120 H50 Z" fill="url(#rlB)"/>'
++'<path d="M120 30 V74 M107 42 H133" stroke="#fff" stroke-width=4 stroke-linecap=round />'
++'<g fill=none stroke="#f3d58a" stroke-width=2.4 stroke-linecap=round transform="translate(120 100)">'+fig+'</g></svg>';
+function rows(a,m){return'<ul class=rlr>'+a.map(function(r){return'<li><i>'+m+'</i>'+T4(r)+'</li>'}).join('')+'</ul>'}
+return'<div class=rlw><div class="rlc rl1"><div class=rlh><b>'+T4('Religion|宗教|Religión')+'</b><small>'+T4('Self-retribution|自我报应|Autorretribución')+'</small></div>'+s1
++rows(['Human reaches up to God|人努力向上到神那里|El hombre sube hacia Dios','“You sin, you pay”|“犯罪，自己偿还”|«Pecas, pagas»','Heaven is earned|天堂靠自己赚取|El cielo se gana'],'✕')+'</div>'
++'<div class="rlc rl2"><div class=rlh><b>'+T4('Christianity|基督教|Cristianismo')+'</b><small>'+T4('God’s redemption|神的救赎|La redención de Dios')+'</small></div>'+s2
++rows(['God comes down to us|神降下来到我们这里|Dios baja hacia nosotros','God pays for sinners|神替罪人偿还|Dios paga por los pecadores','Freely given by grace|本乎恩典，白白赐下|Dado gratis por gracia'],'✓')+'</div>'
++'<div class=rlf><p>'+T4('Not a religion: faith by grace, through God’s revelation.|不是宗教，而是因神的启示、本乎恩典的信。|No es una religión: es fe por gracia, por la revelación de Dios.')+'</p><blockquote data-fill="2 Corinthians 5:21">…</blockquote>'+vchip('2 Corinthians 5:21')+'</div></div>'}
 
 /* 8. you are loved */
 function renderLoved4(){return'<div class=yal><b class=yat>'+T4('You are loved|你是被爱的|Eres amado')+'</b><blockquote data-fill="1 John 4:18-19">…</blockquote><span class=hwr>'+vchip('1 John 4:18-19')+vchip('John 3:16')+'</span>'
