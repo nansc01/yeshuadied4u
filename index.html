@@ -1462,6 +1462,38 @@ background:linear-gradient(160deg,var(--night2),var(--night));color:#fff;font-we
 .g5cx b{font:600 1.15rem/1.25 var(--f-display)}.g5cx p{margin:0}.g5cx p i{font-style:normal;font:600 .66rem var(--f-label);letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-right:4px}
 .g5cx blockquote{margin:0;padding:4px 12px;border-left:3px solid var(--gold);font:italic 500 1rem/1.5 var(--f-display)}
 .g5cb{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px}.g5cdone{display:none;font:700 1.1rem var(--f-display);color:#2f7fa8}.g5bel2 .g5cdone{display:block;animation:ypop .5s}.g5bel [data-g5blv]{display:none}
+.jgw{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;padding:16px;border-radius:24px;background:linear-gradient(160deg,#2f5fd8,#1d3c9a);color:#fff}
+@container (max-width:640px){.jgw{grid-template-columns:1fr}}
+.jgs{display:flex;flex-direction:column;gap:10px}
+.jgf{position:relative;border-radius:16px;overflow:hidden}.jsv{display:block;width:100%;height:auto}
+.jgn{position:absolute;right:10px;top:8px;padding:2px 8px;border-radius:999px;background:rgba(0,0,0,.45);font:600 .72rem var(--f-body)}
+.jgc{margin:0;min-height:3em;font:600 1.15rem/1.4 var(--f-display)}
+.jgb{display:flex;gap:8px;align-items:center}.jgb button{border-radius:999px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;padding:8px 14px;font-weight:700;cursor:pointer}.jgb .pri{background:#fff;color:#1d3c9a;border:0}
+.jgv{margin:0;display:flex;gap:6px;flex-wrap:wrap}.jgw .vchip{background:rgba(255,255,255,.15);color:#fff}
+.jgw[data-st="0"] .jgv,.jgw[data-st="1"] .jgv,.jgw[data-st="2"] .jgv,.jgw[data-st="3"] .jgv,.jgw[data-st="4"] .jgv{visibility:hidden}
+.jgvid{border-radius:18px;overflow:hidden;min-height:220px}.jgvid .g5play{height:100%;min-height:220px}
+.jsv .jman path:first-of-type,.jsv .jman circle{fill:#8f96a3}.jpk{opacity:0;transition:opacity .4s}
+.jrobe{fill:#1b1b24;transition:fill .8s}.jjdw{transition:transform 1.6s ease-in-out}
+.jfine,.jno,.jgu,.jpaid,.jglow{opacity:0;transition:opacity .5s,transform .5s}
+.jft{font:700 9px var(--f-label);letter-spacing:.12em;fill:#b5303f}.jfa{font:800 16px var(--f-body);fill:#3a2a1a}
+.jpaid{font:900 22px var(--f-label);fill:#2f8a4a;letter-spacing:.08em}.jno{font:700 13px var(--f-body);fill:#b5303f}.jgu{font:900 18px var(--f-label);fill:#b5303f;letter-spacing:.12em}
+.jgw:not([data-st="0"]) .jfine{opacity:1}
+.jgw[data-st="2"] .jpk,.jgw[data-st="2"] .jno,.jgw[data-st="3"] .jpk{opacity:1}
+.jgw[data-st="3"] .jgu{opacity:1}.jgw[data-st="3"] .jgav{animation:jbang .5s ease 2}
+@keyframes jbang{50%{transform:translate(312px,96px) rotate(-30deg)}}
+.jgav{transform:translate(312px,96px);transform-origin:0 0}
+.jgw[data-st="4"] .jjdw,.jgw[data-st="5"] .jjdw{transform:translate(140px,176px)}
+.jgw[data-st="4"] .jrobe,.jgw[data-st="5"] .jrobe{fill:#f4f1ea}
+.jgw[data-st="4"] .jpaid,.jgw[data-st="5"] .jpaid{opacity:1;transition-delay:1.4s}.jgw[data-st="4"] .jfa,.jgw[data-st="5"] .jfa{opacity:.3}
+.jgw[data-st="5"] .jglow{opacity:1}.jgw[data-st="5"] .jman circle,.jgw[data-st="5"] .jman path:first-of-type{fill:#e0a53c}
+.jjdw{transform:translate(270px,120px)}
+.vbox{position:fixed;inset:0;z-index:80;display:none;place-items:center;background:rgba(5,8,20,.88);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}.vbox.open{display:grid}
+.vbin{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}
+.vbf{width:min(92vw,400px);height:min(80vh,720px);border-radius:16px;overflow:hidden;background:#fff}.vbf iframe{width:100%;height:100%;border:0}
+.vbx{position:absolute;top:-14px;right:-14px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#111;font-size:1.1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+@media (max-width:480px){.vbx{top:-48px;right:0}}
+.vbo{color:#cfd6ff;font:600 .85rem var(--f-body)}
+@media (prefers-reduced-motion:reduce){.jjdw{transition:none}.jgav{animation:none!important}}
 /* Stage V */
 .g5d{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center;padding:20px;border-radius:24px;background:linear-gradient(160deg,#fff6ef,#fde8ea);color:#3a2230}
 :root[data-theme=dark] .g5d{background:linear-gradient(160deg,#2c2228,#33212a);color:#f7e8ec}
@@ -3317,12 +3349,40 @@ return'<div class=g5d data-g5d><button class=g5gift data-g5gift aria-label="'+es
 +'<div class=g5fr><p class=g5frh>'+T4('If you have a good friend who is giving…|如果你有一位乐于给予的好朋友……|Si tienes un buen amigo que siempre da…')+'</p><div class=g5qs>'
 +[['Do you want his gift, or himself?|你想要他的礼物，还是他这个人？|¿Quieres su regalo, o a él mismo?','🎁'],['If you did something wrong against him, would you cherish his forgiveness?|如果你得罪了他，你会珍惜他的饶恕吗？|Si le hicieras algo malo, ¿valorarías su perdón?','🤝']].map(function(q){return'<div class=g5q><i aria-hidden=true>'+q[1]+'</i><b>'+T4(q[0])+'</b>'+g5n(q[0])+'</div>'}).join('')+'</div></div>'}
 /* 2. merciful judge video */
+var JG=['A man stands before the judge. He is guilty.|一个人站在法官面前。他是有罪的。|Un hombre está ante el juez. Es culpable.',
+'The law demands a penalty: a fine he must pay, or go to prison.|律法要求刑罚：他必须交罚款，否则就要坐牢。|La ley exige un castigo: una multa que debe pagar, o ir a la cárcel.',
+'He turns out his pockets. He cannot pay.|他翻遍口袋，却付不起。|Vacía sus bolsillos. No puede pagar.',
+'The judge strikes the gavel: “Guilty.” The law is not ignored. Justice is done.|法官敲下法槌：“有罪。”律法没有被忽略，公义得到伸张。|El juez golpea el mazo: «Culpable». La ley no se pasa por alto. Se hace justicia.',
+'Then the judge takes off his robe, comes down, and pays the fine himself.|然后法官脱下法袍，走下来，亲自替他交了罚款。|Entonces el juez se quita la toga, baja, y paga la multa él mismo.',
+'Justice and mercy meet. That is what Jesus did for you.|公义与怜悯相遇。这正是耶稣为你所做的。|La justicia y la misericordia se encuentran. Eso hizo Jesús por ti.'];
 function renderJudge5(){
-return'<div class=g5j><div class=g5vid id=g5vid><button class=g5play data-g5ig="DE2nFu-qVGu"><svg viewBox="0 0 120 90" aria-hidden=true><rect x=18 y=58 width=50 height=12 rx=3 fill="#8a5a2b"/><g transform="rotate(-28 70 40)"><rect x=40 y=28 width=44 height=18 rx=4 fill="#c9952f"/><rect x=60 y=44 width=6 height=34 rx=2 fill="#8a5a2b"/></g></svg>'
-+'<span class=g5pi>▶</span><b>'+T4('The merciful Judge|仁慈的法官|El Juez misericordioso')+'</b><small>'+T4('Short video · Instagram · tap to play|短视频 · Instagram · 点按播放|Video corto · Instagram · toca para ver')+'</small></button></div>'
-+'<div class=g5jt><p class=g5jq>'+T4('As you watch, ask: how can a judge be both just and merciful?|观看时想一想：法官怎能既公义又怜悯？|Mientras lo ves, pregúntate: ¿cómo puede un juez ser justo y misericordioso a la vez?')+'</p>'
-+'<button class=g5why data-g5why>'+T4('See the answer ▾|看答案 ▾|Ver la respuesta ▾')+'</button><div class=g5ans><p>'+T4('Justice: the penalty is paid in full. Mercy: the Judge pays it Himself. That is grace.|公义：罪的刑罚全部付清。怜悯：法官亲自替你付上。这就是恩典。|Justicia: la pena se paga por completo. Misericordia: el Juez mismo la paga. Eso es gracia.')+' '+vchip('Romans 3:26')+'</p></div>'
-+'<a class=g5ext href="https://www.instagram.com/reel/DE2nFu-qVGu/" target=_blank rel=noopener>'+T4('Open on Instagram ↗|在 Instagram 打开 ↗|Abrir en Instagram ↗')+'</a></div></div>'}
+var man='<g class=jman><circle cx=0 cy=-46 r=11 /><path d="M-15 0 C-15 -24 -10 -34 0 -34 C10 -34 15 -24 15 0Z"/><path class=jpk d="M-15 -10 h-8 v8 h8 M15 -10 h8 v8 h-8" fill="#fff" stroke="#555" stroke-width=1.5 /></g>';
+var judge='<g class=jjd><circle cx=0 cy=-46 r=11 fill="#e8c9a8"/><path d="M-11 -50 q11 -14 22 0" fill="#ddd"/><path class=jrobe d="M-17 0 C-17 -24 -12 -34 0 -34 C12 -34 17 -24 17 0Z"/></g>';
+var svg='<svg class=jsv viewBox="0 0 360 220" aria-hidden=true><rect width=360 height=220 fill="#f3e9d6"/><rect y=176 width=360 height=44 fill="#c9a77c"/><g opacity=".35" stroke="#a07b3c">'+[40,100,160,220,280,340].map(function(x){return'<line x1='+x+' y1=0 x2='+x+' y2=176 />'}).join('')+'</g>'
++'<circle class=jglow cx=150 cy=130 r=110 fill="url(#jgG)"/><defs><radialGradient id=jgG><stop offset=0 stop-color="#fff3c4"/><stop offset=1 stop-color="#fff3c4" stop-opacity="0"/></radialGradient></defs>'
++'<g class=jjdw transform="translate(270 120)">'+judge+'</g>'
++'<rect x=210 y=106 width=130 height=70 rx=4 fill="#7a4e26"/><rect x=210 y=100 width=130 height=10 rx=3 fill="#5e3a1a"/><path d="M262 140 l8 -8 l8 8 l-8 8z" fill="#c9952f"/>'
++'<g class=jgav transform="translate(312 96)"><rect x=-3 y=-24 width=6 height=24 fill="#5e3a1a"/><rect x=-12 y=-32 width=24 height=10 rx=3 fill="#8a5a2b"/></g>'
++'<g class=jmw transform="translate(90 176)" fill="#8f96a3">'+man+'</g>'
++'<g class=jfine transform="translate(150 58)"><rect x=-38 y=-24 width=76 height=48 rx=4 fill="#fff" stroke="#b5303f" stroke-width=2 /><text y=-6 text-anchor=middle class=jft>'+esc(T4('PENALTY|刑罚|CASTIGO'))+'</text><text y=14 text-anchor=middle class=jfa>$1,000</text><text class=jpaid y=6 text-anchor=middle transform="rotate(-14)">'+esc(T4('PAID|已付清|PAGADO'))+'</text></g>'
++'<text class=jno x=90 y=104 text-anchor=middle>'+esc(T4('Cannot pay|付不起|No puede pagar'))+'</text><text class=jgu x=270 y=40 text-anchor=middle>'+esc(T4('GUILTY|有罪|CULPABLE'))+'</text></svg>';
+return'<div class=jgw data-jg data-st=0><div class=jgs><div class=jgf>'+svg+'<span class=jgn>1 / 6</span></div>'
++'<p class=jgc aria-live=polite>'+T4(JG[0])+'</p>'
++'<div class=jgb><button data-jgp=-1 aria-label="'+esc(T4('Back|上一步|Atrás'))+'">◀</button><button class=pri data-jgplay=1>'+T4('▶ Play the story|▶ 播放故事|▶ Ver la historia')+'</button><button data-jgp=1 aria-label="'+esc(T4('Next|下一步|Siguiente'))+'">▶</button></div>'
++'<p class=jgv>'+vchip('Romans 3:26')+vchip('1 Peter 3:18')+'</p></div>'
++'<div class=jgvid><button class=g5play data-g5ig="DE2nFu-qVGu"><svg viewBox="0 0 120 90" aria-hidden=true><rect x=18 y=58 width=50 height=12 rx=3 fill="#8a5a2b"/><g transform="rotate(-28 70 40)"><rect x=40 y=28 width=44 height=18 rx=4 fill="#c9952f"/><rect x=60 y=44 width=6 height=34 rx=2 fill="#8a5a2b"/></g></svg><span class=g5pi>▶</span><small class=jgvt>'+T4('The merciful Judge · short video|仁慈的法官 · 短视频|El Juez misericordioso · video corto')+'</small><b>'+T4('Watch the video|观看视频|Ver el video')+'</b><small>'+T4('Plays right here, full screen|就在本页全屏播放|Se reproduce aquí, a pantalla completa')+'</small></button></div></div>'}
+var JGT=null;
+function jgSet(w,n){n=Math.max(0,Math.min(5,n));w.dataset.st=n;w.querySelector('.jgc').innerHTML=T4(JG[n]);w.querySelector('.jgn').textContent=(n+1)+' / 6';if(n==5)fillVerses()}
+function jgStop(){clearInterval(JGT);JGT=null}
+function vbOpen(id){var o=$('vbox');if(!o){o=document.createElement('div');o.id='vbox';o.className='vbox';document.body.appendChild(o)}
+o.innerHTML='<div class=vbin><button class=vbx data-vbx=1 aria-label="'+esc(T4('Close|关闭|Cerrar'))+'">✕</button><div class=vbf><iframe src="https://www.instagram.com/reel/'+id+'/embed/" title="'+esc(T4('The merciful Judge|仁慈的法官|El Juez misericordioso'))+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen scrolling=no></iframe></div><a class=vbo href="https://www.instagram.com/reel/'+id+'/" target=_blank rel=noopener>'+T4('Not playing? Open on Instagram ↗|无法播放？在 Instagram 打开 ↗|¿No se reproduce? Abrir en Instagram ↗')+'</a></div>';
+o.classList.add('open');lockScroll()}
+function vbClose(){var o=$('vbox');if(!o||!o.classList.contains('open'))return;o.classList.remove('open');o.innerHTML='';unlockScroll()}
+document.addEventListener('keydown',function(e){if(e.key=='Escape')vbClose()});
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
+if(t.id=='vbox'||t.closest('[data-vbx]')){vbClose();return}
+if(b=t.closest('[data-jgp]')){jgStop();var w=b.closest('[data-jg]');jgSet(w,+w.dataset.st+ +b.dataset.jgp);return}
+if(b=t.closest('[data-jgplay]')){var w2=b.closest('[data-jg]');jgStop();jgSet(w2,0);JGT=setInterval(function(){if(!document.body.contains(w2)||+w2.dataset.st>=5){jgStop();return}jgSet(w2,+w2.dataset.st+1)},3600);return}});
 /* 3. two types of grace */
 function renderTwo5(){
 var sun='<svg viewBox="0 0 80 60" aria-hidden=true><circle cx=28 cy=24 r=11 fill="#f3c04a"/><g stroke="#f3c04a" stroke-width=3 stroke-linecap=round>'+[0,45,90,135,180,225,270,315].map(function(a){var r=a*Math.PI/180;return'<line x1='+(28+Math.cos(r)*15).toFixed(1)+' y1='+(24+Math.sin(r)*15).toFixed(1)+' x2='+(28+Math.cos(r)*20).toFixed(1)+' y2='+(24+Math.sin(r)*20).toFixed(1)+' />'}).join('')+'</g><path d="M46 30 a10 10 0 0 1 19 -3 a8 8 0 0 1 4 15 h-24 a7 7 0 0 1 1 -12z" fill="#dbe7f3"/><g stroke="#5d8fc0" stroke-width=2.4 stroke-linecap=round class=g5rain><line x1=52 y1=46 x2=50 y2=53 /><line x1=60 y1=46 x2=58 y2=53 /><line x1=68 y1=46 x2=66 y2=53 /></g><path d="M4 58 q10 -10 20 0 q10 -10 20 0" fill=none stroke="#5a9a4a" stroke-width=3 /></svg>';
@@ -3400,7 +3460,7 @@ if(b=t.closest('[data-g5gift]')){b.closest('[data-g5d]').classList.add('g5open')
 if(b=t.closest('[data-g5why]')){b.parentNode.classList.toggle('g5show');return}
 if(b=t.closest('[data-g5n]')){nOpen(b.dataset.g5n,'');return}
 if(b=t.closest('[data-g5ts]')){nOpen(T4('My testimony of grace|我的恩典见证|Mi testimonio de gracia')+': '+b.dataset.g5ts,'');return}
-if(b=t.closest('[data-g5ig]')){var w=$('g5vid');w.classList.add('on');w.innerHTML='<iframe src="https://www.instagram.com/reel/'+b.dataset.g5ig+'/embed/" title="'+esc(T4('The merciful Judge|仁慈的法官|El Juez misericordioso'))+'" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading=lazy></iframe>';return}
+if(b=t.closest('[data-g5ig]')){vbOpen(b.dataset.g5ig);return}
 if(b=t.closest('[data-g5blv]')){var w=b.closest('[data-g5ct]');w.classList.add('g5bel');try{$('g5am').beginElement()}catch(x){}setTimeout(function(){w.classList.add('g5bel2')},1500);return}
 if(b=t.closest('[data-g5nail]')){var n=b.closest('[data-g5nl]');n.classList.add('g5nailed');b.disabled=true;return}
 if(b=t.closest('[data-g5law]')){b.closest('[data-g5lw]').classList.add('g5law');return}
