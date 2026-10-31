@@ -3136,7 +3136,7 @@ return'<div class=rlw><div class="rlc rl1"><div class=rlh><b>'+T4('Religion|宗�
 /* 8. you are loved */
 var YLN='';try{YLN=localStorage.getItem('yln')||''}catch(e){}
 function yalVerse(n){var has=!!n.trim(),nm='<b class=ynm>'+esc(has?n.trim():T4('the world|世人|el mundo'))+'</b>';
-return T4('For God so loved {n} that He gave His one and only Son, that whoever believes in Him shall not perish but have eternal life.|神爱{n}，甚至将祂的独生子赐给他们，叫一切信祂的，不至灭亡，反得永生。|Porque de tal manera amó Dios a {n}, que dio a su Hijo unigénito, para que todo aquel que en Él cree no se pierda, mas tenga vida eterna.').replace('{n}',nm)
+return T4('For God so loved {n} that He gave His one and only Son, that whoever believes in Him shall not perish but have eternal life.|神爱{n}，甚至将祂的独生子赐下，叫一切信祂的，不至灭亡，反得永生。|Porque de tal manera amó Dios a {n}, que dio a su Hijo unigénito, para que todo aquel que en Él cree no se pierda, mas tenga vida eterna.').replace('{n}',nm)
 +(has?'<span class=yme>'+esc(n.trim())+T4(', you are loved.|，你是被爱的。|, eres amado.')+'</span>':'')}
 function renderLoved4(){var st='';for(var k=0;k<40;k++)st+='<i style="left:'+((k*37)%100)+'%;top:'+((k*53)%60)+'%;--k:'+(k%7)+'"></i>';
 var L=['Before you ever looked for Him…|在你寻找祂之前……|Antes de que tú lo buscaras…','He knew every sin you would commit.|祂早已知道你所犯的每一个罪。|Él ya conocía cada pecado que cometerías.','He saw every tear you would cry.|祂看见你流的每一滴眼泪。|Él vio cada lágrima que llorarías.','And still He chose the cross, for you.|祂仍然为你选择了十字架。|Y aun así escogió la cruz, por ti.'];
