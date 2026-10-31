@@ -1420,6 +1420,13 @@ background:linear-gradient(160deg,var(--night2),var(--night));color:#fff;font-we
 .nfl{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 10px}.nfl button{border-radius:999px;padding:5px 12px;font-size:.8rem;font-weight:700}.nfl button.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
 .nls{display:grid;gap:10px}
 .nnt{padding:12px 14px;border-radius:14px;border:1px solid var(--ln);background:var(--card)}
+.ngrp{display:grid;gap:8px;margin-bottom:14px}
+.ngh{display:flex;align-items:center;gap:8px;padding:4px 2px}.ngh i{display:grid;place-items:center;min-width:30px;height:24px;padding:0 6px;border-radius:8px;background:var(--sc);color:#fff;font:700 .72rem var(--f-label);font-style:normal}.ngh b{font:600 1.05rem var(--f-display)}.ngh span{margin-left:auto;font-size:.8rem;color:var(--mut)}
+.nnt{border-left:4px solid var(--sc,var(--ln))!important}.nnh small{display:flex;flex-direction:column;gap:3px;color:var(--mut)}.nsec{font:600 .8rem var(--f-body);letter-spacing:0;text-transform:none;color:var(--sc,var(--ac))}.nnh small em{font-style:normal}
+.nnh .ngo{color:var(--sc,var(--ac))}
+.nfs i,.ntag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sc);margin-right:6px;vertical-align:middle}.nfs.on{background:var(--sc)!important;border-color:var(--sc)!important;color:#fff!important}.nfs.on i{background:#fff}
+.ntag{font-weight:600}
+.nflash{animation:nflash 2.4s ease}@keyframes nflash{0%,40%{box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 70%,transparent);border-radius:18px}100%{box-shadow:0 0 0 4px transparent}}
 .nnt.new{animation:rise .4s both;border-color:var(--ac)}
 .nnh{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .nnh small{font:600 .66rem/1.2 var(--f-label);letter-spacing:.1em;text-transform:uppercase;color:var(--ac)}
@@ -2568,8 +2575,8 @@ function tool4(){var g=LJ.grace||{c:0,a:['','','']};
 return'<div class=lt><h4>'+lt('My grace story|我的恩典见证|Mi testimonio de gracia')+'</h4><p class=lsub>'+lt('Jesus alone is my boast. Pick what God did, then write three short lines.|唯有耶稣是我的夸耀。选一类神的作为，再写三句话。|Solo Jesús es mi orgullo. Elige lo que Dios hizo y escribe tres líneas.')+' '+vchip('Ephesians 1:6')+vchip('2 Corinthians 11:30')+'</p>'
 +'<div class=lens>'+GRC.map(function(x,n){return'<button data-grc="'+n+'" class="'+(g.c==n?'act':'')+'">'+lt(x[0])+'</button>'}).join('')+'</div><p class=grr id=grr>'+GRC[g.c][1].map(function(r){return vchip(r)}).join('')+'</p>'
 +GQ.map(function(q,n){return'<label class=gql>'+lt(q)+'<textarea rows=2 data-gra="'+n+'" placeholder="'+esc(lt(LV.ph))+'">'+esc(g.a[n]||'')+'</textarea></label>'}).join('')
-+'<button class="pri cpy" data-cpy="grace">'+lt(LV.copy)+'</button></div>'}
-function graceText(){var g=LJ.grace||{c:0,a:['','','']};return lt(GRC[g.c][0])+'\n'+GQ.map(function(q,n){return lt(q)+' '+(g.a[n]||'')}).join('\n')}
++'<button class=pri data-grsave=1>'+lt('✎ Save to my notes|✎ 存入我的笔记|✎ Guardar en mis notas')+'</button></div>'}
+function graceText(){var g=LJ.grace||{c:0,a:['','','']};return lt(GRC[g.c][0])+'\n'+GQ.map(function(q,n){var a=(g.a[n]||'').trim();if(!a)return'';var l=lt(q);return l+(/[?:：？]$/.test(l)?' ':': ')+a}).filter(Boolean).join('\n')}
 
 /* ---- tool VI: I believe (slides, stage 6: the objects of faith) ---- */
 var BG=[['From everlasting to everlasting|从亘古到永远|Desde la eternidad hasta la eternidad','Psalm 90:2'],['Self-existent|自有永有|Existe por sí mismo','Exodus 3:14'],['The only one God|独一的神|El único Dios','1 Timothy 6:15'],['All-knowing|无所不知|Omnisciente','1 John 3:20'],['All-powerful|无所不能|Todopoderoso','Revelation 1:8'],['Greater than all|比万有都大|Mayor que todos','John 10:29'],['Everywhere present|无所不在|Omnipresente','Psalm 139:7-10'],['Creator of all things|万物的创造者|Creador de todas las cosas','Acts 17:24']];
@@ -3411,7 +3418,7 @@ if(b=t.closest('[data-alg]')){b.closest('[data-al]').classList.add('go');return}
 var NX={btn:'My notes|我的笔记|Mis notas',title:'My notebook|我的笔记本|Mi cuaderno',sub:'Saved on this device only. Download or email them to keep a copy.|只保存在这台设备上；可下载或发邮件给自己保存一份。|Se guardan solo en este dispositivo. Descárgalas o envíatelas por correo para tener una copia.',
 ph:'Write a note…|写下笔记……|Escribe una nota…',add:'Save note|保存笔记|Guardar nota',none:'No notes yet. Write one above, or select any text on the page and tap “Save to notes”.|还没有笔记。在上面写一则，或在页面上选取任何文字，点按“存入笔记”。|Aún no hay notas. Escribe una arriba, o selecciona cualquier texto de la página y toca «Guardar en notas».',
 sel:'✎ Save to notes|✎ 存入笔记|✎ Guardar en notas',verse:'✎ Save to my notes|✎ 存入我的笔记|✎ Guardar en mis notas',home:'Home|首页|Inicio',
-copy:'Copy all|全部复制|Copiar todo',dl:'Download .txt|下载 .txt|Descargar .txt',mail:'Email to myself|发邮件给自己|Enviar a mi correo',del:'Delete|删除|Borrar',sure:'Tap again to delete|再点一次删除|Toca otra vez para borrar',
+go:'Go there →|前往 →|Ir allí →',copy:'Copy all|全部复制|Copiar todo',dl:'Download .txt|下载 .txt|Descargar .txt',mail:'Email to myself|发邮件给自己|Enviar a mi correo',del:'Delete|删除|Borrar',sure:'Tap again to delete|再点一次删除|Toca otra vez para borrar',
 all:'All|全部|Todas',quote:'Quote|引用|Cita',edit:'Edit|编辑|Editar',done:'Done|完成|Listo',saved:'Saved ✓|已保存 ✓|Guardado ✓',close:'Close|关闭|Cerrar'};
 function nx(s){return ce(s,li[L])}
 var NOTES=[];try{NOTES=JSON.parse(localStorage.getItem('gn')||'[]')}catch(e){}
@@ -3420,21 +3427,26 @@ function nSave(){try{localStorage.setItem('gn',JSON.stringify(NOTES))}catch(e){}
 var NDRAFT={q:'',ref:''},NFIL='all';
 function stName(s){return s>=0&&s<7?RN[s]+' · '+D[s][li[L]]:nx(NX.home)}
 function nBadge(){var b=$('nbb');if(b){b.querySelector('i').textContent=NOTES.length;b.querySelector('i').hidden=!NOTES.length;b.querySelector('span').textContent=nx(NX.btn)}}
+function nCol(s){return s>=0&&s<7?tc(s):'#8a8f9c'}
+function nSecOf(c){c=c&&c.closest?c.closest('.ex,.lt'):null;if(!c)return{sec:'',ix:-1};var hh=c.querySelector('h3,h4');var all=[].slice.call(document.querySelectorAll('#c .ex,#c .lt'));return{sec:hh?hh.textContent.trim():'',ix:all.indexOf(c)}}
+function nSecView(){var all=[].slice.call(document.querySelectorAll('#c .ex,#c .lt')),best=null;all.forEach(function(e){var r=e.getBoundingClientRect();if(r.height&&r.top<innerHeight*.45)best=e});return nSecOf(best)}
+function nCard(n){var d=new Date(n.t);return'<div class=nnt data-nid="'+n.id+'" style="--sc:'+nCol(n.s)+'"><div class=nnh><small>'+(n.sec?'<b class=nsec>📍 '+esc(n.sec)+'</b>':'<b class=nsec>'+esc(stName(n.s))+'</b>')+'<em>'+d.toLocaleDateString()+'</em></small><span>'+(n.s>=0&&n.s<7?'<button class=ngo data-ngo="'+n.id+'">'+nx(NX.go)+'</button>':'')+'<button data-ned="'+n.id+'">'+nx(NX.edit)+'</button><button data-ndel="'+n.id+'">'+nx(NX.del)+'</button></span></div>'
++(n.q?'<blockquote>'+esc(n.q)+(n.ref?' <b data-v="'+esc(n.ref)+'">'+esc(n.ref)+'</b>':'')+'</blockquote>':'')+(n.txt?'<p>'+esc(n.txt)+'</p>':'')+'</div>'}
 function nList(){var arr=NOTES.slice().reverse().filter(function(n){return NFIL=='all'||String(n.s)==NFIL});
 if(!arr.length)return'<p class=hint>'+nx(NX.none)+'</p>';
-return arr.map(function(n){var d=new Date(n.t);return'<div class=nnt data-nid="'+n.id+'"><div class=nnh><small>'+esc(stName(n.s))+' · '+d.toLocaleDateString()+'</small><span><button data-ned="'+n.id+'">'+nx(NX.edit)+'</button><button data-ndel="'+n.id+'">'+nx(NX.del)+'</button></span></div>'
-+(n.q?'<blockquote>'+esc(n.q)+(n.ref?' <b data-v="'+esc(n.ref)+'">'+esc(n.ref)+'</b>':'')+'</blockquote>':'')+(n.txt?'<p>'+esc(n.txt)+'</p>':'')+'</div>'}).join('')}
+return[0,1,2,3,4,5,6,-1].map(function(s){var g=arr.filter(function(n){return(n.s>=0&&n.s<7?n.s:-1)==s});if(!g.length)return'';
+return'<div class=ngrp style="--sc:'+nCol(s)+'"><div class=ngh><i>'+(s>=0?RN[s]:'·')+'</i><b>'+esc(s>=0?D[s][li[L]]:nx(NX.home))+'</b><span>'+g.length+'</span></div>'+g.map(nCard).join('')+'</div>'}).join('')}
 function nRender(){var p=$('nbp');if(!p)return;var used={};NOTES.forEach(function(n){used[n.s]=1});
 p.innerHTML='<div class=cthead><div><h4>'+nx(NX.title)+'</h4><p class=nsub>'+nx(NX.sub)+'</p></div><button class=ctx id=nbclose aria-label="'+esc(nx(NX.close))+'">✕</button></div>'
 +'<div class=nbody><div class=ncomp>'+(NDRAFT.q?'<div class=ndq><small>'+nx(NX.quote)+'</small><blockquote>'+esc(NDRAFT.q)+(NDRAFT.ref?' <b>'+esc(NDRAFT.ref)+'</b>':'')+'</blockquote><button class=ndx data-ndx=1>✕</button></div>':'')
-+'<textarea id=nta rows=4 placeholder="'+esc(nx(NX.ph))+'"></textarea><div class=ncr><small>'+esc(stName(S))+'</small><button class=pri data-nadd=1>'+nx(NX.add)+'</button></div></div>'
-+'<div class=nfl><button data-nf="all" class="'+(NFIL=='all'?'on':'')+'">'+nx(NX.all)+' · '+NOTES.length+'</button>'+[-1,0,1,2,3,4,5,6].filter(function(k){return used[k]}).map(function(k){return'<button data-nf="'+k+'" class="'+(NFIL==String(k)?'on':'')+'">'+(k<0?nx(NX.home):RN[k])+'</button>'}).join('')+'</div>'
++'<textarea id=nta rows=4 placeholder="'+esc(nx(NX.ph))+'"></textarea><div class=ncr><small class=ntag style="--sc:'+nCol(S==99?-1:S)+'"><i></i>'+esc(stName(S==99?-1:S))+(NDRAFT.sec?' › '+esc(NDRAFT.sec):'')+'</small><button class=pri data-nadd=1>'+nx(NX.add)+'</button></div></div>'
++'<div class=nfl><button data-nf="all" class="'+(NFIL=='all'?'on':'')+'">'+nx(NX.all)+' · '+NOTES.length+'</button>'+[0,1,2,3,4,5,6,-1].filter(function(k){return used[k]}).map(function(k){var c=NOTES.filter(function(n){return n.s==k}).length;return'<button data-nf="'+k+'" style="--sc:'+nCol(k)+'" class="nfs '+(NFIL==String(k)?'on':'')+'"><i></i>'+(k<0?nx(NX.home):RN[k]+' · '+D[k][li[L]])+' · '+c+'</button>'}).join('')+'</div>'
 +'<div class=nls id=nls>'+nList()+'</div>'
 +(NOTES.length?'<div class=nex><button data-nexp=copy>'+nx(NX.copy)+'</button><button data-nexp=dl>'+nx(NX.dl)+'</button><button data-nexp=mail>'+nx(NX.mail)+'</button></div>':'')+'</div>'}
-function nOpen(q,ref){if(q!=null)NDRAFT={q:q,ref:ref||''};nRender();$('nbp').classList.add('open');$('nbback').classList.add('open');lockScroll();
+function nOpen(q,ref,src){var sc=src?nSecOf(src):nSecView();if(q!=null)NDRAFT={q:q,ref:ref||'',sec:sc.sec,ix:sc.ix};else if(!NDRAFT.q){NDRAFT.sec=sc.sec;NDRAFT.ix=sc.ix}nRender();$('nbp').classList.add('open');$('nbback').classList.add('open');lockScroll();
 setTimeout(function(){var t=$('nta');if(t&&window.innerWidth>700)t.focus({preventScroll:true})},80)}
 function nClose(){var p=$('nbp');if(!p||!p.classList.contains('open'))return;p.classList.remove('open');$('nbback').classList.remove('open');unlockScroll()}
-function nText(){return NOTES.map(function(n){return'['+stName(n.s)+' · '+new Date(n.t).toLocaleDateString()+']\n'+(n.q?'“'+n.q+'”'+(n.ref?' ('+n.ref+')':'')+'\n':'')+(n.txt||'')}).join('\n\n')}
+function nText(){return NOTES.map(function(n){return'['+stName(n.s)+(n.sec?' › '+n.sec:'')+' · '+new Date(n.t).toLocaleDateString()+']\n'+(n.q?'“'+n.q+'”'+(n.ref?' ('+n.ref+')':'')+'\n':'')+(n.txt||'')}).join('\n\n')}
 /* floating button, drawer, selection popup */
 (function(){var b=document.createElement('button');b.id='nbb';b.className='nbb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><span></span><i hidden></i>';document.body.appendChild(b);
 var k=document.createElement('div');k.className='ctback';k.id='nbback';document.body.appendChild(k);
@@ -3443,18 +3455,24 @@ var s=document.createElement('button');s.className='nsel';s.id='nsel';s.hidden=t
 function selCheck(){var s=window.getSelection?window.getSelection():null,b=$('nsel');if(!b)return;var t=s&&String(s).replace(/\s+/g,' ').trim();
 if(!t||t.length<4||!s.rangeCount){b.hidden=true;return}var r=s.getRangeAt(0),c=r.commonAncestorContainer;c=c.nodeType==1?c:c.parentNode;
 if(!c.closest||!c.closest('#c,#panel')||c.closest('input,textarea,#nbp')){b.hidden=true;return}
-var rc=r.getBoundingClientRect();b.textContent=nx(NX.sel);b.dataset.nq=t.slice(0,600);var vr=c.closest('[data-fill],.vtext');b.dataset.nref=vr?(vr.dataset.fill||($('panel')&&$('panel').dataset.ref)||''):'';
+var rc=r.getBoundingClientRect();b.textContent=nx(NX.sel);b.dataset.nq=t.slice(0,600);b._src=c;var vr=c.closest('[data-fill],.vtext');b.dataset.nref=vr?(vr.dataset.fill||($('panel')&&$('panel').dataset.ref)||''):'';
 b.hidden=false;var top=rc.top-46;if(top<70)top=rc.bottom+8;b.style.top=Math.max(8,top)+'px';b.style.left=Math.min(window.innerWidth-b.offsetWidth-8,Math.max(8,rc.left+rc.width/2-b.offsetWidth/2))+'px'}
 document.addEventListener('selectionchange',function(){clearTimeout(window._nst);window._nst=setTimeout(selCheck,250)});
 window.addEventListener('scroll',function(){var b=$('nsel');if(b&&!b.hidden)selCheck()},{passive:true});
 document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b;
 if(t.closest('#nbb')||t.closest('[data-nopen]')){nOpen();return}
-if(b=t.closest('#nsel')){var q=b.dataset.nq,r=b.dataset.nref;b.hidden=true;try{window.getSelection().removeAllRanges()}catch(x){}if($('panel').classList.contains('open'))closeVerse();nOpen(q,r);return}
+if(b=t.closest('#nsel')){var q=b.dataset.nq,r=b.dataset.nref;b.hidden=true;try{window.getSelection().removeAllRanges()}catch(x){}var sr=b._src&&b._src.closest&&b._src.closest('#c')?b._src:null;if($('panel').classList.contains('open'))closeVerse();nOpen(q,r,sr);return}
 if(t.id=='nbback'||t.closest('#nbclose')){nClose();return}
 if(b=t.closest('[data-nsv]')){var vt=$('vt');var ref=$('panel').dataset.ref;closeVerse();nOpen(vt?vt.textContent:'',ref);return}
-if(t.closest('[data-ndx]')){NDRAFT={q:'',ref:''};nRender();return}
-if(t.closest('[data-nadd]')){var ta=$('nta'),v=ta?ta.value.trim():'';if(!v&&!NDRAFT.q)return;NOTES.push({id:String(Date.now()),t:Date.now(),s:S==99?-1:S,q:NDRAFT.q,ref:NDRAFT.ref,txt:v});NDRAFT={q:'',ref:''};nSave();nRender();
+if(t.closest('[data-ndx]')){NDRAFT={q:'',ref:'',sec:NDRAFT.sec,ix:NDRAFT.ix};nRender();return}
+if(t.closest('[data-nadd]')){var ta=$('nta'),v=ta?ta.value.trim():'';if(!v&&!NDRAFT.q)return;NOTES.push({id:String(Date.now()),t:Date.now(),s:S==99?-1:S,q:NDRAFT.q,ref:NDRAFT.ref,txt:v,sec:NDRAFT.sec||'',ix:NDRAFT.ix==null?-1:NDRAFT.ix});NDRAFT={q:'',ref:''};nSave();nRender();
 var n=$('nls');if(n&&n.firstChild&&n.firstChild.classList)n.firstChild.classList.add('new');return}
+if(b=t.closest('[data-ngo]')){var g0=NOTES.filter(function(n){return n.id==b.dataset.ngo})[0];if(!g0)return;nClose();var same=S==g0.s;if(!same)G(g0.s);
+setTimeout(function(){var all=[].slice.call(document.querySelectorAll('#c .ex,#c .lt')),el=null;all.forEach(function(e){var hh=e.querySelector('h3,h4');if(!el&&hh&&g0.sec&&hh.textContent.trim()==g0.sec)el=e});if(!el&&g0.ix>=0)el=all[g0.ix];
+if(!el&&g0.q){el=[].slice.call(document.querySelectorAll('#c p,#c blockquote,#c li')).filter(function(x){return x.textContent.indexOf(g0.q.slice(0,30))>=0})[0]||null}
+if(el){var dt=el.closest('details');if(dt)dt.open=true;var y=el.getBoundingClientRect().top+scrollY-80;try{scrollTo({top:y,behavior:'smooth'})}catch(x){scrollTo(0,y)}el.classList.add('nflash');setTimeout(function(){el.classList.remove('nflash')},2600)}},same?60:800);return}
+if(b=t.closest('[data-grsave]')){var gb=b.closest('.lt'),gs=nSecOf(gb);var gg=LJ.grace||{c:0,a:['','','']};if(!gg.a.join('').trim()){var f=gb.querySelector('textarea');if(f)f.focus();return}
+NOTES.push({id:String(Date.now()),t:Date.now(),s:4,q:'',ref:'',txt:graceText(),sec:gs.sec,ix:gs.ix});nSave();gg.a=['','',''];LJ.grace=gg;try{ljSave()}catch(x){}[].forEach.call(gb.querySelectorAll('textarea'),function(x){x.value=''});NFIL='all';nOpen();var nn=$('nls');var fc=nn&&nn.querySelector('.ngrp[style*="'+nCol(4)+'"] .nnt');if(fc)fc.classList.add('new');return}
 if(b=t.closest('[data-nf]')){NFIL=b.dataset.nf;nRender();return}
 if(b=t.closest('[data-ndel]')){if(!b.dataset.arm){b.dataset.arm=1;b.textContent=nx(NX.sure);b.classList.add('warnb');return}NOTES=NOTES.filter(function(n){return n.id!=b.dataset.ndel});nSave();nRender();return}
 if(b=t.closest('[data-ned]')){var n2=NOTES.filter(function(n){return n.id==b.dataset.ned})[0],box=b.closest('.nnt');if(!n2||!box)return;
