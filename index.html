@@ -1439,6 +1439,22 @@ background:linear-gradient(160deg,var(--night2),var(--night));color:#fff;font-we
 .body>*:nth-child(2){animation-delay:.06s}.body>*:nth-child(3){animation-delay:.12s}.body>*:nth-child(4){animation-delay:.18s}.body>*:nth-child(n+5){animation-delay:.24s}
 .journey .jn-node{animation:rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--n) * 70ms + .2s)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.g5ct{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:24px;background:linear-gradient(180deg,#fff8ea,#eef6fb);color:#2a2a3a;margin-bottom:12px}
+:root[data-theme=dark] .g5ct{background:linear-gradient(180deg,#2a2418,#18232c);color:#eef}
+.g5ctl{margin:0;font:600 1.25rem var(--f-display)}.g5ctl b.r{color:#c07a1c}.g5ctl b.f{color:#2f7fa8}
+.g5cs{width:100%;height:auto;overflow:visible}.g5cs .g5cf{fill:#e0a53c}
+@keyframes g5bob{50%{transform:translateY(-2px)}}
+.g5you{fill:#9aa0ad;transition:fill .6s}.g5bel2 .g5you{fill:#5fb5d8;filter:drop-shadow(0 0 8px #9fd7ef)}
+.g5tt{font:600 13px var(--f-label);letter-spacing:.12em;fill:currentColor;opacity:.7;text-transform:uppercase}.g5yt{font:700 13px var(--f-body);fill:currentColor}
+.g5stp{font:800 18px var(--f-label);letter-spacing:.1em;fill:#2f7fa8;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(2) rotate(-10deg);transition:all .5s cubic-bezier(.3,1.6,.5,1)}
+.g5bel2 .g5stp{opacity:1;transform:rotate(-10deg)}.g5beam{opacity:0}.g5bel .g5beam{opacity:1}
+.g5cc{display:grid;grid-template-columns:1fr 1fr;gap:12px}@container (max-width:600px){.g5cc{grid-template-columns:1fr}}
+.g5cx{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 16px 16px 58px;border-radius:18px;background:var(--card)}
+.g5cx.r{border-left:5px solid #e0a53c}.g5cx.f{border-left:5px solid #5fb5d8}
+.g5n{position:absolute;left:14px;top:14px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;font:700 .95rem var(--f-body)}.r .g5n{background:#e0a53c}.f .g5n{background:#5fb5d8}
+.g5cx b{font:600 1.15rem/1.25 var(--f-display)}.g5cx p{margin:0}.g5cx p i{font-style:normal;font:600 .66rem var(--f-label);letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-right:4px}
+.g5cx blockquote{margin:0;padding:4px 12px;border-left:3px solid var(--gold);font:italic 500 1rem/1.5 var(--f-display)}
+.g5cb{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px}.g5cdone{display:none;font:700 1.1rem var(--f-display);color:#2f7fa8}.g5bel2 .g5cdone{display:block;animation:ypop .5s}.g5bel [data-g5blv]{display:none}
 /* Stage V */
 .g5d{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center;padding:20px;border-radius:24px;background:linear-gradient(160deg,#fff6ef,#fde8ea);color:#3a2230}
 :root[data-theme=dark] .g5d{background:linear-gradient(160deg,#2c2228,#33212a);color:#f7e8ec}
@@ -3312,11 +3328,18 @@ return'<blockquote class=vq data-fill="John 1:16-17">…</blockquote>'+vchip('Jo
 /* 4. content of grace */
 var G5SINS=['Lies|谎言|Mentiras','Pride|骄傲|Orgullo','Hatred|仇恨|Odio','Envy|嫉妒|Envidia','Greed|贪婪|Codicia','Lust|淫念|Lujuria','Anger|怒气|Ira','Unbelief|不信|Incredulidad'];
 function renderContent5(){
-return'<p class=g5lead>'+T4('Grace has two parts: redemption and the forgiveness of sins.|恩典的内容有两部分：救赎与罪的赦免。|La gracia tiene dos partes: la redención y el perdón de los pecados.')+'</p>'
-+'<div class=g5tl><div class="g5c red"><small>'+T4('Redemption|救赎|Redención')+'</small><i class=g5ico>✝</i><dl><div><dt>'+T4('When|何时|Cuándo')+'</dt><dd>'+T4('At the cross, 2,000 years ago|2000年前，在十字架上|En la cruz, hace 2000 años')+'</dd></div><div><dt>'+T4('By|由谁|Por')+'</dt><dd>'+T4('The Son|子|El Hijo')+'</dd></div><div><dt>'+T4('For|为谁|Para')+'</dt><dd>'+T4('All people|众人|Todos')+'</dd></div></dl></div>'
-+'<div class=g5line><span>'+T4('2,000 years|2000年|2000 años')+'</span></div>'
-+'<div class="g5c fgv"><small>'+T4('Forgiveness|赦免|Perdón')+'</small><i class=g5ico>☀</i><dl><div><dt>'+T4('When|何时|Cuándo')+'</dt><dd>'+T4('This day, when you believe|今日，当你相信的时候|Hoy, cuando crees')+'</dd></div><div><dt>'+T4('By|由谁|Por')+'</dt><dd>'+T4('The Father|父|El Padre')+'</dd></div><div><dt>'+T4('For|为谁|Para')+'</dt><dd>'+T4('Those who believe the redemption of the Son|相信子之救赎的人|Los que creen en la redención del Hijo')+'</dd></div></dl></div></div>'
-+'<div class=g5vv><blockquote data-fill="Ephesians 1:7">…</blockquote>'+vchip('Ephesians 1:7')+'<blockquote data-fill="Ephesians 2:8">…</blockquote>'+vchip('Ephesians 2:8')+'</div>'
+function fig(x,y,c){return'<g class="'+c+'" transform="translate('+x+' '+y+')"><circle cx=0 cy=-14 r=5 /><path d="M0 -9 C-7 -9 -9 0 -9 10 H9 C9 0 7 -9 0 -9Z"/></g>'}
+var crowd='';for(var k=0;k<9;k++)crowd+=fig(28+k*17,150-(k%2)*4,'g5cf');
+var svg='<svg class=g5cs viewBox="0 0 640 180" aria-hidden=true><defs><radialGradient id=g5cg><stop offset=0 stop-color="#fff3c4"/><stop offset=1 stop-color="#f3d58a" stop-opacity="0"/></radialGradient></defs>'
++'<circle cx=100 cy=60 r=70 fill="url(#g5cg)" opacity=".8"/><path d="M100 24 V112 M80 46 H120" stroke="#8a5a1c" stroke-width=8 stroke-linecap=round /><path d="M10 162 Q100 132 190 162" fill="#d9b77a" opacity=".5"/>'
++crowd+'<path id=g5cp class=g5cpath d="M150 100 C 300 30, 420 30, 540 120" fill=none stroke="#c9952f" stroke-width=3 stroke-dasharray="6 8"/>'
++'<circle class=g5beam r=8 fill="#fff3c4" stroke="#f3c04a" stroke-width=3><animateMotion dur="1.6s" fill=freeze begin="indefinite" id=g5am><mpath href="#g5cp"/></animateMotion></circle>'
++fig(560,152,'g5you')+'<text x=560 y=176 text-anchor=middle class=g5yt>'+esc(T4('You|你|Tú'))+'</text><text class=g5stp x=560 y=104 text-anchor=middle>'+esc(T4('FORGIVEN|蒙赦免|PERDONADO'))+'</text>'
++'<text x=100 y=14 text-anchor=middle class=g5tt>'+esc(T4('2,000 years ago|2000年前|Hace 2000 años'))+'</text><text x=560 y=14 text-anchor=middle class=g5tt>'+esc(T4('Today|今天|Hoy'))+'</text></svg>';
+return'<div class=g5ct data-g5ct><p class=g5ctl>'+T4('Grace has two parts: <b class=r>redemption</b> and <b class=f>forgiveness</b>.|恩典有两部分：<b class=r>救赎</b>与<b class=f>赦免</b>。|La gracia tiene dos partes: la <b class=r>redención</b> y el <b class=f>perdón</b>.')+'</p>'+svg
++'<div class=g5cc><div class="g5cx r"><span class=g5n>1</span><b>'+T4('Redemption: the price is paid|救赎：代价已付清|Redención: el precio está pagado')+'</b><p>'+T4('<i>By</i> the Son, at the cross. <i>For</i> all people, everyone, already done.|<i>由</i>子在十字架上成就。<i>为</i>所有人，已经完成。|<i>Por</i> el Hijo, en la cruz. <i>Para</i> todos, ya está hecho.')+'</p><blockquote data-fill="Ephesians 1:7">…</blockquote>'+vchip('Ephesians 1:7')+'</div>'
++'<div class="g5cx f"><span class=g5n>2</span><b>'+T4('Forgiveness: the gift is received|赦免：领受这礼物|Perdón: el regalo se recibe')+'</b><p>'+T4('<i>By</i> the Father, this day. <i>For</i> those who believe the redemption of the Son.|<i>由</i>父在今日赐下。<i>为</i>相信子之救赎的人。|<i>Por</i> el Padre, hoy. <i>Para</i> los que creen en la redención del Hijo.')+'</p><blockquote data-fill="Ephesians 2:8">…</blockquote>'+vchip('Ephesians 2:8')+'</div></div>'
++'<div class=g5cb><button class=pri data-g5blv=1>'+T4('I believe ▶|我相信 ▶|Yo creo ▶')+'</button><span class=g5cdone>'+T4('Paid 2,000 years ago, received today. That is grace!|两千年前已付清，今天就领受。这就是恩典！|Pagado hace 2000 años, recibido hoy. ¡Eso es gracia!')+'</span></div></div>'
 +'<div class=g5nl data-g5nl><div class=g5bill><b>'+T4('The record of debt against me|我的罪债记录|El acta de deuda contra mí')+'</b><ul>'+G5SINS.map(function(s){return'<li>'+T4(s)+'</li>'}).join('')+'</ul><span class=g5stamp>'+T4('CANCELED|已涂抹|CANCELADO')+'</span><i class=g5nail></i></div>'
 +'<div class=g5nr><blockquote data-fill="Colossians 2:13-14">…</blockquote>'+vchip('Colossians 2:13-14')+'<button class=pri data-g5nail=1>'+T4('Nail it to the cross|钉在十字架上|Clávala en la cruz')+'</button></div></div>'}
 /* 5. purpose of the law */
@@ -3371,6 +3394,7 @@ if(b=t.closest('[data-g5why]')){b.parentNode.classList.toggle('g5show');return}
 if(b=t.closest('[data-g5n]')){nOpen(b.dataset.g5n,'');return}
 if(b=t.closest('[data-g5ts]')){nOpen(T4('My testimony of grace|我的恩典见证|Mi testimonio de gracia')+': '+b.dataset.g5ts,'');return}
 if(b=t.closest('[data-g5ig]')){var w=$('g5vid');w.classList.add('on');w.innerHTML='<iframe src="https://www.instagram.com/reel/'+b.dataset.g5ig+'/embed/" title="'+esc(T4('The merciful Judge|仁慈的法官|El Juez misericordioso'))+'" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading=lazy></iframe>';return}
+if(b=t.closest('[data-g5blv]')){var w=b.closest('[data-g5ct]');w.classList.add('g5bel');try{$('g5am').beginElement()}catch(x){}setTimeout(function(){w.classList.add('g5bel2')},1500);return}
 if(b=t.closest('[data-g5nail]')){var n=b.closest('[data-g5nl]');n.classList.add('g5nailed');b.disabled=true;return}
 if(b=t.closest('[data-g5law]')){b.closest('[data-g5lw]').classList.add('g5law');return}
 if(b=t.closest('[data-g5grc]')){var l=b.closest('[data-g5lw]');l.classList.add('g5law');setTimeout(function(){l.classList.add('g5grace')},300);return}
