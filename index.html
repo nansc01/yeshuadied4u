@@ -1367,11 +1367,36 @@ border-radius:46% 54% 42% 58% / 58% 46% 54% 42%;background:radial-gradient(circl
 .rlf p{margin:0;font:600 1.05rem/1.3 var(--f-display);max-width:16em}.rlf blockquote{margin:0;padding:4px 14px;border-left:3px solid var(--gold);font:italic 500 1rem/1.45 var(--f-display)}
 @container (max-width:720px){.rlf{grid-template-columns:1fr;justify-items:start}.rlf p{max-width:none}}
 @media (prefers-reduced-motion:reduce){.rlclimb,.rlq,.rlbeam{animation:none}.rlclimb{transform:translate(154px,52px)}.rlq{opacity:1}}
-.yal{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:34px 22px;border-radius:26px;color:#fff;overflow:hidden;
-background:radial-gradient(400px 260px at 15% 85%,rgba(110,60,180,.9),transparent 70%),radial-gradient(420px 260px at 85% 20%,rgba(240,110,60,.95),transparent 70%),linear-gradient(135deg,#9a3b8a,#e0485a 55%,#f08a4a)}
-.yat{font:italic 600 clamp(2.6rem,9cqi,4.6rem)/1 "Brush Script MT","Segoe Script","Snell Roundhand",var(--f-display);text-shadow:0 4px 18px rgba(0,0,0,.25)}
-.yal blockquote{border:0;font:500 1.15rem/1.5 var(--f-body);font-style:normal;max-width:36em}
-.yal .vchip{background:rgba(255,255,255,.18);color:#fff}.yal .helc{justify-content:center}.yal .helc .pri{background:#fff;color:#a8243a;border:0}
+.yal{position:relative;overflow:hidden;border-radius:26px;color:#fff;min-height:560px;background:linear-gradient(180deg,#07081a 0%,#141634 55%,#2a1838 100%)}
+.yal::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#3b2a6b 0%,#c0517a 45%,#f19a5a 75%,#ffd28a 100%);opacity:0;transition:opacity 4s ease 5.6s}
+.yal.in::before{opacity:1}
+.yst{position:absolute;inset:0}.yst i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.8;animation:ytw 3s ease-in-out infinite;animation-delay:calc(var(--k)*.4s);transition:opacity 3s 5.6s}
+.yal.in .yst i{opacity:.15}
+@keyframes ytw{50%{transform:scale(1.8)}}
+.ysun{position:absolute;left:50%;bottom:40px;width:420px;height:420px;margin-left:-210px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,200,.95) 0%,rgba(255,200,120,.55) 25%,rgba(255,160,100,0) 65%);transform:translateY(260px) scale(.6);opacity:0;transition:transform 5s cubic-bezier(.2,.7,.2,1) 5.4s,opacity 3s 5.4s}
+.yal.in .ysun{transform:none;opacity:1}
+.yhill{position:absolute;left:0;right:0;bottom:0;width:100%;height:120px}
+.ytx{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:44px 22px 150px;max-width:40em;margin:0 auto}
+.yl{opacity:0;transform:translateY(12px);filter:blur(4px);transition:opacity 1.1s ease,transform 1.1s ease,filter 1.1s ease;transition-delay:var(--d)}
+.yal.in .yl{opacity:1;transform:none;filter:none}
+.ytx p.yl{margin:0;font:500 clamp(1.15rem,3.6cqi,1.5rem)/1.4 var(--f-display);text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.ytx p.yl:last-of-type{font-weight:700}
+.yat{margin-top:10px;font:italic 600 clamp(3rem,11cqi,5.4rem)/1 "Brush Script MT","Segoe Script","Snell Roundhand",var(--f-display);text-shadow:0 4px 24px rgba(120,20,40,.45)}
+.yal.in .yat{animation:ybeat 2.6s ease-in-out 7.4s infinite}@keyframes ybeat{0%,100%{transform:none}12%{transform:scale(1.05)}24%{transform:none}36%{transform:scale(1.03)}}
+.ynb{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;padding:18px;border-radius:20px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ynb label{font:600 .72rem/1.2 var(--f-label);letter-spacing:.14em;text-transform:uppercase}
+.ynb input{width:min(280px,100%);padding:10px 16px;border-radius:999px;border:0;font:600 1.05rem var(--f-body);text-align:center;color:#3a1a2a;background:#fff}
+.yv{margin:0;font:italic 500 1.15rem/1.55 var(--f-display)}
+.ynm{font-style:normal;color:#fff3c4;background:rgba(255,255,255,.18);padding:0 6px;border-radius:6px;animation:ypop .5s ease}
+@keyframes ypop{from{transform:scale(.8);opacity:.3}}
+.yme{display:block;margin-top:8px;font:700 1.3rem/1.3 var(--f-display);color:#fff}
+.yal .vchip{background:rgba(255,255,255,.2);color:#fff}
+.yfl{font-style:italic}
+.yal .helc{justify-content:center}.yal .helc .pri{background:#fff;color:#a8243a;border:0}
+.yal .vref{color:#fff3c4}.yafter{display:none;flex-direction:column;align-items:center;gap:10px;padding:16px 18px;border-radius:18px;background:rgba(70,20,50,.55);animation:ypop .6s ease}
+.yafter p{margin:0;font:600 1.1rem/1.4 var(--f-display)}.yafter .pri{background:#fff;color:#a8243a;border:0}
+.yal.rcv .yafter{display:flex}.yal.rcv [data-yrc]{display:none}
+@media (prefers-reduced-motion:reduce){.yl,.ysun,.yal::before,.yst i{transition:none!important;animation:none!important}}
 
 /* ===== notebook ===== */
 .nbb{position:fixed;z-index:55;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:8px;padding:12px 18px 12px 14px;border-radius:999px;border:0;
@@ -3109,8 +3134,24 @@ return'<div class=rlw><div class="rlc rl1"><div class=rlh><b>'+T4('Religion|宗�
 +'<div class=rlf><p>'+T4('Not a religion: faith by grace, through God’s revelation.|不是宗教，而是因神的启示、本乎恩典的信。|No es una religión: es fe por gracia, por la revelación de Dios.')+'</p><blockquote data-fill="2 Corinthians 5:21">…</blockquote>'+vchip('2 Corinthians 5:21')+'</div></div>'}
 
 /* 8. you are loved */
-function renderLoved4(){return'<div class=yal><b class=yat>'+T4('You are loved|你是被爱的|Eres amado')+'</b><blockquote data-fill="1 John 4:18-19">…</blockquote><span class=hwr>'+vchip('1 John 4:18-19')+vchip('John 3:16')+'</span>'
-+'<div class=helc><button class=pri data-g=4>'+T4('Receive His grace → V|领受祂的恩典 → V|Recibe su gracia → V')+'</button><button data-contact=0>'+T4('Ask for prayer|请求代祷|Pedir oración')+'</button></div></div>'}
+var YLN='';try{YLN=localStorage.getItem('yln')||''}catch(e){}
+function yalVerse(n){var has=!!n.trim(),nm='<b class=ynm>'+esc(has?n.trim():T4('the world|世人|el mundo'))+'</b>';
+return T4('For God so loved {n} that He gave His one and only Son, that whoever believes in Him shall not perish but have eternal life.|神爱{n}，甚至将祂的独生子赐给他们，叫一切信祂的，不至灭亡，反得永生。|Porque de tal manera amó Dios a {n}, que dio a su Hijo unigénito, para que todo aquel que en Él cree no se pierda, mas tenga vida eterna.').replace('{n}',nm)
++(has?'<span class=yme>'+esc(n.trim())+T4(', you are loved.|，你是被爱的。|, eres amado.')+'</span>':'')}
+function renderLoved4(){var st='';for(var k=0;k<40;k++)st+='<i style="left:'+((k*37)%100)+'%;top:'+((k*53)%60)+'%;--k:'+(k%7)+'"></i>';
+var L=['Before you ever looked for Him…|在你寻找祂之前……|Antes de que tú lo buscaras…','He knew every sin you would commit.|祂早已知道你所犯的每一个罪。|Él ya conocía cada pecado que cometerías.','He saw every tear you would cry.|祂看见你流的每一滴眼泪。|Él vio cada lágrima que llorarías.','And still He chose the cross, for you.|祂仍然为你选择了十字架。|Y aun así escogió la cruz, por ti.'];
+return'<div class=yal data-yal><div class=yst>'+st+'</div><div class=ysun></div>'
++'<svg class=yhill viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden=true><path d="M0 120 V92 Q120 60 200 58 T400 96 V120Z" fill="#1a0f22"/><path d="M200 58 V6 M184 22 H216" stroke="#1a0f22" stroke-width="7" stroke-linecap=round /></svg>'
++'<div class=ytx>'+L.map(function(l,k){return'<p class=yl style="--d:'+(k*1.3)+'s">'+T4(l)+'</p>'}).join('')+'<span class=yl style="--d:5.2s">'+vchip('Romans 5:8')+'</span>'
++'<b class="yat yl" style="--d:6.2s">'+T4('You are loved|你是被爱的|Eres amado')+'</b>'
++'<div class="ynb yl" style="--d:7.2s"><label for=ynin>'+T4('Put your name into God’s promise|把你的名字放进神的应许里|Pon tu nombre en la promesa de Dios')+'</label><input id=ynin data-yln autocomplete=off maxlength=40 placeholder="'+esc(T4('Your name|你的名字|Tu nombre'))+'" value="'+esc(YLN)+'"><p class=yv id=yv>'+yalVerse(YLN)+'</p>'+vchip('John 3:16')+'</div>'
++'<p class="yfl yl" style="--d:8s">'+T4('“We love because He first loved us.”|“我们爱，因为神先爱我们。”|«Nosotros le amamos a Él, porque Él nos amó primero.»')+' '+vchip('1 John 4:19')+'</p>'
++'<div class="helc yl" style="--d:8.6s"><button class=pri data-yrc=1>'+T4('I receive His love ♥|我领受祂的爱 ♥|Recibo su amor ♥')+'</button><button data-contact=0>'+T4('Ask for prayer|请求代祷|Pedir oración')+'</button></div>'
++'<div class=yafter><p>'+T4('Welcome home. Heaven rejoices over you (Luke 15:7).|欢迎回家。天上为你欢喜（路加福音15:7）。|Bienvenido a casa. El cielo se alegra por ti (Lucas 15:7).')+'</p><button class=pri data-g=4>'+T4('Next: Grace → V|下一步：恩典 → V|Siguiente: La gracia → V')+'</button></div></div></div>'}
+(function(){var o=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}})},{threshold:.3}):null;
+var st=stage4Init;stage4Init=function(){st&&st.apply(this,arguments);Array.prototype.forEach.call(document.querySelectorAll('[data-yal]'),function(el){o?o.observe(el):el.classList.add('in')})};
+document.addEventListener('input',function(e){if(!e.target.matches||!e.target.matches('[data-yln]'))return;YLN=e.target.value;try{localStorage.setItem('yln',YLN)}catch(x){}var v=$('yv');if(v)v.innerHTML=yalVerse(YLN)});
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-yrc]');if(!b)return;var w=b.closest('[data-yal]');w.classList.add('rcv');var r=b.getBoundingClientRect();try{confetti(r.left+r.width/2,r.top)}catch(x){}})})();
 
 /* new Stage IV order */
 (function(){var e=E[3],g=function(t){return e.filter(function(b){return b[0]==t})};
