@@ -1512,6 +1512,25 @@ background:linear-gradient(160deg,var(--night2),var(--night));color:#fff;font-we
 .f6bc ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.f6bc li{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:baseline;padding:8px 10px;border-radius:12px;background:rgba(127,127,127,.1)}
 .f6bc li small{font:600 .62rem var(--f-label);letter-spacing:.12em;text-transform:uppercase;opacity:.7}.f6bc li span{font-weight:600}
 .fa li{background:rgba(255,255,255,.07)}.fa li:last-child{background:rgba(243,213,138,.2)}.sc li:last-child{background:rgba(181,48,63,.1)}
+.f6ps{border-radius:22px;overflow:hidden;background:#1c2452;color:#fff}
+.f6psf{position:relative}.f6pc{display:block;width:100%;height:auto}
+.f6psn{position:absolute;right:12px;top:10px;padding:2px 10px;border-radius:999px;background:rgba(0,0,0,.4);font:600 .75rem var(--f-body)}
+.f6psb{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px}
+.f6psc{margin:0;flex:1 1 280px;min-height:2.8em;font:600 1.1rem/1.4 var(--f-display)}
+.f6ps .vchip{background:rgba(255,255,255,.14);color:var(--gold2)}.f6ps .jgb{flex-wrap:wrap}.f6ps .vchip,.f6ps .jgb .pri{white-space:nowrap}
+.f6pp .f6fl{opacity:0;transform:translateY(-14px);transform-box:fill-box;transform-origin:center bottom;transition:opacity .5s,transform .5s;transition-delay:calc(var(--k)*.12s)}
+.f6ps[data-st="2"] .f6fl,.f6ps[data-st="3"] .f6fl{opacity:1;transform:none;animation:f6flick .8s ease-in-out infinite alternate}
+.f6bub{opacity:0;transform:translateY(8px);transition:all .5s;transition-delay:calc(var(--k)*.15s)}.f6bub text{font:700 11px var(--f-body);fill:#1c2452}
+.f6ps[data-st="3"] .f6bub{opacity:1;transform:none}
+.f6wnd{opacity:0}.f6ps[data-st="1"] .f6wnd{animation:f6wind2 1.8s ease-in-out infinite}@keyframes f6wind2{0%{opacity:0;transform:translateX(-60px)}40%{opacity:.9}100%{opacity:0;transform:translateX(120px)}}
+.f6lit{opacity:0;transition:opacity 1s}.f6ps[data-st="2"] .f6lit,.f6ps[data-st="3"] .f6lit{opacity:1}
+.f6ps[data-st="3"] .f6pp>circle,.f6ps[data-st="3"] .f6pp>path:not(.f6fl){fill:#8fa2f0;transition:fill .8s}
+.f6rx{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;padding:14px 16px;border-radius:18px;background:var(--card);border:1px solid var(--ln)}
+.f6rx b{font:600 1.1rem var(--f-display);margin-right:4px}.f6rx span{padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--ac) 10%,var(--card));font-weight:600}.f6rx i{font-style:normal;color:var(--ac);font-weight:700}
+.f6rx .f6hl{background:#f59a3a;color:#fff}
+.f6gg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}@container (max-width:600px){.f6gg2{grid-template-columns:1fr}}
+.f6gg2>div{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;padding:14px;border-radius:16px;background:color-mix(in srgb,var(--gold) 12%,var(--card))}
+.f6gg2>div>i{grid-row:span 2;font-style:normal;font-size:1.8rem}.f6gg2 b{display:block;font:600 1.05rem var(--f-display)}.f6gg2 small{display:block}.f6gg2 .vchip{grid-column:2;justify-self:start}
 /* Stage VI */
 .f6k{margin:0 0 10px;font:600 1.12rem/1.4 var(--f-display)}
 .f6vv{display:grid;gap:6px}
@@ -3531,10 +3550,18 @@ return'<div class=f6b data-f6bw data-st=0><div class=f6bv>'+svg+'<div class=f6bb
 function renderBapI6(){return'<div class=f6bi><div class=f6eq2><span>'+T4('Believe|相信|Creer')+'</span><em>+</em><span>'+T4('Be baptized|受洗|Ser bautizado')+'</span><em>=</em><span class=f6hl>'+T4('Saved|得救|Salvo')+'</span></div>'+f6q('Mark 16:16')
 +'<div class=f6why>'+[['🙌','Baptism is confessing with my body that Jesus is my Lord.|受洗是用身体承认耶稣是我的主。|El bautismo es confesar con mi cuerpo que Jesús es mi Señor.','Romans 10:10'],['🕊','It is for the forgiveness of sins, in the name of Jesus.|奉耶稣的名受洗，使罪得赦。|Es para el perdón de los pecados, en el nombre de Jesús.','Acts 2:38'],['👣','Jesus Himself was baptized and commanded it.|耶稣自己受了洗，也吩咐我们受洗。|Jesús mismo fue bautizado y lo mandó.','Matthew 28:19']].map(function(w){return'<div><i>'+w[0]+'</i><p>'+T4(w[1])+'</p>'+vchip(w[2])+'</div>'}).join('')+'</div></div>'}
 /* 9 holy spirit */
-function renderSpirit6(){var fl='';for(var k=0;k<5;k++)fl+='<g class=f6p style="--k:'+k+'" transform="translate('+(40+k*45)+' 112)"><path class=f6fl d="M0 -40 c-7 -8 -6 -16 0 -24 c2 8 9 8 8 16 c0 6 -4 8 -8 8z" fill="#f08a2c"/>'+f6fig(0,0).replace('<g class=""','<g fill="#3d4fa8"')+'</g>';
-return'<div class=f6sp data-f6spw><div class=f6spv><svg viewBox="0 0 260 130" aria-hidden=true><rect width=260 height=130 rx=12 fill="#1a2350"/><g class=f6wind stroke="#9fb7f0" stroke-width=2 fill=none stroke-linecap=round><path d="M10 30 q40 -14 80 0 t80 0"/><path d="M60 46 q40 -14 80 0 t80 0"/></g>'+fl+'</svg><button class=pri data-f6sp=1>'+T4('The day of Pentecost ▶|五旬节那天 ▶|El día de Pentecostés ▶')+'</button></div>'
-+'<div><p class=f6k>'+T4('The Holy Spirit is God’s promised gift to those who repent and are baptized.|圣灵是神应许赐给悔改受洗之人的恩赐。|El Espíritu Santo es el don prometido de Dios a los que se arrepienten y son bautizados.')+'</p>'+f6q('Acts 2:1-4')+vchip('Acts 2:38')
-+'<div class=f6gg><div><b>'+T4('Grace|恩典|Gracia')+'</b><small>'+T4('Given once for all: the only begotten Son, to whoever believes|一次永远地赐下：独生子，赐给一切相信的人|Dada una vez para siempre: el Hijo unigénito, a todo el que cree')+'</small></div><div><b>'+T4('Gifts|恩赐|Dones')+'</b><small>'+T4('Given again and again: the manifestation of the Spirit, to the saints|不断地赐下：圣灵的显现，赐给圣徒|Dados una y otra vez: la manifestación del Espíritu, a los santos')+'</small>'+vchip('1 Corinthians 12:4-7')+'</div></div></div></div>'}
+var F6PS=['They were all together in one place, waiting and praying.|他们都聚集在一处，等候祷告。|Estaban todos juntos en un lugar, esperando y orando.','Suddenly, a sound from heaven like a rushing mighty wind filled the house.|忽然，从天上有响声下来，好像一阵大风吹过，充满了房子。|De repente, vino del cielo un estruendo como de un viento recio que llenó la casa.','Tongues like fire appeared and rested on each one of them.|有舌头如火焰显现出来，分开落在他们各人头上。|Aparecieron lenguas como de fuego, que se posaron sobre cada uno.','They were all filled with the Holy Spirit and began to speak in other tongues.|他们就都被圣灵充满，按着圣灵所赐的口才说起别国的话来。|Todos fueron llenos del Espíritu Santo y comenzaron a hablar en otras lenguas.'];
+function renderSpirit6(){var xs=[70,150,230,320,410,490,570],words=['Hallelujah!','哈利路亚','¡Aleluya!','הללויה','Gloire!','할렐루야','Αλληλούια'],ppl='';
+xs.forEach(function(x,k){ppl+='<g class=f6pp style="--k:'+k+'"><path class=f6fl d="M'+x+' 118 c-8 -9 -7 -19 0 -28 c3 9 10 9 9 18 c0 7 -4 10 -9 10z" fill="#f59a3a"/><circle cx='+x+' cy=150 r=12 /><path d="M'+(x-20)+' 196 C'+(x-20)+' 172 '+(x-12)+' 162 '+x+' 162 C'+(x+12)+' 162 '+(x+20)+' 172 '+(x+20)+' 196Z"/>'
++'<g class=f6bub><rect x='+(x-34)+' y='+(k%2?52:66)+' width=68 height=22 rx=11 fill="#fff"/><text x='+x+' y='+(k%2?67:81)+' text-anchor=middle>'+words[k]+'</text></g></g>'});
+var svg='<svg class=f6pc viewBox="0 0 640 220" aria-hidden=true><defs><radialGradient id=f6PL cx=".5" cy="0"><stop offset=0 stop-color="#fff3c4" stop-opacity=".8"/><stop offset=1 stop-color="#fff3c4" stop-opacity="0"/></radialGradient></defs><rect width=640 height=220 fill="#1c2452"/><rect class=f6lit width=640 height=220 fill="url(#f6PL)"/>'
++'<path d="M290 20 h60 v60 h-60z M320 20 v60 M290 50 h60" fill="none" stroke="#3a4690" stroke-width=3 /><rect y=196 width=640 height=24 fill="#141a3d"/>'
++'<g class=f6wnd fill=none stroke="#bcd0ff" stroke-width=3 stroke-linecap=round><path d="M-40 60 q80 -30 160 0 t160 0 t160 0"/><path d="M-80 100 q80 -30 160 0 t160 0 t160 0"/><path d="M-20 34 q60 -20 120 0 t120 0"/></g>'
++'<g fill="#4b5bb0">'+ppl+'</g></svg>';
+return'<div class=f6ps data-f6ps data-st=0><div class=f6psf>'+svg+'<span class=f6psn>1 / 4</span></div><div class=f6psb><p class=f6psc aria-live=polite>'+T4(F6PS[0])+'</p><div class=jgb><button data-f6pp=-1 aria-label="◀">◀</button><button class=pri data-f6pplay=1>'+T4('▶ Play Pentecost|▶ 播放五旬节|▶ Ver Pentecostés')+'</button><button data-f6pp=1 aria-label="▶">▶</button>'+vchip('Acts 2:1-4')+'</div></div></div>'
++'<div class=f6rx><b>'+T4('Who receives Him?|谁能领受圣灵？|¿Quién lo recibe?')+'</b><span>'+T4('Repent|悔改|Arrepiéntete')+'</span><i>→</i><span>'+T4('Be baptized in Jesus’ name|奉耶稣的名受洗|Bautízate en el nombre de Jesús')+'</span><i>→</i><span class=f6hl>'+T4('Receive the gift of the Holy Spirit|领受所赐的圣灵|Recibe el don del Espíritu Santo')+'</span>'+vchip('Acts 2:38')+'</div>'
++'<div class=f6gg2><div><i>🎁</i><div><b>'+T4('Grace: given once for all|恩典：一次永远地赐下|Gracia: dada una vez para siempre')+'</b><small>'+T4('The only begotten Son, to whoever believes|独生子，赐给一切相信的人|El Hijo unigénito, a todo el que cree')+'</small></div>'+vchip('John 3:16')+'</div><div><i>✨</i><div><b>'+T4('Gifts: given again and again|恩赐：不断地赐下|Dones: dados una y otra vez')+'</b><small>'+T4('The manifestations of the Spirit, to the saints|圣灵的显现，赐给圣徒|Las manifestaciones del Espíritu, a los santos')+'</small></div>'+vchip('1 Corinthians 12:4-7')+'</div></div>'}
+var F6PT=null;function f6pSet(w,n){n=Math.max(0,Math.min(3,n));w.dataset.st=n;w.querySelector('.f6psc').innerHTML=T4(F6PS[n]);w.querySelector('.f6psn').textContent=(n+1)+' / 4'}
 /* 10 tongues */
 function renderTongue6(){var P=[['Jerusalem|耶路撒冷|Jerusalén','The disciples|门徒|Los discípulos','Acts 2:4'],['Caesarea|凯撒利亚|Cesarea','Cornelius’ household (Gentiles)|哥尼流全家（外邦人）|La casa de Cornelio (gentiles)','Acts 10:44-46'],['Ephesus|以弗所|Éfeso','About twelve disciples|约十二个门徒|Unos doce discípulos','Acts 19:6']];
 return'<p class=f6k>'+T4('Every time the Spirit first came in Acts, people spoke in tongues. It is the most common sign of receiving Him.|使徒行传中圣灵每次初次降临，人都说方言。这是领受圣灵最常见的凭据。|Cada vez que el Espíritu vino por primera vez en Hechos, hablaron en lenguas. Es la señal más común de recibirlo.')+'</p>'
@@ -3563,7 +3590,8 @@ if(b=t.closest('[data-f6tab]')){w=b.closest('[data-f6ob]');[].forEach.call(w.que
 if(b=t.closest('[data-f6tomb]')){b.closest('[data-f6tb]').classList.add('f6on');return}
 if(b=t.closest('[data-f6jl]')){w=b.closest('[data-f6jw]');var n=+w.dataset.n+1;if(n>5)n=0;w.dataset.n=n;[].forEach.call(w.querySelectorAll('li'),function(li,k){li.classList.toggle('f6li',k<n)});if(n==5){var r=b.getBoundingClientRect();try{confetti(r.left+r.width/2,r.top)}catch(z){}}b.textContent=n==5?T4('Again ↺|再来 ↺|Otra vez ↺'):T4('Next step ▶|下一步 ▶|Siguiente paso ▶');return}
 if(b=t.closest('[data-f6b]')){b.closest('[data-f6bw]').dataset.st=b.dataset.f6b;return}
-if(b=t.closest('[data-f6sp]')){b.closest('[data-f6spw]').classList.add('f6on');return}
+if(b=t.closest('[data-f6pp]')){clearInterval(F6PT);w=b.closest('[data-f6ps]');f6pSet(w,+w.dataset.st+ +b.dataset.f6pp);return}
+if(b=t.closest('[data-f6pplay]')){clearInterval(F6PT);w=b.closest('[data-f6ps]');var ww=w;f6pSet(ww,0);F6PT=setInterval(function(){if(!document.body.contains(ww)||+ww.dataset.st>=3){clearInterval(F6PT);return}f6pSet(ww,+ww.dataset.st+1)},3200);return}
 if(b=t.closest('[data-f6dip]')){w=b.closest('[data-f6nm]');var c=+w.dataset.n;if(c>=7){w.dataset.n=0;w.classList.remove('f6on','dip');w.querySelector('.f6cnt').textContent='0 / 7';b.textContent=T4('Dip ▶|下水 ▶|Sumérgete ▶');return}
 c++;w.dataset.n=c;w.classList.remove('dip');void w.offsetWidth;w.classList.add('dip');w.querySelector('.f6cnt').textContent=c+' / 7';
 if(c==7){setTimeout(function(){w.classList.add('f6on');fillVerses()},700);b.textContent=T4('Again ↺|再来 ↺|Otra vez ↺')}return}
