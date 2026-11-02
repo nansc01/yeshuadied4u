@@ -1494,6 +1494,24 @@ background:linear-gradient(160deg,var(--night2),var(--night));color:#fff;font-we
 @media (max-width:480px){.vbx{top:-48px;right:0}}
 .vbo{color:#cfd6ff;font:600 .85rem var(--f-body)}
 @media (prefers-reduced-motion:reduce){.jjdw{transition:none}.jgav{animation:none!important}}
+.f6bw2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@container (max-width:600px){.f6bw2{grid-template-columns:1fr}}
+.f6bc{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:22px}
+.f6bc.sc{background:color-mix(in srgb,#8f96a3 12%,var(--card));border:1px solid var(--ln)}.f6bc.fa{background:linear-gradient(160deg,var(--night2),var(--night));color:#fff}
+.f6bh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}.f6bh b{font:600 1.4rem var(--f-display)}.f6bh small{font:600 .68rem var(--f-label);letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.f6br{width:100%;height:auto;border-radius:14px;display:block}
+.f6pw{font:600 7.5px var(--f-body);fill:#5a4636}.f6pw2{font:800 9px var(--f-label);letter-spacing:.14em;fill:#3b2f6b}
+.f6wk{transition:transform 2.4s ease-in-out}
+.f6res,.f6qm{opacity:0;transition:opacity .5s}.f6res{font:700 12px var(--f-body)}.sc .f6res{fill:#b5303f}.fa .f6res{fill:#f3d58a}.f6qm{font:800 22px var(--f-display);fill:#b5303f}
+.sc.f6go .f6wk{transform:translateX(98px)}.sc.f6go .p1{animation:f6crk 1s ease-in 2.2s forwards}.sc.f6go .f6res,.sc.f6go .f6qm{opacity:1;transition-delay:2.6s}
+.sc.f6go .f6wk>g{animation:f6wob .5s ease-in-out 2.4s 3}
+@keyframes f6crk{30%{transform:rotate(6deg)}100%{transform:translate(0,40px) rotate(24deg);opacity:0}}.f6pl{transform-box:fill-box;transform-origin:center}
+@keyframes f6wob{50%{transform:translate(30px,70px) rotate(-8deg)}}
+.fa.f6go .f6wk{transform:translateX(236px)}.fa.f6go .f6res{opacity:1;transition-delay:2.4s}.fa.f6go .f6flag{animation:f6wave .6s 2.4s 4 alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes f6wave{to{transform:scaleX(.7)}}
+.f6walk{align-self:center;padding:8px 18px;border-radius:999px;border:0;font:700 .95rem var(--f-body);cursor:pointer}.sc .f6walk{background:#5b6170;color:#fff}.fa .f6walk{background:var(--gold2);color:#1a1a2e}
+.f6bc ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.f6bc li{display:grid;grid-template-columns:84px 1fr;gap:8px;align-items:baseline;padding:8px 10px;border-radius:12px;background:rgba(127,127,127,.1)}
+.f6bc li small{font:600 .62rem var(--f-label);letter-spacing:.12em;text-transform:uppercase;opacity:.7}.f6bc li span{font-weight:600}
+.fa li{background:rgba(255,255,255,.07)}.fa li:last-child{background:rgba(243,213,138,.2)}.sc li:last-child{background:rgba(181,48,63,.1)}
 /* Stage VI */
 .f6k{margin:0 0 10px;font:600 1.12rem/1.4 var(--f-display)}
 .f6vv{display:grid;gap:6px}
@@ -3461,9 +3479,20 @@ var svg='<svg class=f6cage viewBox="0 0 220 150" aria-hidden=true><g class=f6bar
 return'<div class=f6o data-f6ow><div class=f6ov>'+svg+'<div class=f6ol><span class=a>'+T4('Under the Law: “locked up”|在律法之下：“被看守”|Bajo la Ley: «encerrados»')+'</span><span class=b>'+T4('Faith has come: set free in Christ|信心来了：在基督里得自由|Llegó la fe: libres en Cristo')+'</span></div><button class=pri data-f6o=1>'+T4('Christ came ▶|基督来了 ▶|Cristo vino ▶')+'</button></div>'
 +'<div class=f6ot><p class=f6k>'+T4('Faith is not something we invent. It came from heaven with Christ, and we receive it as God reveals it.|信心不是我们自己想出来的。它是随着基督从天上来的，我们照着神的启示领受。|La fe no es algo que inventamos. Vino del cielo con Cristo, y la recibimos según Dios la revela.')+'</p>'+f6q('Galatians 3:23-24')+f6q('Hebrews 12:2')+'</div></div>'}
 /* 3 types */
-function renderTypes6(){var R=[['Definition|定义|Definición','The faith of natural people|属血气之人的信|La fe del hombre natural','The faith of God|神的信|La fe de Dios'],['Character|性质|Carácter','Subjective|主观的|Subjetiva','Objective|客观的|Objetiva'],['Basis|根据|Base','Self-assurance, self-knowledge, experience|自我把握、自我认识与经验|Seguridad propia, conocimiento propio, experiencia','The assurance of God, based on His revealed word|神的保证，根据祂启示的话|La garantía de Dios, basada en su palabra revelada'],['Promise|应许|Promesa','There may be success, but no promise or guarantee from God|可能成功，但没有神的应许和保证|Puede haber éxito, pero sin promesa ni garantía de Dios','If you obey: 100% God’s promise and guarantee|若顺服：百分之百有神的应许和保证|Si obedeces: 100 % promesa y garantía de Dios']];
-function col(c,t,k,g){return'<div class="f6tc '+c+'"><b>'+T4(t)+'</b><div class=f6g><svg viewBox="0 0 120 70" aria-hidden=true><path d="M10 64 A50 50 0 0 1 110 64" fill=none stroke="rgba(127,127,127,.25)" stroke-width=10 stroke-linecap=round /><path class=f6ga d="M10 64 A50 50 0 0 1 110 64" fill=none stroke-width=10 stroke-linecap=round pathLength=100 /></svg><span>'+g+'</span></div><dl>'+R.map(function(r){return'<div><dt>'+T4(r[0])+'</dt><dd>'+T4(r[k])+'</dd></div>'}).join('')+'</dl></div>'}
-return'<div class=f6ty>'+col('sc','Self-confidence|自信|Confianza propia',1,'?')+col('fa','Faith|信心|Fe',2,'100%')+'</div><div class=f6c><button class=pri data-f6ty=1>'+T4('Test them ▶|比一比 ▶|Ponlas a prueba ▶')+'</button></div>'}
+function renderTypes6(){
+function scene(k){var cliffs='<rect width=300 height=160 fill="'+(k?'#1b2148':'#dfe4ec')+'"/><path d="M0 70 H62 L56 160 H0Z" fill="'+(k?'#5b4a7a':'#a8927a')+'"/><path d="M238 70 H300 V160 H244Z" fill="'+(k?'#5b4a7a':'#a8927a')+'"/><path d="M62 160 L56 160 L66 120 Q150 150 234 120 L244 160Z" fill="'+(k?'#0d1030':'#8e9aab')+'" opacity=".5"/>'
++'<g transform="translate(272 70)"><path d="M0 0 V-34" stroke="'+(k?'#f3d58a':'#7a7f8c')+'" stroke-width=3 /><path class=f6flag d="M0 -34 L18 -28 L0 -22Z" fill="'+(k?'#f3d58a':'#9aa0ad')+'"/></g>';
+var br;
+if(!k){br='<path d="M62 64 Q150 84 238 64" fill=none stroke="#7a6a58" stroke-width=1.6 stroke-dasharray="3 3"/>';var W=['My ability|我的能力|Mi capacidad','My experience|我的经验|Mi experiencia','My feelings|我的感觉|Mis sentimientos'];
+[[66,'0'],[126,'1'],[186,'2']].forEach(function(p,n){br+='<g class="f6pl p'+n+'"><rect x='+p[0]+' y='+(70+(n==1?6:3))+' width=48 height=9 rx=2 fill="#c8a77a" stroke="#8a6a48"/><text x='+(p[0]+24)+' y='+(66+(n==1?6:3))+' text-anchor=middle class=f6pw>'+esc(T4(W[n]))+'</text></g>'})}
+else{br='<path d="M62 70 H238 V80 Q150 128 62 80Z" fill="#c9b8e8"/><path d="M62 70 H238" stroke="#f3d58a" stroke-width=3 /><text x=150 y=92 text-anchor=middle class=f6pw2>'+esc(T4('GOD’S WORD|神的话|LA PALABRA DE DIOS'))+'</text>'}
+var who='<g class=f6wk><g transform="translate(30 70)" fill="'+(k?'#f3d58a':'#5b6170')+'"><circle cx=0 cy=-22 r=6 /><path d="M0 -16 C-8 -16 -10 -6 -10 0 H10 C10 -6 8 -16 0 -16Z"/></g></g>';
+var end=k?'<text class=f6res x=150 y=36 text-anchor=middle>'+esc(T4('Made it: 100% promised|到达了：百分之百有应许|Llegó: 100 % prometido'))+'</text>':'<text class=f6res x=150 y=24 text-anchor=middle>'+esc(T4('Maybe… no guarantee|也许……没有保证|Quizás… sin garantía'))+'</text><text class=f6qm x=148 y=50 text-anchor=middle>?</text>';
+return'<svg class=f6br viewBox="0 0 300 160" aria-hidden=true>'+cliffs+br+who+end+'</svg>'}
+function card(k){var c=k?'fa':'sc';var rows=k?[['Rests on|根据|Se apoya en','God’s revealed word|神所启示的话|La palabra revelada de Dios'],['Kind|性质|Tipo','Objective: true whether I feel it or not|客观的：不论我感觉如何都真实|Objetiva: es verdad lo sienta o no'],['Outcome|结果|Resultado','If I obey: 100% God’s promise|若顺服：百分之百有神的应许|Si obedezco: 100 % la promesa de Dios']]:[['Rests on|根据|Se apoya en','Me: my ability, experience, feelings|我自己：能力、经验、感觉|Yo: mi capacidad, experiencia, sentimientos'],['Kind|性质|Tipo','Subjective: changes with me|主观的：随着我改变|Subjetiva: cambia conmigo'],['Outcome|结果|Resultado','Maybe success, but no guarantee from God|也许成功，但没有神的保证|Quizás éxito, pero sin garantía de Dios']];
+return'<div class="f6bc '+c+'" data-f6bc><div class=f6bh><b>'+T4(k?'Faith|信心|Fe':'Self-confidence|自信|Confianza propia')+'</b><small>'+T4(k?'the faith of God|神的信|la fe de Dios':'the faith of natural people|属血气之人的信|la fe del hombre natural')+'</small></div>'+scene(k)
++'<button class=f6walk data-f6walk>'+T4('Walk across ▶|走过去 ▶|Cruza ▶')+'</button><ul>'+rows.map(function(r){return'<li><small>'+T4(r[0])+'</small><span>'+T4(r[1])+'</span></li>'}).join('')+'</ul></div>'}
+return'<p class=f6k>'+T4('Both say “I believe.” The difference is what you are standing on.|两者都说“我相信”。区别在于你站在什么上面。|Ambos dicen «yo creo». La diferencia es sobre qué estás parado.')+'</p><div class=f6bw2>'+card(0)+card(1)+'</div>'}
 /* 4 objects */
 var F6G=[['From everlasting to everlasting|从亘古到永远|Desde la eternidad hasta la eternidad','Psalm 90:2'],['Self-existent|自有永有|Existe por sí mismo','Exodus 3:14'],['The only one God|独一的神|El único Dios','1 Timothy 6:15'],['Omniscient|无所不知|Omnisciente','1 John 3:20'],['Omnipotent|无所不能|Omnipotente','Revelation 1:8'],['Greater than all things|比万有都大|Mayor que todas las cosas','John 10:29'],['Omnipresent|无所不在|Omnipresente','Psalm 139:7-10'],['The Creator of all things|万物的创造者|El Creador de todas las cosas','Acts 17:24']];
 var F6J=[['God|神|Dios','John 1:1'],['The Creator|创造者|El Creador','John 1:3'],['The Redeemer|救赎主|El Redentor','Ephesians 1:7'],['King of kings|万王之王|Rey de reyes','Revelation 17:14'],['The Judge|审判者|El Juez','John 12:48'],['One with the Father|与父原为一|Uno con el Padre','John 10:30'],['The only Mediator between God and men|神与人之间唯一的中保|El único Mediador entre Dios y los hombres','1 Timothy 2:5'],['The Heir of God|神的承受者|El Heredero de Dios','Hebrews 1:2'],['Witnessed by Moses and the prophets|摩西和众先知所见证的|Testificado por Moisés y los profetas','John 5:46']];
@@ -3529,7 +3558,7 @@ var isVisB7=isVisB;isVisB=function(b){return isVisB7(b)||['def6','origin6','type
 document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;var b,w;
 if(b=t.closest('[data-f6iv]')){b.closest('[data-f6d]').classList.add('f6on');return}
 if(b=t.closest('[data-f6o]')){b.closest('[data-f6ow]').classList.toggle('f6on');return}
-if(b=t.closest('[data-f6ty]')){var x=b.parentNode.previousElementSibling;x.classList.remove('f6on');void x.offsetWidth;x.classList.add('f6on');return}
+if(b=t.closest('[data-f6walk]')){var x=b.closest('[data-f6bc]');x.classList.remove('f6go');void x.offsetWidth;x.classList.add('f6go');b.textContent=T4('Again ↺|再走一次 ↺|Otra vez ↺');return}
 if(b=t.closest('[data-f6tab]')){w=b.closest('[data-f6ob]');[].forEach.call(w.querySelectorAll('[data-f6tab]'),function(x){x.classList.toggle('f6sel',x==b)});[].forEach.call(w.querySelectorAll('[data-f6pan]'),function(x){x.hidden=x.dataset.f6pan!=b.dataset.f6tab});fillVerses();return}
 if(b=t.closest('[data-f6tomb]')){b.closest('[data-f6tb]').classList.add('f6on');return}
 if(b=t.closest('[data-f6jl]')){w=b.closest('[data-f6jw]');var n=+w.dataset.n+1;if(n>5)n=0;w.dataset.n=n;[].forEach.call(w.querySelectorAll('li'),function(li,k){li.classList.toggle('f6li',k<n)});if(n==5){var r=b.getBoundingClientRect();try{confetti(r.left+r.width/2,r.top)}catch(z){}}b.textContent=n==5?T4('Again ↺|再来 ↺|Otra vez ↺'):T4('Next step ▶|下一步 ▶|Siguiente paso ▶');return}
